@@ -1,0 +1,6 @@
+<!doctype html>
+<title>215. Registration confirmation</title>
+<form id="form"><input id="password" type="password" required><input id="confirm" type="password" required><button>Register</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = password.value === confirm.value ? "Registered" : "Passwords do not match"; };
+</script>

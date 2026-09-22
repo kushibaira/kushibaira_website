@@ -1,0 +1,7 @@
+<!doctype html>
+<title>156. Add edit delete to-do items</title>
+<input id="task"><button id="add">Add</button><ul id="list"></ul>
+<script>
+	add.onclick = () => { if (!task.value.trim()) return; const item = document.createElement("li"); item.innerHTML = `<span>${task.value}</span> <button class="edit">Edit</button> <button class="delete">Delete</button>`; list.append(item); task.value = ""; };
+	list.onclick = event => { const item = event.target.closest("li"); if (event.target.matches(".delete")) item.remove(); if (event.target.matches(".edit")) item.querySelector("span").contentEditable = true; };
+</script>

@@ -1,0 +1,8 @@
+<!doctype html>
+<title>232. Digital clock</title>
+<h1 id="clock"></h1>
+<script>
+	function updateClock() { clock.textContent = new Date().toLocaleTimeString(); }
+	updateClock();
+	setInterval(updateClock, 1000);
+</script>

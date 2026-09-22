@@ -1,0 +1,6 @@
+<!doctype html>
+<title>171. Reset event</title>
+<form id="form"><input value="Reset me"><button type="reset">Reset</button></form><p id="result"></p>
+<script>
+	form.onreset = () => result.textContent = "Reset event handled.";
+</script>

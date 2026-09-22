@@ -1,0 +1,6 @@
+<!doctype html>
+<title>199. Radio button validation</title>
+<label><input type="radio" name="mode" value="online"> Online</label><label><input type="radio" name="mode" value="offline"> Offline</label><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = document.querySelector("input[name=mode]:checked") ? "Option selected" : "Choose an option";
+</script>

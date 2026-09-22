@@ -1,0 +1,6 @@
+<!doctype html>
+<title>246. Current coordinates</title>
+<button id="button">Get coordinates</button><p id="result"></p>
+<script>
+	button.onclick = () => navigator.geolocation.getCurrentPosition(position => result.textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`, () => result.textContent = "Permission denied or unavailable");
+</script>

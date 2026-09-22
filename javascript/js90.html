@@ -1,0 +1,13 @@
+<!doctype html>
+<title>90. Drag and drop</title>
+<div id="source" draggable="true" style="padding:20px;background:orange;width:120px">Drag me</div>
+<div id="target" style="margin-top:20px;padding:50px;background:lightgreen">Drop here</div>
+<p id="result"></p>
+<script>
+	source.addEventListener("dragstart", event => event.dataTransfer.setData("text/plain", "Dragged item"));
+	target.addEventListener("dragover", event => event.preventDefault());
+	target.addEventListener("drop", event => {
+		event.preventDefault();
+		result.textContent = event.dataTransfer.getData("text/plain");
+	});
+</script>

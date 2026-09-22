@@ -1,0 +1,8 @@
+<!doctype html>
+<title>74. Create and remove CSS classes</title>
+<style>.highlight { color: white; background: seagreen; padding: 12px; }</style>
+<p id="message">Toggle my CSS class.</p>
+<button id="toggleButton">Toggle class</button>
+<script>
+	toggleButton.addEventListener("click", () => message.classList.toggle("highlight"));
+</script>

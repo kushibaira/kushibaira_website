@@ -1,0 +1,9 @@
+<!doctype html>
+<title>83. Mouse events</title>
+<div id="box" style="padding:40px;background:lightblue">Move or click here</div>
+<p id="result"></p>
+<script>
+	box.addEventListener("mouseenter", () => result.textContent = "Mouse entered");
+	box.addEventListener("mouseleave", () => result.textContent = "Mouse left");
+	box.addEventListener("click", () => result.textContent = "Mouse clicked");
+</script>

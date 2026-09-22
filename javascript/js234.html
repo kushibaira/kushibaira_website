@@ -1,0 +1,9 @@
+<!doctype html>
+<title>234. Stopwatch</title>
+<output id="result">0</output><button id="start">Start</button><button id="stop">Stop</button><button id="reset">Reset</button>
+<script>
+	let seconds = 0, timer;
+	start.onclick = () => timer = setInterval(() => result.value = ++seconds, 1000);
+	stop.onclick = () => clearInterval(timer);
+	reset.onclick = () => { clearInterval(timer); seconds = 0; result.value = 0; };
+</script>

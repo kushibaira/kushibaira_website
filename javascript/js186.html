@@ -1,0 +1,11 @@
+<!doctype html>
+<title>186. Reaction-time game</title>
+<button id="button">Start</button><p id="result"></p>
+<script>
+	let startedAt = 0;
+	button.onclick = () => {
+		if (!startedAt) { result.textContent = "Click again now!"; startedAt = performance.now(); return; }
+		result.textContent = `Reaction time: ${Math.round(performance.now() - startedAt)} ms`;
+		startedAt = 0;
+	};
+</script>

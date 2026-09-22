@@ -1,0 +1,6 @@
+<!doctype html>
+<title>195. Strong password validator</title>
+<input id="password" type="password"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/.test(password.value) ? "Strong" : "Weak";
+</script>

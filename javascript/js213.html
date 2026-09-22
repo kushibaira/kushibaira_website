@@ -1,0 +1,6 @@
+<!doctype html>
+<title>213. Password strength meter</title>
+<input id="password" type="password"><meter id="meter" min="0" max="4" value="0"></meter><p id="result"></p>
+<script>
+	password.oninput = () => { const value = password.value; const score = Number(value.length >= 8) + Number(/[A-Z]/.test(value)) + Number(/\d/.test(value)) + Number(/[^A-Za-z\d]/.test(value)); meter.value = score; result.textContent = ["Empty", "Weak", "Fair", "Strong", "Very strong"][score]; };
+</script>

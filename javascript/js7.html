@@ -1,0 +1,10 @@
+﻿<!doctype html>
+<title>7. Fibonacci series</title>
+<h1>7. Fibonacci series</h1>
+<pre>function fibonacci(count){const series=[0,1];
+while(series.length<count)series.push(series.at(-1)+series.at(-2));
+return series.slice(0,count);}</pre>
+<script>function fibonacci(count){const series=[0,1];
+while(series.length<count)series.push(series.at(-1)+series.at(-2));
+return series.slice(0,count)}document.write(fibonacci(10).join(', '));</script>
+

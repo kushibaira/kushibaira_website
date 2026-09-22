@@ -1,0 +1,6 @@
+<!doctype html>
+<title>219. Contact validation</title>
+<form id="form"><input required type="email" placeholder="Email"><textarea required placeholder="Message"></textarea><button>Contact</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "Message sent" : "Complete the form"; };
+</script>

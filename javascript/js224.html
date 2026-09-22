@@ -1,0 +1,6 @@
+<!doctype html>
+<title>224. Employee salary calculator</title>
+<input id="basic" type="number" placeholder="Basic salary"><input id="bonus" type="number" placeholder="Bonus"><button id="calculate">Calculate</button><p id="result"></p>
+<script>
+	calculate.onclick = () => { const gross = Number(basic.value) + Number(bonus.value); const tax = gross * 0.1; result.textContent = `Gross: ${gross}, Tax: ${tax}, Net: ${gross - tax}`; };
+</script>

@@ -1,0 +1,7 @@
+<!doctype html>
+<title>149. Accordion</title>
+<button class="question">Question one</button><p class="answer" hidden>Answer one.</p>
+<button class="question">Question two</button><p class="answer" hidden>Answer two.</p>
+<script>
+	document.querySelectorAll(".question").forEach(button => button.onclick = () => button.nextElementSibling.hidden = !button.nextElementSibling.hidden);
+</script>

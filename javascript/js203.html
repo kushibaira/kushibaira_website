@@ -1,0 +1,6 @@
+<!doctype html>
+<title>203. Required fields</title>
+<form id="form"><input required placeholder="Name"><input required type="email" placeholder="Email"><button>Submit</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "All required fields are valid" : "Complete required fields"; };
+</script>

@@ -1,0 +1,14 @@
+<!doctype html>
+<title>95. Feedback validation</title>
+<form id="form">
+	<input id="name" required placeholder="Your name">
+	<textarea id="feedback" required minlength="10" placeholder="Your feedback"></textarea>
+	<button>Send feedback</button>
+</form>
+<p id="result"></p>
+<script>
+	form.addEventListener("submit", event => {
+		event.preventDefault();
+		result.textContent = form.checkValidity() ? "Thank you for your feedback." : "Enter a name and at least 10 characters.";
+	});
+</script>

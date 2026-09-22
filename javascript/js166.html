@@ -1,0 +1,7 @@
+<!doctype html>
+<title>166. Count key presses</title>
+<input id="input" placeholder="Press keys"><p id="result">Presses: 0</p>
+<script>
+	let count = 0;
+	input.addEventListener("keydown", () => result.textContent = `Presses: ${++count}`);
+</script>

@@ -1,0 +1,8 @@
+﻿<!doctype html>
+<title>29. Guessing game</title>
+<input id="guess" type="number" min="1" max="10">
+<button onclick="play()">Guess</button>
+<p id="result">Guess a number from 1 to 10.</p>
+<script>const answer=Math.floor(Math.random()*10)+1;
+function play(){result.textContent=+guess.value===answer?'Correct!':+guess.value<answer?'Try higher':'Try lower'}</script>
+

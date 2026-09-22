@@ -1,0 +1,9 @@
+<!doctype html>
+<title>257. To-do list with localStorage</title>
+<input id="task"><button id="add">Add</button><ul id="list"></ul>
+<script>
+	const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+	function render() { list.innerHTML = tasks.map(task => `<li>${task}</li>`).join(""); }
+	add.onclick = () => { if (task.value.trim()) { tasks.push(task.value); localStorage.setItem("tasks", JSON.stringify(tasks)); task.value = ""; render(); } };
+	render();
+</script>

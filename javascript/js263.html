@@ -1,0 +1,9 @@
+<!doctype html>
+<title>263. Recently viewed items</title>
+<button data-item="Article A">View Article A</button><button data-item="Article B">View Article B</button><ul id="list"></ul>
+<script>
+	const viewed = JSON.parse(localStorage.getItem("viewed") || "[]");
+	function render() { list.innerHTML = viewed.map(item => `<li>${item}</li>`).join(""); }
+	document.querySelectorAll("[data-item]").forEach(button => button.onclick = () => { viewed.unshift(button.dataset.item); localStorage.setItem("viewed", JSON.stringify([...new Set(viewed)].slice(0, 5))); render(); });
+	render();
+</script>

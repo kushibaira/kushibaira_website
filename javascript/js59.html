@@ -1,0 +1,8 @@
+﻿<!doctype html>
+<title>59. Array frequency</title>
+<h1>59. Frequency of each element</h1>
+<pre>values.reduce((counts,value)=>{counts[value]=(counts[value]||0)+1;
+return counts},{})</pre>
+<script>const counts=[1,2,1,3,2,1].reduce((c,v)=>(c[v]=(c[v]||0)+1,c),{});
+document.write(JSON.stringify(counts))</script>
+

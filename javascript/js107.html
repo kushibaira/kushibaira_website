@@ -1,0 +1,8 @@
+<!doctype html>
+<title>107. Digital clock</title>
+<h1 id="clock"></h1>
+<script>
+	function showTime() { clock.textContent = new Date().toLocaleTimeString(); }
+	showTime();
+	setInterval(showTime, 1000);
+</script>

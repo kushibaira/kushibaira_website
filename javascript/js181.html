@@ -1,0 +1,8 @@
+<!doctype html>
+<title>181. Drag and drop</title>
+<div id="drag" draggable="true" style="padding:20px;background:orange;width:100px">Drag me</div><div id="drop" style="padding:40px;background:lightgreen">Drop here</div><p id="result"></p>
+<script>
+	drag.ondragstart = event => event.dataTransfer.setData("text", "Item dropped");
+	drop.ondragover = event => event.preventDefault();
+	drop.ondrop = event => { event.preventDefault(); result.textContent = event.dataTransfer.getData("text"); };
+</script>

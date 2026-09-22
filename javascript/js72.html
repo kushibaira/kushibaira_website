@@ -1,0 +1,15 @@
+<!doctype html>
+<title>72. getElementById and getElementsByClassName</title>
+<h1 id="title">Heading</h1>
+<p class="note">Note one</p>
+<p class="note">Note two</p>
+<button id="runButton">Run selectors</button>
+<p id="result"></p>
+<script>
+	runButton.addEventListener("click", () => {
+		const heading = document.getElementById("title");
+		const notes = document.getElementsByClassName("note");
+		heading.textContent = "Found by ID";
+		result.textContent = `Found ${notes.length} elements by class name.`;
+	});
+</script>

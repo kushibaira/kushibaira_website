@@ -1,0 +1,6 @@
+<!doctype html>
+<title>162. Mousemove event</title>
+<div id="area" style="width:300px;height:150px;background:beige">Move your mouse here</div><p id="result"></p>
+<script>
+	area.onmousemove = event => result.textContent = `X: ${event.offsetX}, Y: ${event.offsetY}`;
+</script>

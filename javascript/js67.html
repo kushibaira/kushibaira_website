@@ -1,0 +1,10 @@
+﻿<!doctype html>
+<title>67. Email validation</title>
+<h1>67. Validate email with a regular expression</h1>
+<input id="email" type="email" placeholder="you@example.com">
+<button onclick="checkEmail()">Check</button>
+<p id="result">
+</p>
+<pre>/^[^\s@]+@[^\s@]+\.[^\s@]+$/</pre>
+<script>function checkEmail(){result.textContent=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)?'Valid email':'Invalid email'}</script>
+

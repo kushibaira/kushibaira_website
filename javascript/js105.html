@@ -1,0 +1,14 @@
+<!doctype html>
+<title>105. Theme switcher</title>
+<style>
+	body.dark { color: white; background: #172033; }
+</style>
+<button id="themeButton">Toggle theme</button>
+<script>
+	const savedTheme = localStorage.getItem("theme");
+	if (savedTheme === "dark") document.body.classList.add("dark");
+	themeButton.addEventListener("click", () => {
+		document.body.classList.toggle("dark");
+		localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+	});
+</script>

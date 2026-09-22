@@ -1,0 +1,7 @@
+<!doctype html>
+<title>148. Tabs interface</title>
+<button data-tab="one">One</button><button data-tab="two">Two</button>
+<p id="one">Content for tab one.</p><p id="two" hidden>Content for tab two.</p>
+<script>
+	document.querySelectorAll("[data-tab]").forEach(button => button.onclick = () => { one.hidden = button.dataset.tab !== "one"; two.hidden = button.dataset.tab !== "two"; });
+</script>

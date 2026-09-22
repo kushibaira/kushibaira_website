@@ -1,0 +1,8 @@
+<!doctype html>
+<title>231. setInterval</title>
+<button id="start">Start</button><button id="stop">Stop</button><p id="result">0</p>
+<script>
+	let count = 0, timer;
+	start.onclick = () => timer = setInterval(() => result.textContent = ++count, 1000);
+	stop.onclick = () => clearInterval(timer);
+</script>

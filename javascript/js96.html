@@ -1,0 +1,16 @@
+<!doctype html>
+<title>96. College admission validation</title>
+<form id="form">
+	<input required placeholder="Full name">
+	<input required type="email" placeholder="Email">
+	<select required><option value="">Choose course</option><option>Computer Science</option><option>Business</option></select>
+	<input required type="number" min="40" placeholder="Entrance score">
+	<button>Apply</button>
+</form>
+<p id="result"></p>
+<script>
+	form.addEventListener("submit", event => {
+		event.preventDefault();
+		result.textContent = form.checkValidity() ? "Application is ready." : "Please correct the application.";
+	});
+</script>

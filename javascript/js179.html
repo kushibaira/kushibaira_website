@@ -1,0 +1,7 @@
+<!doctype html>
+<title>179. Event capturing</title>
+<div id="outer" style="padding:30px;background:lightgreen"><button id="inner">Click inner</button></div><p id="result"></p>
+<script>
+	outer.addEventListener("click", () => result.textContent = "Outer captured first", true);
+	inner.addEventListener("click", () => result.textContent += "; inner clicked");
+</script>

@@ -1,0 +1,9 @@
+<!doctype html>
+<title>114. Tic-tac-toe</title>
+<div id="board"></div><p id="result"></p>
+<style>#board{display:grid;grid-template-columns:repeat(3,70px);gap:4px}button{height:70px;font-size:2rem}</style>
+<script>
+	let turn = "X", cells = Array(9).fill("");
+	function checkWinner() { return [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].find(([a,b,c]) => cells[a] && cells[a] === cells[b] && cells[a] === cells[c]); }
+	cells.forEach((_, index) => { const button = document.createElement("button"); button.onclick = () => { if (cells[index] || result.textContent) return; cells[index] = turn; button.textContent = turn; const winner = checkWinner(); if (winner) result.textContent = `${turn} wins!`; turn = turn === "X" ? "O" : "X"; }; board.append(button); });
+</script>

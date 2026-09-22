@@ -1,0 +1,8 @@
+<!doctype html>
+<title>151. Dynamic tooltip</title>
+<button id="button">Hover or focus me</button>
+<p id="tooltip" hidden>This tooltip was created dynamically.</p>
+<script>
+	button.onmouseenter = button.onfocus = () => tooltip.hidden = false;
+	button.onmouseleave = button.onblur = () => tooltip.hidden = true;
+</script>

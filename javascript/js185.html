@@ -1,0 +1,7 @@
+<!doctype html>
+<title>185. Double-click counter</title>
+<button id="button">Double-click</button><p id="result">Double-clicks: 0</p>
+<script>
+	let doubleClicks = 0;
+	button.ondblclick = () => result.textContent = `Double-clicks: ${++doubleClicks}`;
+</script>

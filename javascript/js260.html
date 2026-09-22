@@ -1,0 +1,6 @@
+<!doctype html>
+<title>260. Login preference</title>
+<label><input id="remember" type="checkbox"> Remember username</label><input id="username" placeholder="Username"><button id="save">Save preference</button><p id="result"></p>
+<script>
+	save.onclick = () => { localStorage.setItem("remember", remember.checked); if (remember.checked) localStorage.setItem("username", username.value); result.textContent = "Preference saved"; };
+</script>

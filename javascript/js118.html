@@ -1,0 +1,9 @@
+<!doctype html>
+<title>118. Notes application</title>
+<textarea id="note" placeholder="Write a note"></textarea><button id="save">Save note</button><ul id="notes"></ul>
+<script>
+	const savedNotes = JSON.parse(localStorage.getItem("notes") || "[]");
+	function render() { notes.innerHTML = savedNotes.map(value => `<li>${value}</li>`).join(""); }
+	save.onclick = () => { if (note.value.trim()) { savedNotes.push(note.value); localStorage.setItem("notes", JSON.stringify(savedNotes)); note.value = ""; render(); } };
+	render();
+</script>

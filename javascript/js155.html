@@ -1,0 +1,6 @@
+<!doctype html>
+<title>155. To-do list</title>
+<input id="task"><button id="add">Add</button><ul id="list"></ul>
+<script>
+	add.onclick = () => { if (!task.value.trim()) return; list.insertAdjacentHTML("beforeend", `<li>${task.value}</li>`); task.value = ""; };
+</script>

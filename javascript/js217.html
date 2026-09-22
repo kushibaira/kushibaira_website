@@ -1,0 +1,6 @@
+<!doctype html>
+<title>217. Job application validation</title>
+<form id="form"><input required placeholder="Name"><input required type="email" placeholder="Email"><input required type="file"><button>Apply</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "Job application sent" : "Complete all fields"; };
+</script>

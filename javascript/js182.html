@@ -1,0 +1,6 @@
+<!doctype html>
+<title>182. Mouse coordinate tracker</title>
+<div id="area" style="height:180px;background:beige">Move here</div><p id="result"></p>
+<script>
+	area.onmousemove = event => result.textContent = `X: ${event.offsetX}, Y: ${event.offsetY}`;
+</script>

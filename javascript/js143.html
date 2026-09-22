@@ -1,0 +1,13 @@
+<!doctype html>
+<title>143. Country state city dropdown</title>
+<select id="country"><option>India</option><option>USA</option></select>
+<select id="state"></select>
+<select id="city"></select>
+<script>
+	const data = { India: { Maharashtra: ["Mumbai", "Pune"], Karnataka: ["Bengaluru"] }, USA: { Texas: ["Austin", "Dallas"], Florida: ["Miami"] } };
+	function updateStates() { state.replaceChildren(); Object.keys(data[country.value]).forEach(name => state.add(new Option(name, name))); updateCities(); }
+	function updateCities() { city.replaceChildren(); data[country.value][state.value].forEach(name => city.add(new Option(name, name))); }
+	country.onchange = updateStates;
+	state.onchange = updateCities;
+	updateStates();
+</script>

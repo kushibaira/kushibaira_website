@@ -1,0 +1,10 @@
+<!doctype html>
+<title>102. localStorage</title>
+<input id="name" placeholder="Name">
+<button id="saveButton">Save</button>
+<button id="loadButton">Load</button>
+<p id="result"></p>
+<script>
+	saveButton.addEventListener("click", () => localStorage.setItem("name", name.value));
+	loadButton.addEventListener("click", () => result.textContent = localStorage.getItem("name") || "No name saved");
+</script>

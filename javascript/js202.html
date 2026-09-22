@@ -1,0 +1,6 @@
+<!doctype html>
+<title>202. Textarea validation</title>
+<textarea id="message" minlength="10" placeholder="At least 10 characters"></textarea><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = message.value.trim().length >= 10 ? "Valid message" : "Write at least 10 characters";
+</script>

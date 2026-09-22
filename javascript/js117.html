@@ -1,0 +1,7 @@
+<!doctype html>
+<title>117. Simple shopping cart</title>
+<button data-item="Book" data-price="10">Add book ($10)</button><button data-item="Bag" data-price="25">Add bag ($25)</button><ul id="cart"></ul><p id="totalOutput">Total: $0</p>
+<script>
+	let totalAmount = 0;
+	document.querySelectorAll("[data-item]").forEach(button => button.onclick = () => { totalAmount += Number(button.dataset.price); cart.insertAdjacentHTML("beforeend", `<li>${button.dataset.item}</li>`); totalOutput.textContent = `Total: $${totalAmount}`; });
+</script>

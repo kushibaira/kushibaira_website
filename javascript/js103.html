@@ -1,0 +1,11 @@
+<!doctype html>
+<title>103. sessionStorage</title>
+<input id="value" placeholder="Session value">
+<button id="saveButton">Save session value</button>
+<p id="result"></p>
+<script>
+	saveButton.addEventListener("click", () => {
+		sessionStorage.setItem("value", value.value);
+		result.textContent = sessionStorage.getItem("value");
+	});
+</script>

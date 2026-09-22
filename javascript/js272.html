@@ -1,0 +1,10 @@
+<!doctype html>
+<title>272. localStorage CRUD</title>
+<input id="name" placeholder="Record name"><button id="create">Create</button><ul id="list"></ul>
+<script>
+	const records = JSON.parse(localStorage.getItem("records") || "[]");
+	function save() { localStorage.setItem("records", JSON.stringify(records)); render(); }
+	function render() { list.replaceChildren(); records.forEach((record, index) => { const item = document.createElement("li"); item.textContent = record; const edit = document.createElement("button"); edit.textContent = "Edit"; edit.onclick = () => { records[index] = prompt("Edit record", record) || record; save(); }; const remove = document.createElement("button"); remove.textContent = "Delete"; remove.onclick = () => { records.splice(index, 1); save(); }; item.append(edit, remove); list.append(item); }); }
+	create.onclick = () => { if (name.value.trim()) { records.push(name.value); name.value = ""; save(); } };
+	render();
+</script>

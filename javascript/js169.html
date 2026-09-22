@@ -1,0 +1,6 @@
+<!doctype html>
+<title>169. Input event</title>
+<input id="input"><p id="result"></p>
+<script>
+	input.oninput = () => result.textContent = `Live value: ${input.value}`;
+</script>

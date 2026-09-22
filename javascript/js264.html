@@ -1,0 +1,8 @@
+<!doctype html>
+<title>264. Visitor counter</title>
+<p id="result"></p>
+<script>
+	const visits = Number(localStorage.getItem("visits") || 0) + 1;
+	localStorage.setItem("visits", visits);
+	result.textContent = `Visits: ${visits}`;
+</script>

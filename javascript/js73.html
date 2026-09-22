@@ -1,0 +1,14 @@
+<!doctype html>
+<title>73. querySelector and querySelectorAll</title>
+<p class="note">First note</p>
+<p class="note">Second note</p>
+<button id="runButton">Run selectors</button>
+<p id="result"></p>
+<script>
+	runButton.addEventListener("click", () => {
+		const firstNote = document.querySelector(".note");
+		const allNotes = document.querySelectorAll(".note");
+		firstNote.style.color = "crimson";
+		result.textContent = `querySelectorAll found ${allNotes.length} notes.`;
+	});
+</script>

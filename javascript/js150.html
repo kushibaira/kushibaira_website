@@ -1,0 +1,8 @@
+<!doctype html>
+<title>150. Modal popup</title>
+<button id="open">Open modal</button>
+<dialog id="modal"><p>This is a modal popup.</p><button id="close">Close</button></dialog>
+<script>
+	open.onclick = () => modal.showModal();
+	close.onclick = () => modal.close();
+</script>

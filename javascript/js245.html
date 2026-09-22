@@ -1,0 +1,6 @@
+<!doctype html>
+<title>245. Geolocation permission</title>
+<button id="button">Request location</button><p id="result"></p>
+<script>
+	button.onclick = () => navigator.geolocation.getCurrentPosition(() => result.textContent = "Location permission granted", () => result.textContent = "Location unavailable");
+</script>

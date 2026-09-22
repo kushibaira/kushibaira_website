@@ -1,0 +1,16 @@
+﻿<!doctype html>
+<title>28. Calculator</title>
+<input id="a" type="number" value="12">
+<select id="operator">
+<option>+</option>
+<option>-</option>
+<option>*</option>
+<option>/</option>
+</select>
+<input id="b" type="number" value="4">
+<button onclick="calculate()">Calculate</button>
+<p id="result">
+</p>
+<script>function calculate(){const x=+a.value,y=+b.value;
+result.textContent=operator.value==='+'?x+y:operator.value==='-'?x-y:operator.value==='*'?x*y:x/y}</script>
+

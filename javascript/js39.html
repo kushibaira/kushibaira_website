@@ -1,0 +1,7 @@
+﻿<!doctype html>
+<title>39. Spread and rest</title>
+<pre>const combined=[...first,3,4];
+ function add(...numbers){return numbers.reduce((a,b)=>a+b,0)}</pre>
+<script>const first=[1,2],combined=[...first,3,4];
+function add(...numbers){return numbers.reduce((a,b)=>a+b,0)}document.write(`${combined} | ${add(1,2,3)}`)</script>
+

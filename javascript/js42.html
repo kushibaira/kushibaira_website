@@ -1,0 +1,9 @@
+﻿<!doctype html>
+<title>42. Async JavaScript</title>
+<pre>const promise=Promise.resolve('Complete');
+ async function run(){return await promise}</pre>
+<p id="result">
+</p>
+<script>const promise=Promise.resolve('Promise complete');
+async function run(){return await promise}run().then(value=>result.textContent=value)</script>
+

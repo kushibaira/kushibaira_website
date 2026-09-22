@@ -1,0 +1,12 @@
+<!doctype html>
+<title>82. Image slideshow</title>
+<img id="slide" width="320" height="180" alt="Slideshow image" src="https://picsum.photos/id/1015/320/180">
+<button id="nextButton">Next image</button>
+<script>
+	const images = [1015, 1025, 1035];
+	let imageIndex = 0;
+	nextButton.addEventListener("click", () => {
+		imageIndex = (imageIndex + 1) % images.length;
+		slide.src = `https://picsum.photos/id/${images[imageIndex]}/320/180`;
+	});
+</script>

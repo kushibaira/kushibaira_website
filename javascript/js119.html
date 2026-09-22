@@ -1,0 +1,6 @@
+<!doctype html>
+<title>119. Random password generator</title>
+<input id="length" type="number" min="4" value="12"><button id="generate">Generate</button><output id="password"></output>
+<script>
+	generate.onclick = () => { const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$"; password.value = Array.from({ length: Number(length.value) }, () => characters[Math.floor(Math.random() * characters.length)]).join(""); };
+</script>

@@ -1,0 +1,23 @@
+<!doctype html>
+<title>81. Dependent dropdowns</title>
+<select id="country"><option>India</option><option>USA</option></select>
+<select id="state"></select>
+<select id="city"></select>
+<script>
+	const locations = {
+		India: { Maharashtra: ["Mumbai", "Pune"], Karnataka: ["Bengaluru", "Mysuru"] },
+		USA: { California: ["Los Angeles", "San Diego"], Texas: ["Austin", "Dallas"] }
+	};
+	function updateStates() {
+		state.replaceChildren();
+		Object.keys(locations[country.value]).forEach(name => state.add(new Option(name, name)));
+		updateCities();
+	}
+	function updateCities() {
+		city.replaceChildren();
+		locations[country.value][state.value].forEach(name => city.add(new Option(name, name)));
+	}
+	country.addEventListener("change", updateStates);
+	state.addEventListener("change", updateCities);
+	updateStates();
+</script>

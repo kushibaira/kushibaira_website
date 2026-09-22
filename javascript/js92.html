@@ -1,0 +1,14 @@
+<!doctype html>
+<title>92. Login validation</title>
+<form id="login">
+	<input id="username" required placeholder="Username">
+	<input id="password" required type="password" minlength="6" placeholder="Password">
+	<button>Log in</button>
+</form>
+<p id="result"></p>
+<script>
+	login.addEventListener("submit", event => {
+		event.preventDefault();
+		result.textContent = login.checkValidity() ? "Login details are valid." : "Check username and password.";
+	});
+</script>

@@ -1,0 +1,9 @@
+<!doctype html>
+<title>271. Student marks database</title>
+<input id="name" placeholder="Student"><input id="mark" type="number" placeholder="Mark"><button id="save">Save</button><ul id="list"></ul>
+<script>
+	const students = JSON.parse(localStorage.getItem("marks") || "[]");
+	function render() { list.innerHTML = students.map(student => `<li>${student.name}: ${student.mark}</li>`).join(""); }
+	save.onclick = () => { students.push({ name: name.value, mark: mark.value }); localStorage.setItem("marks", JSON.stringify(students)); render(); };
+	render();
+</script>

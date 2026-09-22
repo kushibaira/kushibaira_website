@@ -1,0 +1,6 @@
+<!doctype html>
+<title>192. Mobile validation</title>
+<input id="phone" placeholder="10-digit phone"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = /^\d{10}$/.test(phone.value) ? "Valid phone" : "Enter 10 digits";
+</script>

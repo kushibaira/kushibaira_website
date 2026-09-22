@@ -1,0 +1,8 @@
+<!doctype html>
+<title>268. Auto-save form data</title>
+<input id="name" placeholder="Name"><textarea id="message" placeholder="Message"></textarea><p id="result"></p>
+<script>
+	[name, message].forEach(field => field.oninput = () => { localStorage.setItem(field.id, field.value); result.textContent = "Auto-saved"; });
+	name.value = localStorage.getItem("name") || "";
+	message.value = localStorage.getItem("message") || "";
+</script>

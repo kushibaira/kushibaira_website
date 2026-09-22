@@ -1,0 +1,17 @@
+<!doctype html>
+<title>85. Form events</title>
+<form id="form">
+	<input id="name" placeholder="Name">
+	<select id="course"><option>JavaScript</option><option>HTML</option></select>
+	<button>Submit</button>
+</form>
+<p id="result"></p>
+<script>
+	name.addEventListener("focus", () => result.textContent = "Name field focused");
+	name.addEventListener("blur", () => result.textContent = "Name field blurred");
+	course.addEventListener("change", () => result.textContent = `Course: ${course.value}`);
+	form.addEventListener("submit", event => {
+		event.preventDefault();
+		result.textContent = "Form submitted without reloading";
+	});
+</script>

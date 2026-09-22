@@ -1,0 +1,6 @@
+<!doctype html>
+<title>188. Student registration validation</title>
+<form id="form"><input id="name" required placeholder="Name"><input id="email" required type="email" placeholder="Email"><input id="age" required type="number" min="16" placeholder="Age"><button>Register</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "Registration valid" : "Complete every field"; };
+</script>

@@ -1,0 +1,8 @@
+<!doctype html>
+<title>187. Keyboard typing test</title>
+<p id="target">JavaScript is fun</p>
+<input id="input" placeholder="Type the sentence">
+<p id="result"></p>
+<script>
+	input.oninput = () => result.textContent = input.value === target.textContent ? "Correct!" : `${input.value.length} / ${target.textContent.length} characters`;
+</script>

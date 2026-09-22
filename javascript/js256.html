@@ -1,0 +1,9 @@
+<!doctype html>
+<title>256. Student record system</title>
+<input id="name" placeholder="Name"><input id="mark" type="number" placeholder="Mark"><button id="save">Save</button><ul id="list"></ul>
+<script>
+	const records = JSON.parse(localStorage.getItem("students") || "[]");
+	function render() { list.innerHTML = records.map(student => `<li>${student.name}: ${student.mark}</li>`).join(""); }
+	save.onclick = () => { records.push({ name: name.value, mark: mark.value }); localStorage.setItem("students", JSON.stringify(records)); render(); };
+	render();
+</script>

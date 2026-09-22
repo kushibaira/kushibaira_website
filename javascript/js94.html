@@ -1,0 +1,14 @@
+<!doctype html>
+<title>94. Signup confirmation</title>
+<form id="form">
+	<input id="password" type="password" required placeholder="Password">
+	<input id="confirm" type="password" required placeholder="Confirm password">
+	<button>Sign up</button>
+</form>
+<p id="result"></p>
+<script>
+	form.addEventListener("submit", event => {
+		event.preventDefault();
+		result.textContent = password.value === confirm.value ? "Passwords match." : "Passwords do not match.";
+	});
+</script>

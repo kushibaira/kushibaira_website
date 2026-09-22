@@ -1,0 +1,6 @@
+<!doctype html>
+<title>207. Regex form validation</title>
+<input id="value" placeholder="Letters and numbers"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = /^[A-Za-z0-9]+$/.test(value.value) ? "Valid" : "Invalid characters";
+</script>

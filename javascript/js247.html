@@ -1,0 +1,9 @@
+<!doctype html>
+<title>247. Online/offline updates</title>
+<h1 id="status"></h1>
+<script>
+	function updateStatus() { status.textContent = navigator.onLine ? "The browser is online" : "The browser is offline"; }
+	addEventListener("online", updateStatus);
+	addEventListener("offline", updateStatus);
+	updateStatus();
+</script>

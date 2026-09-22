@@ -1,0 +1,12 @@
+﻿<!doctype html>
+<title>30. Form validation</title>
+<form id="form">
+<input required placeholder="Name">
+<input required type="email" placeholder="Email">
+<button>Validate</button>
+</form>
+<p id="result">
+</p>
+<script>form.addEventListener('submit',event=>{event.preventDefault();
+result.textContent=form.checkValidity()?'Valid form':'Complete all fields'})</script>
+

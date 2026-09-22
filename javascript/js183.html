@@ -1,0 +1,7 @@
+<!doctype html>
+<title>183. Keyboard moving object</title>
+<div id="player" style="position:relative;width:40px;height:40px;background:royalblue"></div><p>Use left and right arrow keys.</p>
+<script>
+	let position = 0;
+	document.onkeydown = event => { if (event.key === "ArrowRight") position += 10; if (event.key === "ArrowLeft") position -= 10; player.style.left = `${position}px`; };
+</script>

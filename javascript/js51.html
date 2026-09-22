@@ -1,0 +1,7 @@
+﻿<!doctype html>
+<title>51. Armstrong number</title>
+<h1>51. Armstrong number</h1>
+<pre>digits.reduce((sum,digit)=>sum+Number(digit)**digits.length,0)===number;</pre>
+<script>const number=153,digits=String(number).split('');
+document.write(digits.reduce((sum,digit)=>sum+Number(digit)**digits.length,0)===number)</script>
+

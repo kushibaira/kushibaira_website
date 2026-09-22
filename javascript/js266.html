@@ -1,0 +1,7 @@
+<!doctype html>
+<title>266. Temporary form data</title>
+<input id="name" placeholder="Name"><button id="save">Save session data</button><button id="load">Load</button><p id="result"></p>
+<script>
+	save.onclick = () => sessionStorage.setItem("name", name.value);
+	load.onclick = () => result.textContent = sessionStorage.getItem("name") || "No saved data";
+</script>

@@ -1,0 +1,6 @@
+<!doctype html>
+<title>206. Prevent invalid submission</title>
+<form id="form"><input id="email" required type="email"><button>Submit</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { if (!form.checkValidity()) { event.preventDefault(); result.textContent = "Submission prevented"; } };
+</script>

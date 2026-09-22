@@ -1,0 +1,12 @@
+<!doctype html>
+<title>84. Keyboard events</title>
+<input id="input" placeholder="Press a key">
+<p id="result"></p>
+<script>
+	input.addEventListener("keydown", event => {
+		result.textContent = `Key down: ${event.key}`;
+	});
+	input.addEventListener("keyup", event => {
+		result.textContent = `Key up: ${event.key}`;
+	});
+</script>

@@ -1,0 +1,16 @@
+<!doctype html>
+<title>77. Search table records</title>
+<input id="searchInput" placeholder="Search names">
+<table border="1"><tbody id="tableBody">
+	<tr><td>Asha</td><td>Science</td></tr>
+	<tr><td>Ravi</td><td>Commerce</td></tr>
+	<tr><td>Mina</td><td>Arts</td></tr>
+</tbody></table>
+<script>
+	searchInput.addEventListener("input", () => {
+		const query = searchInput.value.toLowerCase();
+		[...tableBody.rows].forEach(row => {
+			row.hidden = !row.textContent.toLowerCase().includes(query);
+		});
+	});
+</script>

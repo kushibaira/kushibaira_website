@@ -1,0 +1,6 @@
+<!doctype html>
+<title>248. Store username</title>
+<input id="username"><button id="save">Save</button><p id="result"></p>
+<script>
+	save.onclick = () => { localStorage.setItem("username", username.value); result.textContent = "Username saved"; };
+</script>

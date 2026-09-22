@@ -1,0 +1,9 @@
+<!doctype html>
+<title>98. Window object</title>
+<button id="button">Show window details</button>
+<p id="result"></p>
+<script>
+	button.addEventListener("click", () => {
+		result.textContent = `Width: ${window.innerWidth}, Height: ${window.innerHeight}`;
+	});
+</script>

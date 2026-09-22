@@ -1,0 +1,7 @@
+<!doctype html>
+<title>167. Focus and blur</title>
+<input id="input" placeholder="Focus me"><p id="result"></p>
+<script>
+	input.onfocus = () => result.textContent = "Input focused";
+	input.onblur = () => result.textContent = "Input blurred";
+</script>

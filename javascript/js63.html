@@ -1,0 +1,8 @@
+﻿<!doctype html>
+<title>63. Vowels and consonants</title>
+<h1>63. Count vowels and consonants</h1>
+<pre>if('aeiou'.includes(letter)) vowels++;
+ else consonants++;</pre>
+<script>const letters=[...'Hello World'.toLowerCase()].filter(c=>/[a-z]/.test(c));
+document.write(`Vowels: ${letters.filter(c=>'aeiou'.includes(c)).length}, Consonants: ${letters.filter(c=>!'aeiou'.includes(c)).length}`)</script>
+

@@ -1,0 +1,7 @@
+<!doctype html>
+<title>249. Retrieve localStorage</title>
+<button id="load">Load username</button><p id="result"></p>
+<script>
+	localStorage.setItem("username", "Asha");
+	load.onclick = () => result.textContent = localStorage.getItem("username");
+</script>

@@ -1,0 +1,6 @@
+<!doctype html>
+<title>180. Event delegation</title>
+<ul id="list"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul><p id="result"></p>
+<script>
+	list.addEventListener("click", event => { if (event.target.matches("li")) result.textContent = `Selected ${event.target.textContent}`; });
+</script>

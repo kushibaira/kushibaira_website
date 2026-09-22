@@ -1,0 +1,7 @@
+<!doctype html>
+<title>184. Click counter</title>
+<button id="button">Click</button><p id="result">Clicks: 0</p>
+<script>
+	let clicks = 0;
+	button.onclick = () => result.textContent = `Clicks: ${++clicks}`;
+</script>

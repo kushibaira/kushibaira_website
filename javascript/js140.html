@@ -1,0 +1,7 @@
+<!doctype html>
+<title>140. Sort table records</title>
+<button id="sort">Sort names</button>
+<table border="1"><tbody id="body"><tr><td>Ravi</td></tr><tr><td>Asha</td></tr><tr><td>Mina</td></tr></tbody></table>
+<script>
+	sort.onclick = () => [...body.rows].sort((a, b) => a.textContent.localeCompare(b.textContent)).forEach(row => body.appendChild(row));
+</script>

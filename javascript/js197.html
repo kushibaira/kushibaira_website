@@ -1,0 +1,6 @@
+<!doctype html>
+<title>197. Date of birth validation</title>
+<input id="birth" type="date"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = birth.value && new Date(birth.value) < new Date() ? "Valid date" : "Choose a past date";
+</script>

@@ -1,0 +1,12 @@
+<!doctype html>
+<title>89. Keyboard-controlled game</title>
+<div id="player" style="position:relative;left:0;width:50px;height:50px;background:royalblue"></div>
+<p>Use the arrow keys.</p>
+<script>
+	let position = 0;
+	document.addEventListener("keydown", event => {
+		if (event.key === "ArrowRight") position += 10;
+		if (event.key === "ArrowLeft") position -= 10;
+		player.style.left = `${position}px`;
+	});
+</script>

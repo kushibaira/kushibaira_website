@@ -1,0 +1,6 @@
+<!doctype html>
+<title>225. Shopping order total</title>
+<select id="product"><option value="10">Book - $10</option><option value="25">Bag - $25</option></select><input id="quantity" type="number" value="1" min="1"><button id="calculate">Total</button><p id="result"></p>
+<script>
+	calculate.onclick = () => result.textContent = `Total: $${Number(product.value) * Number(quantity.value)}`;
+</script>

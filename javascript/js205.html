@@ -1,0 +1,6 @@
+<!doctype html>
+<title>205. Success message</title>
+<form id="form"><input required placeholder="Name"><button>Submit</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "Successfully submitted" : "Submission failed"; };
+</script>

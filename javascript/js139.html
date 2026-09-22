@@ -1,0 +1,7 @@
+<!doctype html>
+<title>139. Searchable table</title>
+<input id="search" placeholder="Search">
+<table border="1"><tbody id="body"><tr><td>Asha</td></tr><tr><td>Ravi</td></tr><tr><td>Mina</td></tr></tbody></table>
+<script>
+	search.oninput = () => [...body.rows].forEach(row => row.hidden = !row.textContent.toLowerCase().includes(search.value.toLowerCase()));
+</script>

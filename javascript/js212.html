@@ -1,0 +1,9 @@
+<!doctype html>
+<title>212. Input change focus blur events</title>
+<input id="field"><select id="choice"><option>A</option><option>B</option></select><p id="result"></p>
+<script>
+	field.oninput = () => result.textContent = "Input event";
+	field.onfocus = () => result.textContent = "Focus event";
+	field.onblur = () => result.textContent = "Blur event";
+	choice.onchange = () => result.textContent = `Change event: ${choice.value}`;
+</script>

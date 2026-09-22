@@ -1,0 +1,7 @@
+<!doctype html>
+<title>176. Multiple listeners</title>
+<button id="button">Click me</button><p id="result"></p>
+<script>
+	button.addEventListener("click", () => result.textContent += " First listener.");
+	button.addEventListener("click", () => result.textContent += " Second listener.");
+</script>

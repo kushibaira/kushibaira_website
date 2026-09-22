@@ -1,0 +1,6 @@
+<!doctype html>
+<title>168. Change event</title>
+<select id="select"><option>HTML</option><option>CSS</option><option>JavaScript</option></select><p id="result"></p>
+<script>
+	select.onchange = () => result.textContent = `Selected: ${select.value}`;
+</script>

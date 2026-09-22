@@ -1,0 +1,6 @@
+<!doctype html>
+<title>223. Marks calculator</title>
+<input id="first" type="number"><input id="second" type="number"><input id="third" type="number"><button id="calculate">Calculate</button><p id="result"></p>
+<script>
+	calculate.onclick = () => { const total = Number(first.value) + Number(second.value) + Number(third.value); const average = total / 3; const grade = average >= 90 ? "A" : average >= 75 ? "B" : average >= 50 ? "C" : "F"; result.textContent = `Total: ${total}, Average: ${average}, Grade: ${grade}`; };
+</script>

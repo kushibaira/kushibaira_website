@@ -1,0 +1,7 @@
+<!doctype html>
+<title>250. Update localStorage</title>
+<input id="value" value="Updated value"><button id="update">Update</button><p id="result"></p>
+<script>
+	localStorage.setItem("value", "Old value");
+	update.onclick = () => { localStorage.setItem("value", value.value); result.textContent = localStorage.getItem("value"); };
+</script>

@@ -1,0 +1,14 @@
+﻿<!doctype html>
+<title>31. Validate fields</title>
+<form id="form">
+<input id="name" required placeholder="Name">
+<input id="email" required type="email" placeholder="Email">
+<input id="phone" required placeholder="10-digit phone">
+<input id="password" required type="password" placeholder="Password">
+<button>Validate</button>
+</form>
+<p id="result">
+</p>
+<script>form.addEventListener('submit',e=>{e.preventDefault();
+result.textContent=form.checkValidity()&&/^\d{10}$/.test(phone.value)&&password.value.length>=6?'All fields are valid':'Check every field'})</script>
+

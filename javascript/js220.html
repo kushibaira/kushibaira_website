@@ -1,0 +1,7 @@
+<!doctype html>
+<title>220. Multi-step registration</title>
+<section id="stepOne"><input id="name" placeholder="Name"><button id="next">Next</button></section><section id="stepTwo" hidden><input id="email" type="email" placeholder="Email"><button id="finish">Finish</button></section><p id="result"></p>
+<script>
+	next.onclick = () => { if (name.value.trim()) { stepOne.hidden = true; stepTwo.hidden = false; } };
+	finish.onclick = () => result.textContent = email.checkValidity() ? "Registration complete" : "Enter a valid email";
+</script>

@@ -1,0 +1,9 @@
+<!doctype html>
+<title>101. History object</title>
+<button id="backButton">Go back</button>
+<button id="forwardButton">Go forward</button>
+<p id="result">History navigation uses the browser history.</p>
+<script>
+	backButton.addEventListener("click", () => history.back());
+	forwardButton.addEventListener("click", () => history.forward());
+</script>

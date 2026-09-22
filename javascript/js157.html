@@ -1,0 +1,15 @@
+<!doctype html>
+<title>157. DOM method demonstration</title>
+<div id="container"><p id="old">Original element</p></div>
+<button id="button">Run methods</button>
+<script>
+	button.onclick = () => {
+		const created = document.createElement("p");
+		created.textContent = "Created with createElement and appendChild.";
+		container.appendChild(created);
+		old.remove();
+		const replacement = document.createElement("strong");
+		replacement.textContent = "Replacement from replaceChild.";
+		container.replaceChild(replacement, created);
+	};
+</script>

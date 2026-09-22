@@ -1,0 +1,6 @@
+<!doctype html>
+<title>210. Regex password validation</title>
+<input id="password" type="password"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password.value) ? "Valid password" : "Needs uppercase, number, and 8 characters";
+</script>

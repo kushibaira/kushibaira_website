@@ -1,0 +1,8 @@
+<!doctype html>
+<title>177. removeEventListener</title>
+<button id="button">Click</button><button id="remove">Remove listener</button><p id="result"></p>
+<script>
+	function showMessage() { result.textContent = "Listener executed."; }
+	button.addEventListener("click", showMessage);
+	remove.onclick = () => button.removeEventListener("click", showMessage);
+</script>

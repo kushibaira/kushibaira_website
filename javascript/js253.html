@@ -1,0 +1,6 @@
+<!doctype html>
+<title>253. Store multiple values</title>
+<button id="save">Save values</button><pre id="result"></pre>
+<script>
+	save.onclick = () => { localStorage.setItem("name", "Asha"); localStorage.setItem("course", "JavaScript"); result.textContent = `${localStorage.getItem("name")} - ${localStorage.getItem("course")}`; };
+</script>

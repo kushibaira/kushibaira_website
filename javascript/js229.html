@@ -1,0 +1,8 @@
+<!doctype html>
+<title>229. Alert confirm prompt</title>
+<button id="alertButton">Alert</button><button id="confirmButton">Confirm</button><button id="promptButton">Prompt</button><p id="result"></p>
+<script>
+	alertButton.onclick = () => alert("Hello");
+	confirmButton.onclick = () => result.textContent = confirm("Continue?");
+	promptButton.onclick = () => result.textContent = prompt("Your name:");
+</script>

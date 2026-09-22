@@ -1,0 +1,6 @@
+<!doctype html>
+<title>112. Quiz application</title>
+<h1>Which language runs in the browser?</h1><button data-answer="HTML">HTML</button><button data-answer="JavaScript">JavaScript</button><p id="result"></p>
+<script>
+	document.querySelectorAll("button[data-answer]").forEach(button => button.onclick = () => result.textContent = button.dataset.answer === "JavaScript" ? "Correct!" : "Try again.");
+</script>

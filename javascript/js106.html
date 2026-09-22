@@ -1,0 +1,9 @@
+<!doctype html>
+<title>106. Digital calculator</title>
+<input id="first" type="number" value="12"><select id="operator"><option>+</option><option>-</option><option>*</option><option>/</option></select><input id="second" type="number" value="4"><button id="calculate">Calculate</button><p id="result"></p>
+<script>
+	calculate.onclick = () => {
+		const a = Number(first.value), b = Number(second.value);
+		result.textContent = operator.value === "+" ? a + b : operator.value === "-" ? a - b : operator.value === "*" ? a * b : a / b;
+	};
+</script>

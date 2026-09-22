@@ -1,0 +1,9 @@
+<!doctype html>
+<title>243. Online or offline</title>
+<p id="result"></p>
+<script>
+	function showStatus() { result.textContent = navigator.onLine ? "Online" : "Offline"; }
+	window.addEventListener("online", showStatus);
+	window.addEventListener("offline", showStatus);
+	showStatus();
+</script>

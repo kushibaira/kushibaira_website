@@ -1,0 +1,9 @@
+<!doctype html>
+<title>78. Live character counter</title>
+<textarea id="textInput" maxlength="100" placeholder="Type here"></textarea>
+<p id="counter">0 / 100</p>
+<script>
+	textInput.addEventListener("input", () => {
+		counter.textContent = `${textInput.value.length} / 100`;
+	});
+</script>

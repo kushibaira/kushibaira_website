@@ -1,0 +1,6 @@
+<!doctype html>
+<title>265. localStorage and sessionStorage</title>
+<button id="save">Save values</button><p id="result"></p>
+<script>
+	save.onclick = () => { localStorage.setItem("permanent", "Survives browser sessions"); sessionStorage.setItem("temporary", "Clears when tab closes"); result.textContent = `${localStorage.getItem("permanent")} | ${sessionStorage.getItem("temporary")}`; };
+</script>

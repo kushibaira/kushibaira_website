@@ -1,0 +1,9 @@
+<!doctype html>
+<title>99. Navigator object</title>
+<button id="button">Show browser details</button>
+<p id="result"></p>
+<script>
+	button.addEventListener("click", () => {
+		result.textContent = `${navigator.userAgent} | Online: ${navigator.onLine}`;
+	});
+</script>

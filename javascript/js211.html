@@ -1,0 +1,6 @@
+<!doctype html>
+<title>211. Real-time validation</title>
+<input id="email" type="email" placeholder="Email"><p id="result"></p>
+<script>
+	email.addEventListener("input", () => result.textContent = email.checkValidity() ? "Email looks valid" : "Enter a valid email");
+</script>

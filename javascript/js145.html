@@ -1,0 +1,9 @@
+<!doctype html>
+<title>145. DOM image slideshow</title>
+<img id="slide" width="300" height="170" alt="Slide" src="https://picsum.photos/id/1015/300/170">
+<button id="next">Next</button>
+<script>
+	const slides = [1015, 1025, 1035];
+	let index = 0;
+	next.onclick = () => { index = (index + 1) % slides.length; slide.src = `https://picsum.photos/id/${slides[index]}/300/170`; };
+</script>

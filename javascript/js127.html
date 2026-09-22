@@ -1,0 +1,11 @@
+<!doctype html>
+<title>127. Create an element</title>
+<button id="button">Create paragraph</button>
+<main id="main"></main>
+<script>
+	button.onclick = () => {
+		const paragraph = document.createElement("p");
+		paragraph.textContent = "New element created dynamically.";
+		main.appendChild(paragraph);
+	};
+</script>

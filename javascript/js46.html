@@ -1,0 +1,12 @@
+﻿<!doctype html>
+<title>46. Login validation</title>
+<form id="login">
+<input type="email" required placeholder="Email">
+<input type="password" required minlength="6" placeholder="Password">
+<button>Log in</button>
+</form>
+<p id="result">
+</p>
+<script>login.addEventListener('submit',event=>{event.preventDefault();
+result.textContent=login.checkValidity()?'Valid login':'Check email and password'})</script>
+

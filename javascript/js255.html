@@ -1,0 +1,6 @@
+<!doctype html>
+<title>255. Store object as JSON</title>
+<button id="button">Save student</button><pre id="result"></pre>
+<script>
+	button.onclick = () => { localStorage.setItem("student", JSON.stringify({ name: "Asha", mark: 92 })); result.textContent = JSON.stringify(JSON.parse(localStorage.getItem("student")), null, 2); };
+</script>

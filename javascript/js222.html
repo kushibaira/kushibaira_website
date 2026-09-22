@@ -1,0 +1,6 @@
+<!doctype html>
+<title>222. Calculate age from date</title>
+<input id="birth" type="date"><button id="calculate">Calculate age</button><p id="result"></p>
+<script>
+	calculate.onclick = () => { const date = new Date(birth.value); const today = new Date(); let age = today.getFullYear() - date.getFullYear(); if (today < new Date(today.getFullYear(), date.getMonth(), date.getDate())) age--; result.textContent = `Age: ${age}`; };
+</script>

@@ -1,0 +1,6 @@
+<!doctype html>
+<title>116. Student grade calculator</title>
+<input id="marks" type="number" min="0" max="100" placeholder="Marks"><button id="calculate">Calculate grade</button><p id="result"></p>
+<script>
+	calculate.onclick = () => { const mark = Number(marks.value); result.textContent = mark >= 90 ? "A" : mark >= 80 ? "B" : mark >= 70 ? "C" : mark >= 40 ? "D" : "F"; };
+</script>

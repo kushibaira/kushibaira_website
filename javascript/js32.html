@@ -1,0 +1,11 @@
+﻿<!doctype html>
+<title>32. To-do list</title>
+<input id="task">
+<button onclick="addTask()">Add</button>
+<ul id="list">
+</ul>
+<script>function addTask(){if(task.value.trim()){const item=document.createElement('li');
+item.textContent=task.value;
+list.append(item);
+task.value=''}}</script>
+

@@ -1,0 +1,6 @@
+<!doctype html>
+<title>153. Live word counter</title>
+<textarea id="text"></textarea><p id="counter">Words: 0</p>
+<script>
+	text.oninput = () => counter.textContent = `Words: ${text.value.trim() ? text.value.trim().split(/\s+/).length : 0}`;
+</script>

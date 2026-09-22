@@ -1,0 +1,11 @@
+<!doctype html>
+<title>129. Replace an element</title>
+<p id="oldElement">Old element</p>
+<button id="button">Replace</button>
+<script>
+	button.onclick = () => {
+		const newElement = document.createElement("h2");
+		newElement.textContent = "New element";
+		oldElement.replaceWith(newElement);
+	};
+</script>

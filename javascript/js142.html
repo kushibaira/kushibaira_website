@@ -1,0 +1,7 @@
+<!doctype html>
+<title>142. Add select options</title>
+<select id="select"></select>
+<button id="button">Add options</button>
+<script>
+	button.onclick = () => ["Red", "Green", "Blue"].forEach(color => select.add(new Option(color, color)));
+</script>

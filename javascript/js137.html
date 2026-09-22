@@ -1,0 +1,8 @@
+<!doctype html>
+<title>137. Delete table row</title>
+<table border="1"><tbody id="body"><tr><td>Asha</td><td><button>Delete</button></td></tr><tr><td>Ravi</td><td><button>Delete</button></td></tr></tbody></table>
+<script>
+	body.addEventListener("click", event => {
+		if (event.target.tagName === "BUTTON") event.target.closest("tr").remove();
+	});
+</script>

@@ -1,0 +1,12 @@
+<!doctype html>
+<title>134. Dynamic ordered list</title>
+<input id="item" placeholder="List item">
+<button id="add">Add item</button>
+<ol id="list"></ol>
+<script>
+	add.onclick = () => {
+		if (!item.value.trim()) return;
+		list.insertAdjacentHTML("beforeend", `<li>${item.value}</li>`);
+		item.value = "";
+	};
+</script>

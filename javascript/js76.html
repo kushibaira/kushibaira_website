@@ -1,0 +1,18 @@
+<!doctype html>
+<title>76. Add and delete table rows</title>
+<input id="nameInput" placeholder="Name">
+<button id="addButton">Add row</button>
+<table border="1"><tbody id="tableBody"></tbody></table>
+<script>
+	addButton.addEventListener("click", () => {
+		if (!nameInput.value.trim()) return;
+		const row = tableBody.insertRow();
+		row.insertCell().textContent = nameInput.value;
+		const deleteCell = row.insertCell();
+		const deleteButton = document.createElement("button");
+		deleteButton.textContent = "Delete";
+		deleteButton.onclick = () => row.remove();
+		deleteCell.append(deleteButton);
+		nameInput.value = "";
+	});
+</script>

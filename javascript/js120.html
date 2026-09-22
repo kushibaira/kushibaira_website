@@ -1,0 +1,6 @@
+<!doctype html>
+<title>120. BMI calculator</title>
+<input id="weight" type="number" placeholder="Weight kg"><input id="height" type="number" placeholder="Height m"><button id="calculate">Calculate BMI</button><p id="result"></p>
+<script>
+	calculate.onclick = () => { const bmi = Number(weight.value) / Number(height.value) ** 2; result.textContent = `BMI: ${bmi.toFixed(1)} (${bmi < 18.5 ? "Underweight" : bmi < 25 ? "Normal" : bmi < 30 ? "Overweight" : "Obesity"})`; };
+</script>

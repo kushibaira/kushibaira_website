@@ -1,0 +1,6 @@
+<!doctype html>
+<title>254. Store array as JSON</title>
+<button id="button">Save array</button><p id="result"></p>
+<script>
+	button.onclick = () => { localStorage.setItem("colors", JSON.stringify(["red", "green", "blue"])); result.textContent = JSON.parse(localStorage.getItem("colors")).join(", "); };
+</script>

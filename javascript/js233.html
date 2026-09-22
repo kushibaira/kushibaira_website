@@ -1,0 +1,6 @@
+<!doctype html>
+<title>233. Countdown timer</title>
+<input id="seconds" type="number" value="10"><button id="start">Start</button><output id="result"></output>
+<script>
+	start.onclick = () => { let value = Number(seconds.value); result.value = value; const timer = setInterval(() => { result.value = --value; if (value <= 0) clearInterval(timer); }, 1000); };
+</script>

@@ -1,0 +1,8 @@
+<!doctype html>
+<title>154. Current date and time</title>
+<p id="clock"></p>
+<script>
+	function updateClock() { clock.textContent = new Date().toLocaleString(); }
+	updateClock();
+	setInterval(updateClock, 1000);
+</script>

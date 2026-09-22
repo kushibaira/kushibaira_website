@@ -1,0 +1,10 @@
+<!doctype html>
+<title>108. Stopwatch</title>
+<output id="display">00:00</output><button id="start">Start</button><button id="stop">Stop</button><button id="reset">Reset</button>
+<script>
+	let seconds = 0, timer;
+	function render() { display.value = `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`; }
+	start.onclick = () => { clearInterval(timer); timer = setInterval(() => { seconds++; render(); }, 1000); };
+	stop.onclick = () => clearInterval(timer);
+	reset.onclick = () => { clearInterval(timer); seconds = 0; render(); };
+</script>

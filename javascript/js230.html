@@ -1,0 +1,6 @@
+<!doctype html>
+<title>230. setTimeout</title>
+<button id="button">Start timeout</button><p id="result"></p>
+<script>
+	button.onclick = () => { result.textContent = "Waiting..."; setTimeout(() => result.textContent = "Two seconds completed", 2000); };
+</script>

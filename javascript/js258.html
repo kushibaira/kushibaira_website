@@ -1,0 +1,9 @@
+<!doctype html>
+<title>258. Notes with localStorage</title>
+<textarea id="note"></textarea><button id="save">Save note</button><ul id="list"></ul>
+<script>
+	const notes = JSON.parse(localStorage.getItem("notes") || "[]");
+	function render() { list.innerHTML = notes.map(note => `<li>${note}</li>`).join(""); }
+	save.onclick = () => { if (note.value.trim()) { notes.push(note.value); localStorage.setItem("notes", JSON.stringify(notes)); note.value = ""; render(); } };
+	render();
+</script>

@@ -1,0 +1,11 @@
+<!doctype html>
+<title>93. Password strength checker</title>
+<input id="password" type="password" placeholder="Enter password">
+<p id="strength"></p>
+<script>
+	password.addEventListener("input", () => {
+		const value = password.value;
+		const score = Number(value.length >= 8) + Number(/[A-Z]/.test(value)) + Number(/[0-9]/.test(value)) + Number(/[^A-Za-z0-9]/.test(value));
+		strength.textContent = ["Very weak", "Weak", "Fair", "Strong", "Very strong"][score];
+	});
+</script>

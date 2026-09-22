@@ -1,0 +1,17 @@
+<!doctype html>
+<title>104. Shopping cart with localStorage</title>
+<button data-product="Notebook">Add notebook</button>
+<button data-product="Pen">Add pen</button>
+<ul id="cart"></ul>
+<script>
+	const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+	function renderCart() {
+		cart.innerHTML = savedCart.map(item => `<li>${item}</li>`).join("");
+		localStorage.setItem("cart", JSON.stringify(savedCart));
+	}
+	document.querySelectorAll("[data-product]").forEach(button => button.addEventListener("click", () => {
+		savedCart.push(button.dataset.product);
+		renderCart();
+	}));
+	renderCart();
+</script>

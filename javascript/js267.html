@@ -1,0 +1,7 @@
+<!doctype html>
+<title>267. Multi-page form session data</title>
+<input id="stepOne" placeholder="First step"><button id="save">Save step</button><p id="result"></p>
+<script>
+	stepOne.value = sessionStorage.getItem("stepOne") || "";
+	save.onclick = () => { sessionStorage.setItem("stepOne", stepOne.value); result.textContent = "Step saved for this session"; };
+</script>

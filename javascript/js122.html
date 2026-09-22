@@ -1,0 +1,9 @@
+<!doctype html>
+<title>122. Interactive portfolio</title>
+<style>body{font-family:Arial;max-width:700px;margin:40px auto;padding:20px}nav a{margin-right:16px}.project{padding:12px;background:#eef2f5;margin:8px 0}</style>
+<header><h1>Alex Developer</h1><p>Frontend developer and JavaScript learner.</p></header>
+<nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+<main><section id="about"><h2>About</h2><p>I build useful web experiences.</p></section><section id="projects"><h2>Projects</h2><div class="project">Calculator</div><div class="project">Notes app</div></section><section id="contact"><h2>Contact</h2><button id="contactButton">Show contact</button><p id="contactInfo" hidden>alex@example.com</p></section></main>
+<script>
+	contactButton.onclick = () => contactInfo.hidden = !contactInfo.hidden;
+</script>

@@ -1,0 +1,8 @@
+<!doctype html>
+<title>238. History object</title>
+<button id="back">Back</button><button id="forward">Forward</button><p id="result"></p>
+<script>
+	result.textContent = `History entries: ${history.length}`;
+	back.onclick = () => history.back();
+	forward.onclick = () => history.forward();
+</script>

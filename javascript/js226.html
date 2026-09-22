@@ -1,0 +1,8 @@
+<!doctype html>
+<title>226. Dynamic form fields</title>
+<select id="type"><option value="student">Student</option><option value="employee">Employee</option></select><div id="fields"></div>
+<script>
+	function render() { fields.innerHTML = type.value === "student" ? '<input placeholder="Roll number">' : '<input placeholder="Employee ID">'; }
+	type.onchange = render;
+	render();
+</script>

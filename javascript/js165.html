@@ -1,0 +1,6 @@
+<!doctype html>
+<title>165. Display pressed key</title>
+<input id="input" placeholder="Type here"><p id="result">Key: none</p>
+<script>
+	input.addEventListener("keydown", event => result.textContent = `Key: ${event.key}`);
+</script>

@@ -1,0 +1,12 @@
+<!doctype html>
+<title>138. Edit table data</title>
+<table border="1"><tbody id="body"><tr><td>Asha</td><td><button>Edit</button></td></tr></tbody></table>
+<script>
+	body.onclick = event => {
+		if (event.target.tagName === "BUTTON") {
+			const cell = event.target.closest("tr").cells[0];
+			cell.contentEditable = true;
+			cell.focus();
+		}
+	};
+</script>

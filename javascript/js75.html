@@ -1,0 +1,10 @@
+<!doctype html>
+<title>75. Dynamic table</title>
+<h1>75. Dynamic table</h1>
+<table border="1"><tbody id="tableBody"></tbody></table>
+<script>
+	const students = [["Asha", 92], ["Ravi", 84], ["Mina", 96]];
+	students.forEach(([name, mark]) => {
+		tableBody.insertAdjacentHTML("beforeend", `<tr><td>${name}</td><td>${mark}</td></tr>`);
+	});
+</script>

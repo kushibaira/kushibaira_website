@@ -1,0 +1,7 @@
+<!doctype html>
+<title>115. Expense tracker</title>
+<input id="description" placeholder="Expense"><input id="amount" type="number" placeholder="Amount"><button id="add">Add</button><ul id="list"></ul><p id="totalOutput">Total: 0</p>
+<script>
+	let totalAmount = 0;
+	add.onclick = () => { const value = Number(amount.value); if (!description.value || !value) return; totalAmount += value; list.insertAdjacentHTML("beforeend", `<li>${description.value}: ${value}</li>`); totalOutput.textContent = `Total: ${totalAmount}`; description.value = ""; amount.value = ""; };
+</script>

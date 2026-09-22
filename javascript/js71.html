@@ -1,0 +1,13 @@
+<!doctype html>
+<title>71. Change multiple elements</title>
+<h1 class="item">First heading</h1>
+<p class="item">First paragraph</p>
+<button id="changeButton">Change all</button>
+<script>
+	changeButton.addEventListener("click", () => {
+		document.querySelectorAll(".item").forEach(element => {
+			element.textContent = "Changed together";
+			element.style.color = "teal";
+		});
+	});
+</script>

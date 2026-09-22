@@ -1,0 +1,7 @@
+<!doctype html>
+<title>251. Delete localStorage item</title>
+<button id="deleteButton">Delete username</button><p id="result"></p>
+<script>
+	localStorage.setItem("username", "Asha");
+	deleteButton.onclick = () => { localStorage.removeItem("username"); result.textContent = "Item deleted"; };
+</script>

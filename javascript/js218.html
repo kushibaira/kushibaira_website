@@ -1,0 +1,6 @@
+<!doctype html>
+<title>218. Feedback validation</title>
+<form id="form"><input required placeholder="Name"><textarea required minlength="10" placeholder="Feedback"></textarea><button>Send</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "Feedback sent" : "Write valid feedback"; };
+</script>

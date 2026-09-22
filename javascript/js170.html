@@ -1,0 +1,6 @@
+<!doctype html>
+<title>170. Submit event</title>
+<form id="form"><input required><button>Submit</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = "Submit event handled."; };
+</script>

@@ -1,0 +1,8 @@
+﻿<!doctype html>
+<title>36. Countdown</title>
+<output id="display">10</output>
+<button onclick="start()">Start</button>
+<script>function start(){let seconds=10;
+const timer=setInterval(()=>{display.value=--seconds;
+if(seconds<=0)clearInterval(timer)},1000)}</script>
+

@@ -1,0 +1,8 @@
+<!doctype html>
+<title>269. Restore form after refresh</title>
+<form id="form"><input id="email" type="email" placeholder="Email"><input id="phone" placeholder="Phone"></form><p>Refresh the page to restore values.</p>
+<script>
+	email.value = localStorage.getItem("email") || "";
+	phone.value = localStorage.getItem("phone") || "";
+	form.oninput = () => { localStorage.setItem("email", email.value); localStorage.setItem("phone", phone.value); };
+</script>

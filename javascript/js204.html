@@ -1,0 +1,6 @@
+<!doctype html>
+<title>204. Individual field errors</title>
+<label>Email <input id="email" type="email"><span id="emailError"></span></label><br><label>Phone <input id="phone"><span id="phoneError"></span></label><button id="check">Validate</button>
+<script>
+	check.onclick = () => { emailError.textContent = email.checkValidity() ? "" : " Invalid email"; phoneError.textContent = /^\d{10}$/.test(phone.value) ? "" : " Invalid phone"; };
+</script>

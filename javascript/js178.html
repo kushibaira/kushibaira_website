@@ -1,0 +1,7 @@
+<!doctype html>
+<title>178. Event bubbling</title>
+<div id="outer" style="padding:30px;background:lightcoral"><button id="inner">Click inner</button></div><p id="result"></p>
+<script>
+	inner.onclick = () => result.textContent = "Inner clicked";
+	outer.onclick = () => result.textContent += " and outer received the bubble";
+</script>

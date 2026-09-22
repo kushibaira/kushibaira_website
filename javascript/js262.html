@@ -1,0 +1,9 @@
+<!doctype html>
+<title>262. Preferred font size</title>
+<input id="size" type="range" min="12" max="30" value="16"><p id="text">Save my preferred font size.</p>
+<script>
+	const savedSize = localStorage.getItem("fontSize") || 16;
+	size.value = savedSize;
+	text.style.fontSize = `${savedSize}px`;
+	size.oninput = () => { text.style.fontSize = `${size.value}px`; localStorage.setItem("fontSize", size.value); };
+</script>

@@ -1,0 +1,6 @@
+<!doctype html>
+<title>227. Validate without reload</title>
+<form id="form"><input id="email" type="email" required placeholder="Email"><button>Validate</button></form><p id="result"></p>
+<script>
+	form.onsubmit = event => { event.preventDefault(); result.textContent = form.checkValidity() ? "Valid without reload" : "Invalid input"; };
+</script>

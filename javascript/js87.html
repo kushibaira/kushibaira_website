@@ -1,0 +1,12 @@
+<!doctype html>
+<title>87. Bubbling and capturing</title>
+<div id="outer" style="padding:30px;background:lightcoral">
+	Outer element
+	<button id="inner">Click inner element</button>
+</div>
+<p id="result"></p>
+<script>
+	outer.addEventListener("click", () => result.textContent += " Bubble: outer", false);
+	outer.addEventListener("click", () => result.textContent = "Capture: outer", true);
+	inner.addEventListener("click", () => result.textContent += " Inner", false);
+</script>

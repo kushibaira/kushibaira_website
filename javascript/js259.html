@@ -1,0 +1,9 @@
+<!doctype html>
+<title>259. Shopping cart storage</title>
+<button data-item="Book">Add book</button><button data-item="Pen">Add pen</button><ul id="cart"></ul>
+<script>
+	const items = JSON.parse(localStorage.getItem("cart") || "[]");
+	function render() { cart.innerHTML = items.map(item => `<li>${item}</li>`).join(""); }
+	document.querySelectorAll("[data-item]").forEach(button => button.onclick = () => { items.push(button.dataset.item); localStorage.setItem("cart", JSON.stringify(items)); render(); });
+	render();
+</script>

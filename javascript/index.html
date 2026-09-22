@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Programs</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #d97706;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .program {
+            background: white;
+            margin: 10px 0;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.1);
+        }
+
+        .program a {
+            text-decoration: none;
+            color: #b45309;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .program a:hover {
+            text-decoration: underline;
+        }
+
+        .back {
+            display: inline-block;
+            margin: 25px 0;
+            padding: 10px 18px;
+            background: #d97706;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back:hover {
+            background: #b45309;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Programs</h1>
+    <p>JavaScript Practical Programs</p>
+</header>
+
+<div class="container" id="programList"></div>
+
+<script>
+
+    const programList = document.getElementById("programList");
+
+    for (let i = 1; i <= 270; i++) {
+
+        let program = document.createElement("div");
+        program.className = "program";
+
+        program.innerHTML =
+            `<a href="js${i}.html">
+                ${i}. JavaScript Program ${i}
+            </a>`;
+
+        programList.appendChild(program);
+    }
+
+    programList.innerHTML +=
+        `<a class="back" href="../index.html">← Back to Home</a>`;
+
+</script>
+
+</body>
+</html>

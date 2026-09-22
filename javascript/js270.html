@@ -1,0 +1,9 @@
+<!doctype html>
+<title>270. Persistent shopping cart</title>
+<button data-item="Book">Add book</button><button data-item="Bag">Add bag</button><ul id="cart"></ul>
+<script>
+	const cartItems = JSON.parse(localStorage.getItem("persistentCart") || "[]");
+	function render() { cart.innerHTML = cartItems.map(item => `<li>${item}</li>`).join(""); }
+	document.querySelectorAll("[data-item]").forEach(button => button.onclick = () => { cartItems.push(button.dataset.item); localStorage.setItem("persistentCart", JSON.stringify(cartItems)); render(); });
+	render();
+</script>

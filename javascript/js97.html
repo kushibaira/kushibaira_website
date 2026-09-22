@@ -1,0 +1,19 @@
+<!doctype html>
+<title>97. Dynamic validation errors</title>
+<form id="form" novalidate>
+	<input id="email" type="email" placeholder="Email">
+	<input id="phone" placeholder="10-digit phone">
+	<button>Validate</button>
+</form>
+<ul id="errors"></ul>
+<script>
+	form.addEventListener("submit", event => {
+		event.preventDefault();
+		errors.replaceChildren();
+		const messages = [];
+		if (!email.validity.valid) messages.push("Enter a valid email.");
+		if (!/^\d{10}$/.test(phone.value)) messages.push("Phone must contain 10 digits.");
+		messages.forEach(message => errors.insertAdjacentHTML("beforeend", `<li>${message}</li>`));
+		if (!messages.length) errors.innerHTML = "<li>Form is valid.</li>";
+	});
+</script>

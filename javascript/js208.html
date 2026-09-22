@@ -1,0 +1,6 @@
+<!doctype html>
+<title>208. Regex email validation</title>
+<input id="email"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value) ? "Valid email" : "Invalid email";
+</script>

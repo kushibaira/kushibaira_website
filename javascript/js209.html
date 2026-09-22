@@ -1,0 +1,6 @@
+<!doctype html>
+<title>209. Regex phone validation</title>
+<input id="phone"><button id="check">Validate</button><p id="result"></p>
+<script>
+	check.onclick = () => result.textContent = /^\+?\d{10,13}$/.test(phone.value) ? "Valid phone" : "Invalid phone";
+</script>

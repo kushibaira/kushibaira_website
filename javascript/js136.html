@@ -1,0 +1,12 @@
+<!doctype html>
+<title>136. Add table rows</title>
+<input id="name" placeholder="Student name"><button id="add">Add row</button>
+<table border="1"><tbody id="body"></tbody></table>
+<script>
+	add.onclick = () => {
+		if (name.value.trim()) {
+			body.insertAdjacentHTML("beforeend", `<tr><td>${name.value}</td></tr>`);
+			name.value = "";
+		}
+	};
+</script>
