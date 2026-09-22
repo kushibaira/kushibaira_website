@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Data Analysis Interface</title>
+<style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,sans-serif;background:#f1f5f9;color:#1e293b}
+    .page{max-width:1100px;margin:auto;padding:30px}
+    header{background:#0f172a;color:white;padding:25px;border-radius:12px;margin-bottom:25px}
+    header h1{font-size:27px;margin-bottom:8px}
+    header p{color:#cbd5e1;line-height:1.5}
+    .panel,.card,.chat,.form,.tablebox,.workflow,.profile,.settings,.queue,.timeline,.approval,.builder,.sources,.explain{
+        background:white;padding:25px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06)
+    }
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card h3{margin-bottom:12px}
+    .card p{color:#64748b;line-height:1.5}
+    button{border:0;background:#2563eb;color:white;padding:11px 16px;border-radius:7px;cursor:pointer}
+    button:hover{background:#1d4ed8}
+    input,textarea,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px}
+    label{display:grid;gap:7px;font-weight:bold}
+    .form{display:grid;gap:17px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:20px;background:#dbeafe;color:#1d4ed8;font-size:13px}
+    .positive{color:#16a34a;font-weight:bold}
+    .warning{color:#d97706;font-weight:bold}
+    .danger{color:#dc2626;font-weight:bold}
+    .muted{color:#64748b}
+    .bar{height:10px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-top:8px}
+    .bar span{display:block;height:100%;background:#2563eb;border-radius:10px}
+    table{width:100%;border-collapse:collapse}
+    th,td{text-align:left;padding:13px;border-bottom:1px solid #e2e8f0}
+    th{color:#475569}
+    @media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:550px){.page{padding:15px}.grid{grid-template-columns:1fr}header h1{font-size:22px}}
+    </style>
+</head>
+<body>
+<main class="page">
+<header>
+<h1>AI Data Analysis Interface</h1>
+<p>A dashboard for asking questions about datasets and viewing results.</p>
+</header>
+<div class="panel form"><label>Ask about your data<textarea placeholder="Which product generated the highest revenue?"></textarea></label><button>Analyze Data</button><div class="card"><h3>Analysis Result</h3><p>Product A generated the highest revenue during the selected period.</p></div></div>
+</main>
+</body>
+</html>

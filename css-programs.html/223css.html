@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Bottom Navigation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            padding-bottom: 80px;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        main {
+            padding: 30px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: white;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            color: #555;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .bottom-nav a:hover {
+            color: #2563eb;
+        }
+
+        .icon {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        @media (min-width: 768px) {
+            .bottom-nav {
+                position: static;
+                width: 500px;
+                margin: 30px auto;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My SaaS App</h1>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Dashboard</h2>
+            <p>Welcome to your dashboard.</p>
+        </div>
+
+        <div class="card">
+            <h2>Analytics</h2>
+            <p>View your latest analytics and reports.</p>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="#">
+            <span class="icon">⌂</span>
+            Home
+        </a>
+
+        <a href="#">
+            <span class="icon">📊</span>
+            Analytics
+        </a>
+
+        <a href="#">
+            <span class="icon">👤</span>
+            Profile
+        </a>
+
+        <a href="#">
+            <span class="icon">⚙</span>
+            Settings
+        </a>
+    </nav>
+
+</body>
+</html>

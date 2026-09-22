@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Bubbling and Capturing</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .box {
+            width: 300px;
+            padding: 30px;
+            margin: 20px auto;
+            border: 2px solid black;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #output {
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Event Bubbling and Capturing</h1>
+
+    <h2>Event Bubbling</h2>
+
+    <div id="bubbleParent" class="box">
+        Parent
+        <br><br>
+        <button id="bubbleButton">Click Me</button>
+    </div>
+
+    <h2>Event Capturing</h2>
+
+    <div id="captureParent" class="box">
+        Parent
+        <br><br>
+        <button id="captureButton">Click Me</button>
+    </div>
+
+    <p id="output">Click a button to see the event order.</p>
+
+    <script>
+        let output = document.getElementById("output");
+
+        // Event Bubbling
+        let bubbleParent = document.getElementById("bubbleParent");
+        let bubbleButton = document.getElementById("bubbleButton");
+
+        bubbleParent.addEventListener("click", function() {
+            output.innerHTML = "Bubbling: Parent event executed";
+        });
+
+        bubbleButton.addEventListener("click", function() {
+            output.innerHTML = "Bubbling: Button event executed";
+        });
+
+
+        // Event Capturing
+        let captureParent = document.getElementById("captureParent");
+        let captureButton = document.getElementById("captureButton");
+
+        captureParent.addEventListener("click", function() {
+            output.innerHTML = "Capturing: Parent event executed";
+        }, true);
+
+        captureButton.addEventListener("click", function() {
+            output.innerHTML = "Capturing: Button event executed";
+        });
+    </script>
+
+</body>
+</html>

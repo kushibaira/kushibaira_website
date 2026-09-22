@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 15px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Currency Converter</h1>
+
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <br>
+
+    <select id="fromCurrency">
+        <option value="USD">USD</option>
+        <option value="INR">INR</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+    </select>
+
+    <select id="toCurrency">
+        <option value="INR">INR</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+    </select>
+
+    <br>
+
+    <button onclick="convertCurrency()">Convert</button>
+
+    <p id="result"></p>
+
+    <script>
+
+        async function convertCurrency() {
+
+            let amount =
+                Number(document.getElementById("amount").value);
+
+            let from =
+                document.getElementById("fromCurrency").value;
+
+            let to =
+                document.getElementById("toCurrency").value;
+
+            if (amount <= 0) {
+                document.getElementById("result").innerHTML =
+                    "Please enter a valid amount.";
+                return;
+            }
+
+            try {
+
+                let url =
+                    `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`;
+
+                let response = await fetch(url);
+
+                let data = await response.json();
+
+                let convertedAmount = data.rates[to];
+
+                document.getElementById("result").innerHTML =
+                    amount + " " + from + " = " +
+                    convertedAmount.toFixed(2) + " " + to;
+
+            } catch (error) {
+
+                document.getElementById("result").innerHTML =
+                    "Unable to convert currency.";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

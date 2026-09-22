@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Command Palette</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f1f5f9;color:#111827}
+header{
+ background:#111827;color:white;padding:20px 6%;
+ display:flex;justify-content:space-between
+}
+.container{width:90%;max-width:1000px;margin:40px auto}
+.card{background:white;padding:30px;border-radius:12px}
+.palette{
+ position:fixed;inset:0;background:rgba(15,23,42,.65);
+ display:none;align-items:flex-start;justify-content:center;
+ padding-top:12vh
+}
+.palette.show{display:flex}
+.box{
+ background:white;width:min(600px,90%);
+ border-radius:12px;overflow:hidden;
+ box-shadow:0 25px 60px rgba(0,0,0,.25)
+}
+.search{
+ width:100%;padding:18px;border:0;
+ border-bottom:1px solid #e5e7eb;outline:0;font-size:16px
+}
+.command{
+ padding:15px 18px;cursor:pointer;display:flex;
+ justify-content:space-between
+}
+.command:hover,.command.active{background:#eff6ff}
+kbd{
+ background:#e5e7eb;padding:3px 7px;border-radius:4px;
+ font-size:11px
+}
+button{
+ background:#2563eb;color:white;border:0;padding:10px 15px;
+ border-radius:7px;cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>CloudFlow</h2>
+<button onclick="openPalette()">Search</button>
+</header>
+
+<main class="container">
+<div class="card">
+<h1>Dashboard</h1>
+<br>
+<p>Press <b>Ctrl + K</b> to open the command palette.</p>
+</div>
+</main>
+
+<div class="palette" id="palette">
+<div class="box">
+
+<input
+ id="search"
+ class="search"
+ placeholder="Search commands..."
+>
+
+<div id="commands">
+
+<div class="command">
+<span>Go to Dashboard</span><kbd>1</kbd>
+</div>
+
+<div class="command">
+<span>Open Projects</span><kbd>2</kbd>
+</div>
+
+<div class="command">
+<span>View Analytics</span><kbd>3</kbd>
+</div>
+
+<div class="command">
+<span>Open Settings</span><kbd>4</kbd>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+const palette=document.getElementById("palette");
+const search=document.getElementById("search");
+
+function openPalette(){
+ palette.classList.add("show");
+ search.focus();
+}
+
+function closePalette(){
+ palette.classList.remove("show");
+}
+
+document.addEventListener("keydown",e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
+  e.preventDefault();
+  openPalette();
+ }
+
+ if(e.key==="Escape") closePalette();
+});
+
+search.addEventListener("input",()=>{
+ const value=search.value.toLowerCase();
+
+ document.querySelectorAll(".command").forEach(item=>{
+  item.style.display=
+   item.textContent.toLowerCase().includes(value)
+   ?"flex":"none";
+ });
+});
+
+palette.addEventListener("click",e=>{
+ if(e.target===palette) closePalette();
+});
+
+document.querySelectorAll(".command").forEach(item=>{
+ item.onclick=()=>{
+  alert("Selected: "+item.innerText);
+  closePalette();
+ };
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Hover Effects</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.08);
+            background: #1d4ed8;
+        }
+
+        .icon {
+            font-size: 40px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .icon {
+            transform: rotate(10deg) scale(1.15);
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Hover Effects & Micro-Interactions</h1>
+
+    <div class="container">
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h2>Fast</h2>
+            <p>Move your mouse over the card.</p>
+            <a href="#" class="button">Explore</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h2>Analytics</h2>
+            <p>Interactive hover effects.</p>
+            <a href="#" class="button">View</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚙️</div>
+            <h2>Settings</h2>
+            <p>Simple CSS interactions.</p>
+            <a href="#" class="button">Open</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

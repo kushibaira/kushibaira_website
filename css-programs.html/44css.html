@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 44 - Notification Badge</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #1e293b;
+            margin-bottom: 40px;
+        }
+
+        .notification-area {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .notification-item {
+            position: relative;
+            background-color: white;
+            width: 180px;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .notification-item h2 {
+            font-size: 18px;
+            color: #1e293b;
+            margin: 10px 0;
+        }
+
+        .notification-item p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            min-width: 25px;
+            height: 25px;
+            padding: 3px 7px;
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .badge.green {
+            background-color: #22c55e;
+        }
+
+        .badge.blue {
+            background-color: #2563eb;
+        }
+
+        .badge.orange {
+            background-color: #f97316;
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .notification-area {
+                gap: 20px;
+            }
+
+            .notification-item {
+                width: 160px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            CloudFlow
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>Notification Badge</h1>
+
+        <div class="notification-area">
+
+            <div class="notification-item">
+
+                <div class="badge">
+                    5
+                </div>
+
+                <div class="icon">
+                    🔔
+                </div>
+
+                <h2>Notifications</h2>
+
+                <p>New notifications</p>
+
+            </div>
+
+
+            <div class="notification-item">
+
+                <div class="badge green">
+                    3
+                </div>
+
+                <div class="icon">
+                    💬
+                </div>
+
+                <h2>Messages</h2>
+
+                <p>Unread messages</p>
+
+            </div>
+
+
+            <div class="notification-item">
+
+                <div class="badge blue">
+                    8
+                </div>
+
+                <div class="icon">
+                    📧
+                </div>
+
+                <h2>Emails</h2>
+
+                <p>Unread emails</p>
+
+            </div>
+
+
+            <div class="notification-item">
+
+                <div class="badge orange">
+                    2
+                </div>
+
+                <div class="icon">
+                    🛒
+                </div>
+
+                <h2>Orders</h2>
+
+                <p>New orders</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

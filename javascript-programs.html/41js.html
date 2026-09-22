@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q41 - Inheritance</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+            background: #f0f0f0;
+        }
+
+        .box {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            line-height: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>JavaScript Inheritance</h1>
+
+    <button onclick="showDetails()">Show Details</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+    class Person {
+
+        constructor(name) {
+            this.name = name;
+        }
+
+        displayName() {
+            return "Name: " + this.name;
+        }
+    }
+
+    class Student extends Person {
+
+        constructor(name, course) {
+            super(name);
+            this.course = course;
+        }
+
+        displayStudent() {
+            return `
+                ${this.displayName()}<br>
+                Course: ${this.course}
+            `;
+        }
+    }
+
+    function showDetails() {
+
+        let student =
+            new Student("Rahul", "JavaScript");
+
+        document.getElementById("result").innerHTML =
+            student.displayStudent();
+    }
+
+</script>
+
+</body>
+</html>

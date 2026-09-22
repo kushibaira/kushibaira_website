@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Help Center</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f7f9fc;color:#1e293b}
+.hero{background:#2563eb;color:white;text-align:center;padding:55px 20px}
+.search{width:min(650px,90%);padding:16px;border:0;border-radius:9px;margin-top:20px;font-size:16px}
+.wrap{max-width:1000px;margin:35px auto;padding:20px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:white;padding:22px;border-radius:12px;box-shadow:0 3px 14px #0001}
+.card a{color:#2563eb;text-decoration:none;display:block;margin:9px 0}
+@media(max-width:700px){.categories{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>How can we help?</h1>
+<p>Search our help center for answers.</p>
+<input class="search" placeholder="Search articles...">
+</div>
+<div class="wrap">
+<div class="categories">
+<div class="card">
+<h2>🚀 Getting Started</h2>
+<a href="#">Create your account</a>
+<a href="#">Set up your workspace</a>
+<a href="#">Invite your team</a>
+</div>
+<div class="card">
+<h2>⚙ Account</h2>
+<a href="#">Account settings</a>
+<a href="#">Security</a>
+<a href="#">Billing</a>
+</div>
+<div class="card">
+<h2>📊 Analytics</h2>
+<a href="#">Dashboard guide</a>
+<a href="#">Reports</a>
+<a href="#">Data exports</a>
+</div>
+</div>
+</div>
+</body>
+</html>

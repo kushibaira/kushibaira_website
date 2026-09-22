@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Element Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #container {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Create Element Dynamically</h1>
+
+    <button onclick="addElement()">Add Element</button>
+
+    <div id="container"></div>
+
+    <script>
+
+        function addElement() {
+
+            let newElement = document.createElement("p");
+
+            newElement.textContent =
+                "This paragraph was created dynamically using JavaScript.";
+
+            document.getElementById("container").appendChild(newElement);
+        }
+
+    </script>
+
+</body>
+</html>

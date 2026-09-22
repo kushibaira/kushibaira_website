@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Border Radius Shapes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        .shape {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Square with Rounded Corners */
+        .rounded-square {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            border-radius: 20px;
+        }
+
+        /* Circle */
+        .circle {
+            width: 150px;
+            height: 150px;
+            background-color: green;
+            border-radius: 50%;
+        }
+
+        /* Oval */
+        .oval {
+            width: 220px;
+            height: 120px;
+            background-color: orange;
+            border-radius: 50%;
+        }
+
+        /* Pill Shape */
+        .pill {
+            width: 220px;
+            height: 80px;
+            background-color: purple;
+            border-radius: 40px;
+        }
+
+        /* Top Rounded Shape */
+        .top-rounded {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            border-radius: 75px 75px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Border-Radius Shapes</h1>
+
+    <div class="shape rounded-square">
+        Rounded Square
+    </div>
+
+    <div class="shape circle">
+        Circle
+    </div>
+
+    <div class="shape oval">
+        Oval
+    </div>
+
+    <div class="shape pill">
+        Pill
+    </div>
+
+    <div class="shape top-rounded">
+        Top Rounded
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Width and Height Units</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        .box {
+            background-color: lightblue;
+            border: 2px solid blue;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .pixel {
+            width: 300px;
+            height: 100px;
+        }
+
+        .percentage {
+            width: 70%;
+            height: 100px;
+        }
+
+        .viewport-width {
+            width: 50vw;
+            height: 100px;
+        }
+
+        .viewport-height {
+            width: 300px;
+            height: 20vh;
+        }
+
+        .auto-box {
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Width and Height Units</h1>
+
+    <div class="box pixel">
+        Width: 300px | Height: 100px
+    </div>
+
+    <div class="box percentage">
+        Width: 70%
+    </div>
+
+    <div class="box viewport-width">
+        Width: 50vw
+    </div>
+
+    <div class="box viewport-height">
+        Height: 20vh
+    </div>
+
+    <div class="box auto-box">
+        Width and Height: Auto
+    </div>
+
+</body>
+</html>

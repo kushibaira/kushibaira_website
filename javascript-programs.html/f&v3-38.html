@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Order Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        select, input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Shopping Order</h1>
+
+    <select id="product">
+        <option value="100">Book - ₹100</option>
+        <option value="500">Bag - ₹500</option>
+        <option value="1000">Shoes - ₹1000</option>
+    </select>
+
+    <br>
+
+    <input type="number" id="quantity"
+           value="1" min="1"
+           placeholder="Quantity">
+
+    <br>
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateTotal() {
+            let price = Number(
+                document.getElementById("product").value
+            );
+
+            let quantity = Number(
+                document.getElementById("quantity").value
+            );
+
+            let total = price * quantity;
+
+            document.getElementById("result").textContent =
+                "Total Price: ₹" + total;
+        }
+    </script>
+
+</body>
+</html>

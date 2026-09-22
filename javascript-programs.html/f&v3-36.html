@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #result {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Marks Calculator</h1>
+
+    <input type="number" id="mark1" placeholder="Subject 1">
+    <br>
+
+    <input type="number" id="mark2" placeholder="Subject 2">
+    <br>
+
+    <input type="number" id="mark3" placeholder="Subject 3">
+    <br>
+
+    <button onclick="calculateMarks()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateMarks() {
+            let m1 = Number(document.getElementById("mark1").value);
+            let m2 = Number(document.getElementById("mark2").value);
+            let m3 = Number(document.getElementById("mark3").value);
+
+            let total = m1 + m2 + m3;
+            let average = total / 3;
+            let grade;
+
+            if (average >= 90) {
+                grade = "A";
+            } else if (average >= 75) {
+                grade = "B";
+            } else if (average >= 50) {
+                grade = "C";
+            } else {
+                grade = "D";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Total: " + total + "<br>" +
+                "Average: " + average.toFixed(2) + "<br>" +
+                "Grade: " + grade;
+        }
+    </script>
+
+</body>
+</html>

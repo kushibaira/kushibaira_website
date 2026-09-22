@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Documentation</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;color:#1f2937}
+header{
+ height:65px;border-bottom:1px solid #e5e7eb;
+ display:flex;align-items:center;padding:0 5%;
+ justify-content:space-between
+}
+header a{margin-left:20px;text-decoration:none;color:#64748b}
+.layout{
+ display:grid;grid-template-columns:240px 1fr 180px;
+ max-width:1200px;margin:auto
+}
+aside{padding:30px 20px;border-right:1px solid #e5e7eb}
+aside a{
+ display:block;text-decoration:none;color:#475569;
+ padding:9px;border-radius:5px;font-size:13px
+}
+aside a:hover{background:#eff6ff;color:#2563eb}
+article{padding:45px}
+article h1{font-size:38px;margin-bottom:15px}
+article h2{margin:35px 0 12px}
+article p,li{color:#64748b;line-height:1.7}
+pre{
+ background:#111827;color:#e5e7eb;
+ padding:20px;border-radius:8px;overflow:auto
+}
+.toc{padding:35px 10px}
+.toc a{display:block;color:#64748b;font-size:12px;margin:10px 0}
+@media(max-width:850px){
+ .layout{grid-template-columns:1fr}
+ aside,.toc{display:none}
+ article{padding:30px 6%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>CloudFlow Docs</h2>
+<nav>
+<a href="#">Guides</a>
+<a href="#">API</a>
+<a href="#">Support</a>
+</nav>
+</header>
+
+<div class="layout">
+
+<aside>
+<strong>Documentation</strong><br><br>
+<a href="#">Introduction</a>
+<a href="#">Getting Started</a>
+<a href="#">Authentication</a>
+<a href="#">API Reference</a>
+<a href="#">Webhooks</a>
+<a href="#">Integrations</a>
+</aside>
+
+<article>
+<h1>Getting Started</h1>
+
+<p>
+Learn how to get started with the CloudFlow platform
+and create your first project.
+</p>
+
+<h2>Installation</h2>
+<p>Include the SDK in your project:</p>
+
+<pre>npm install cloudflow-sdk</pre>
+
+<h2>Authentication</h2>
+<p>
+Use your API key to authenticate requests to the platform.
+</p>
+
+<h2>Next Steps</h2>
+<ul>
+<li>Create your first project.</li>
+<li>Configure authentication.</li>
+<li>Connect an integration.</li>
+</ul>
+</article>
+
+<div class="toc">
+<strong>On this page</strong>
+<a href="#">Installation</a>
+<a href="#">Authentication</a>
+<a href="#">Next Steps</a>
+</div>
+
+</div>
+
+</body>
+</html>

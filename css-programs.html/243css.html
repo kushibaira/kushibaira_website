@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Search & Filter</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f5f7fb;color:#111827}
+.container{width:92%;max-width:1100px;margin:40px auto}
+.toolbar{
+ background:white;padding:18px;border-radius:10px;
+ display:flex;gap:12px;flex-wrap:wrap
+}
+input,select{
+ padding:11px;border:1px solid #d1d5db;border-radius:7px
+}
+input{flex:1;min-width:220px}
+.grid{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:18px;margin-top:20px
+}
+.card{
+ background:white;padding:22px;border-radius:10px;
+ border:1px solid #e5e7eb
+}
+.tag{
+ display:inline-block;background:#dbeafe;color:#2563eb;
+ padding:4px 8px;border-radius:12px;font-size:10px
+}
+.card p{color:#64748b;font-size:13px;line-height:1.5}
+@media(max-width:700px){
+ .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+<h1>Projects</h1><br>
+
+<div class="toolbar">
+
+<input id="search" placeholder="Search projects...">
+
+<select id="status">
+<option value="all">All Status</option>
+<option value="active">Active</option>
+<option value="completed">Completed</option>
+</select>
+
+</div>
+
+<div class="grid" id="projects">
+
+<div class="card" data-status="active">
+<span class="tag">Active</span>
+<h3>Website Redesign</h3>
+<p>Redesign the company website.</p>
+</div>
+
+<div class="card" data-status="completed">
+<span class="tag">Completed</span>
+<h3>Mobile App</h3>
+<p>Build a responsive mobile application.</p>
+</div>
+
+<div class="card" data-status="active">
+<span class="tag">Active</span>
+<h3>Analytics Dashboard</h3>
+<p>Create a dashboard for business analytics.</p>
+</div>
+
+<div class="card" data-status="completed">
+<span class="tag">Completed</span>
+<h3>API Integration</h3>
+<p>Connect external API services.</p>
+</div>
+
+<div class="card" data-status="active">
+<span class="tag">Active</span>
+<h3>Marketing Campaign</h3>
+<p>Launch a new marketing campaign.</p>
+</div>
+
+<div class="card" data-status="completed">
+<span class="tag">Completed</span>
+<h3>Documentation</h3>
+<p>Prepare product documentation.</p>
+</div>
+
+</div>
+
+</main>
+
+<script>
+const search=document.getElementById("search");
+const status=document.getElementById("status");
+
+function filter(){
+ const text=search.value.toLowerCase();
+ const selected=status.value;
+
+ document.querySelectorAll(".card").forEach(card=>{
+  const matchesText=
+   card.innerText.toLowerCase().includes(text);
+
+  const matchesStatus=
+   selected==="all"||card.dataset.status===selected;
+
+  card.style.display=
+   matchesText&&matchesStatus?"block":"none";
+ });
+}
+
+search.addEventListener("input",filter);
+status.addEventListener("change",filter);
+</script>
+
+</body>
+</html>

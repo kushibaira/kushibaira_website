@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q47 - Interactive Webpage</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            padding: 15px;
+            background: white;
+        }
+
+        nav button {
+            margin: 5px;
+            padding: 10px 20px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .dark {
+            background: #222;
+            color: white;
+        }
+
+        .dark section,
+        .dark nav {
+            background: #333;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1 id="title">My Interactive Website</h1>
+
+    <p>HTML + CSS + JavaScript</p>
+
+</header>
+
+<nav>
+
+    <button onclick="changeText()">
+        Change Text
+    </button>
+
+    <button onclick="changeBackground()">
+        Change Background
+    </button>
+
+    <button onclick="toggleDark()">
+        Dark Mode
+    </button>
+
+</nav>
+
+<section>
+
+    <h2>Welcome</h2>
+
+    <p id="message">
+        This is an interactive webpage.
+    </p>
+
+    <button onclick="showMessage()">
+        Click Me
+    </button>
+
+</section>
+
+<script>
+
+    function changeText() {
+
+        document.getElementById("title").innerHTML =
+            "Welcome to JavaScript!";
+    }
+
+
+    function changeBackground() {
+
+        document.body.style.background =
+            "#dfe6e9";
+    }
+
+
+    function toggleDark() {
+
+        document.body.classList.toggle("dark");
+    }
+
+
+    function showMessage() {
+
+        document.getElementById("message").innerHTML =
+            "You clicked the button!";
+    }
+
+</script>
+
+</body>
+</html>

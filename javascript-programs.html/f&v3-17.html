@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Individual Error Messages</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        form {
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <form onsubmit="return validateForm()">
+
+        <h2>Registration</h2>
+
+        <label>Name:</label>
+        <input type="text" id="name">
+        <span id="nameError" class="error"></span>
+
+        <br><br>
+
+        <label>Email:</label>
+        <input type="text" id="email">
+        <span id="emailError" class="error"></span>
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        function validateForm() {
+            let valid = true;
+
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+
+            if (document.getElementById("name").value === "") {
+                document.getElementById("nameError").textContent =
+                    " Name required";
+                valid = false;
+            }
+
+            if (document.getElementById("email").value === "") {
+                document.getElementById("emailError").textContent =
+                    " Email required";
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+
+</body>
+</html>

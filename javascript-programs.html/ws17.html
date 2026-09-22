@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor Counter</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        #count {
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Visitor Counter</h1>
+
+    <div id="count"></div>
+
+    <script>
+        let count =
+            Number(localStorage.getItem("visitorCount")) || 0;
+
+        count++;
+
+        localStorage.setItem(
+            "visitorCount",
+            count
+        );
+
+        document.getElementById("count").innerHTML =
+            "Number of visits: " + count;
+    </script>
+
+</body>
+</html>

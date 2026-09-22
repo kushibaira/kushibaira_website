@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Team Workspace</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f5f7fb;color:#111827}
+header{
+ background:#111827;color:white;padding:18px 5%;
+ display:flex;justify-content:space-between
+}
+.container{width:92%;max-width:1200px;margin:30px auto}
+.grid{
+ display:grid;grid-template-columns:2fr 1fr;gap:20px
+}
+.card{
+ background:white;border:1px solid #e5e7eb;
+ border-radius:12px;padding:25px
+}
+.member{
+ display:flex;align-items:center;gap:12px;
+ padding:13px 0;border-bottom:1px solid #e5e7eb
+}
+.avatar{
+ width:40px;height:40px;border-radius:50%;
+ background:#2563eb;color:white;
+ display:flex;align-items:center;justify-content:center
+}
+.member span{font-size:12px;color:#64748b}
+.task{
+ padding:13px;background:#f8fafc;
+ margin:10px 0;border-radius:7px
+}
+button{
+ border:0;background:#2563eb;color:white;
+ padding:10px 15px;border-radius:7px;cursor:pointer
+}
+@media(max-width:750px){
+ .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>TeamSpace</h2>
+<button onclick="invite()">+ Invite</button>
+</header>
+
+<main class="container">
+
+<h1>Engineering Workspace</h1><br>
+
+<div class="grid">
+
+<div class="card">
+<h2>Team Tasks</h2>
+
+<div class="task">
+<strong>Complete API integration</strong>
+<p>Assigned to John</p>
+</div>
+
+<div class="task">
+<strong>Review dashboard design</strong>
+<p>Assigned to Sarah</p>
+</div>
+
+<div class="task">
+<strong>Prepare release notes</strong>
+<p>Assigned to Alex</p>
+</div>
+
+</div>
+
+<div class="card">
+<h2>Team Members</h2>
+
+<div class="member">
+<div class="avatar">JD</div>
+<div>John Doe<br><span>Developer</span></div>
+</div>
+
+<div class="member">
+<div class="avatar">SA</div>
+<div>Sarah Adams<br><span>Designer</span></div>
+</div>
+
+<div class="member">
+<div class="avatar">AM</div>
+<div>Alex Martin<br><span>Manager</span></div>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<script>
+function invite(){
+ const email=prompt("Enter team member email:");
+
+ if(email){
+  alert("Invitation sent to "+email);
+ }
+}
+</script>
+
+</body>
+</html>

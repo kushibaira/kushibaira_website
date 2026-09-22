@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage & Consumption Meters</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #111827;
+      color: white;
+      padding: 25px 18px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 35px;
+    }
+
+    .logo span {
+      color: #60a5fa;
+    }
+
+    .nav-item {
+      padding: 13px 15px;
+      margin: 7px 0;
+      border-radius: 8px;
+      color: #cbd5e1;
+      cursor: pointer;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: #1e40af;
+      color: white;
+    }
+
+    /* Main */
+    .main {
+      margin-left: 240px;
+      width: calc(100% - 240px);
+      padding: 30px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 20px;
+    }
+
+    .topbar h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .topbar p {
+      color: #6b7280;
+    }
+
+    .period-select {
+      padding: 11px 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: white;
+      cursor: pointer;
+    }
+
+    /* Summary cards */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .summary-card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .summary-card .label {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .summary-card .value {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .summary-card .small {
+      color: #6b7280;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    /* Meter section */
+    .section-title {
+      font-size: 20px;
+      margin: 28px 0 15px;
+    }
+
+    .meters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .meter-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .meter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .meter-name {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .status {
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .status.normal {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status.warning {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status.over {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .usage-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .progress {
+      width: 100%;
+      height: 12px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+
+    .normal-bar {
+      background: #22c55e;
+    }
+
+    .warning-bar {
+      background: #f59e0b;
+    }
+
+    .over-bar {
+      background: #ef4444;
+    }
+
+    .meter-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .detail {
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .detail span {
+      display: block;
+      color: #6b7280;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .detail strong {
+      font-size: 15px;
+    }
+
+    /* Table */
+    .table-container {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    th,
+    td {
+      padding: 15px 18px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    td {
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-status {
+      font-weight: bold;
+    }
+
+    .table-status.green {
+      color: #16a34a;
+    }
+
+    .table-status.orange {
+      color: #d97706;
+    }
+
+    .table-status.red {
+      color: #dc2626;
+    }
+
+    /* Consumption chart */
+    .chart {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .chart-header h3 {
+      font-size: 18px;
+    }
+
+    .bars {
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      gap: 10px;
+      border-bottom: 1px solid #d1d5db;
+    }
+
+    .bar-wrapper {
+      height: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bar {
+      width: 55%;
+      min-height: 10px;
+      background: #3b82f6;
+      border-radius: 6px 6px 0 0;
+      transition: height 0.5s ease;
+    }
+
+    .bar-label {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    /* Buttons */
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 11px 17px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .secondary {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .meters-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .sidebar {
+        width: 70px;
+        padding: 20px 10px;
+      }
+
+      .logo {
+        font-size: 0;
+        text-align: center;
+      }
+
+      .logo span {
+        font-size: 20px;
+      }
+
+      .nav-item {
+        font-size: 0;
+        text-align: center;
+      }
+
+      .nav-item::first-letter {
+        font-size: 18px;
+      }
+
+      .main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 20px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meter-details {
+        grid-template-columns: 1fr;
+      }
+
+      .chart {
+        overflow-x: auto;
+      }
+
+      .bars {
+        min-width: 500px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">Cloud<span>Meter</span></div>
+
+      <div class="nav-item">Dashboard</div>
+      <div class="nav-item active">Usage</div>
+      <div class="nav-item">Billing</div>
+      <div class="nav-item">Invoices</div>
+      <div class="nav-item">Plans</div>
+      <div class="nav-item">Settings</div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <div class="topbar">
+        <div>
+          <h1>Usage & Consumption</h1>
+          <p>Monitor your resource consumption and usage meters.</p>
+        </div>
+
+        <select class="period-select" id="periodSelect">
+          <option value="current">Current Billing Period</option>
+          <option value="previous">Previous Billing Period</option>
+          <option value="year">This Year</option>
+        </select>
+      </div>
+
+      <!-- Summary -->
+      <section class="summary-grid">
+
+        <div class="summary-card">
+          <div class="label">Total Usage</div>
+          <div class="value" id="totalUsage">68%</div>
+          <div class="small">Across all meters</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Resources Tracked</div>
+          <div class="value">5</div>
+          <div class="small">Active consumption meters</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Estimated Overage</div>
+          <div class="value">$42.50</div>
+          <div class="small">For current period</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Billing Days Left</div>
+          <div class="value">12</div>
+          <div class="small">Until September 30</div>
+        </div>
+
+      </section>
+
+      <h2 class="section-title">Usage Meters</h2>
+
+      <!-- Meters -->
+      <section class="meters-grid">
+
+        <!-- API Requests -->
+        <div class="meter-card">
+          <div class="meter-header">
+            <div class="meter-name">API Requests</div>
+            <div class="status normal">Normal</div>
+          </div>
+
+          <div class="usage-row">
+            <span>Usage</span>
+            <strong>7.4M / 10M</strong>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar normal-bar" style="width: 74%;"></div>
+          </div>
+
+          <div class="meter-details">
+            <div class="detail">
+              <span>Used</span>
+              <strong>7.4M</strong>
+            </div>
+
+            <div class="detail">
+              <span>Included</span>
+              <strong>10M</strong>
+            </div>
+
+            <div class="detail">
+              <span>Remaining</span>
+              <strong>2.6M</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Storage -->
+        <div class="meter-card">
+          <div class="meter-header">
+            <div class="meter-name">Storage</div>
+            <div class="status warning">Near Limit</div>
+          </div>
+
+          <div class="usage-row">
+            <span>Usage</span>
+            <strong>82 GB / 100 GB</strong>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar warning-bar" style="width: 82%;"></div>
+          </div>
+
+          <div class="meter-details">
+            <div class="detail">
+              <span>Used</span>
+              <strong>82 GB</strong>
+            </div>
+
+            <div class="detail">
+              <span>Included</span>
+              <strong>100 GB</strong>
+            </div>
+
+            <div class="detail">
+              <span>Remaining</span>
+              <strong>18 GB</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bandwidth -->
+        <div class="meter-card">
+          <div class="meter-header">
+            <div class="meter-name">Bandwidth</div>
+            <div class="status normal">Normal</div>
+          </div>
+
+          <div class="usage-row">
+            <span>Usage</span>
+            <strong>420 GB / 1 TB</strong>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar normal-bar" style="width: 42%;"></div>
+          </div>
+
+          <div class="meter-details">
+            <div class="detail">
+              <span>Used</span>
+              <strong>420 GB</strong>
+            </div>
+
+            <div class="detail">
+              <span>Included</span>
+              <strong>1 TB</strong>
+            </div>
+
+            <div class="detail">
+              <span>Remaining</span>
+              <strong>580 GB</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation Runs -->
+        <div class="meter-card">
+          <div class="meter-header">
+            <div class="meter-name">Automation Runs</div>
+            <div class="status over">Over Limit</div>
+          </div>
+
+          <div class="usage-row">
+            <span>Usage</span>
+            <strong>12,450 / 10,000</strong>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar over-bar" style="width: 100%;"></div>
+          </div>
+
+          <div class="meter-details">
+            <div class="detail">
+              <span>Used</span>
+              <strong>12,450</strong>
+            </div>
+
+            <div class="detail">
+              <span>Included</span>
+              <strong>10,000</strong>
+            </div>
+
+            <div class="detail">
+              <span>Overage</span>
+              <strong>2,450</strong>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Consumption chart -->
+      <div class="chart">
+
+        <div class="chart-header">
+          <h3>Daily Consumption</h3>
+          <span>Last 7 days</span>
+        </div>
+
+        <div class="bars">
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 40%;"></div>
+            <div class="bar-label">Mon</div>
+          </div>
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 58%;"></div>
+            <div class="bar-label">Tue</div>
+          </div>
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 48%;"></div>
+            <div class="bar-label">Wed</div>
+          </div>
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 72%;"></div>
+            <div class="bar-label">Thu</div>
+          </div>
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 64%;"></div>
+            <div class="bar-label">Fri</div>
+          </div>
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 82%;"></div>
+            <div class="bar-label">Sat</div>
+          </div>
+
+          <div class="bar-wrapper">
+            <div class="bar" style="height: 67%;"></div>
+            <div class="bar-label">Sun</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Meter table -->
+      <h2 class="section-title">Meter Details</h2>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Meter</th>
+              <th>Unit</th>
+              <th>Current Usage</th>
+              <th>Included</th>
+              <th>Usage %</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>API Requests</td>
+              <td>Requests</td>
+              <td>7,400,000</td>
+              <td>10,000,000</td>
+              <td>74%</td>
+              <td class="table-status green">Normal</td>
+            </tr>
+
+            <tr>
+              <td>Storage</td>
+              <td>GB</td>
+              <td>82</td>
+              <td>100</td>
+              <td>82%</td>
+              <td class="table-status orange">Near Limit</td>
+            </tr>
+
+            <tr>
+              <td>Bandwidth</td>
+              <td>GB</td>
+              <td>420</td>
+              <td>1,000</td>
+              <td>42%</td>
+              <td class="table-status green">Normal</td>
+            </tr>
+
+            <tr>
+              <td>Automation Runs</td>
+              <td>Runs</td>
+              <td>12,450</td>
+              <td>10,000</td>
+              <td>125%</td>
+              <td class="table-status red">Over Limit</td>
+            </tr>
+
+            <tr>
+              <td>Team Members</td>
+              <td>Seats</td>
+              <td>18</td>
+              <td>25</td>
+              <td>72%</td>
+              <td class="table-status green">Normal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="primary" onclick="refreshUsage()">
+          Refresh Usage
+        </button>
+
+        <button class="secondary" onclick="exportUsage()">
+          Export Usage
+        </button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Change billing period
+    document.getElementById("periodSelect").addEventListener("change", function () {
+      const period = this.value;
+      const totalUsage = document.getElementById("totalUsage");
+
+      if (period === "current") {
+        totalUsage.textContent = "68%";
+      } else if (period === "previous") {
+        totalUsage.textContent = "61%";
+      } else {
+        totalUsage.textContent = "64%";
+      }
+    });
+
+    // Refresh usage
+    function refreshUsage() {
+      const button = document.querySelector(".primary");
+
+      button.textContent = "Refreshing...";
+
+      setTimeout(() => {
+        button.textContent = "Usage Updated";
+        
+        setTimeout(() => {
+          button.textContent = "Refresh Usage";
+        }, 1500);
+      }, 1000);
+    }
+
+    // Export usage data
+    function exportUsage() {
+      const data = [
+        ["Meter", "Unit", "Current Usage", "Included", "Usage %", "Status"],
+        ["API Requests", "Requests", "7400000", "10000000", "74%", "Normal"],
+        ["Storage", "GB", "82", "100", "82%", "Near Limit"],
+        ["Bandwidth", "GB", "420", "1000", "42%", "Normal"],
+        ["Automation Runs", "Runs", "12450", "10000", "125%", "Over Limit"],
+        ["Team Members", "Seats", "18", "25", "72%", "Normal"]
+      ];
+
+      let csv = data.map(row => row.join(",")).join("\n");
+
+      const blob = new Blob([csv], {
+        type: "text/csv"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "usage-meters.csv";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+</body>
+</html>

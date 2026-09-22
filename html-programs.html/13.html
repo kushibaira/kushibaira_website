@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Webpage</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        header {
+            background-color: navy;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .box {
+            flex: 1;
+            background-color: lightblue;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* Mobile Screen */
+        @media screen and (max-width: 600px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .box {
+                background-color: lightgreen;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Responsive Website</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="box">
+            <h2>HTML</h2>
+            <p>Structure of webpage</p>
+        </div>
+
+        <div class="box">
+            <h2>CSS</h2>
+            <p>Styling of webpage</p>
+        </div>
+
+        <div class="box">
+            <h2>JavaScript</h2>
+            <p>Functionality of webpage</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

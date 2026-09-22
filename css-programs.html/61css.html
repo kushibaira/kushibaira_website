@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Badges, Labels, Tags and Chips</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #334155;
+            margin-bottom: 15px;
+        }
+
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* Badges */
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-info {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Labels */
+
+        .label {
+            padding: 7px 14px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .label-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .label-secondary {
+            background-color: #64748b;
+            color: white;
+        }
+
+        .label-dark {
+            background-color: #1e293b;
+            color: white;
+        }
+
+        /* Tags */
+
+        .tag {
+            padding: 8px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #f8fafc;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        .tag:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Chips */
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 25px;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            font-size: 14px;
+        }
+
+        .chip span {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .chip-green {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .chip-purple {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .example-box {
+            margin-top: 35px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .example-box h3 {
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .example-box p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .items {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Badges, Labels, Tags and Chips</h1>
+
+        <p class="description">
+            Different UI elements used to display status,
+            categories, information and selectable items.
+        </p>
+
+        <!-- Badges -->
+
+        <div class="section">
+
+            <h2>Badges</h2>
+
+            <div class="items">
+
+                <span class="badge badge-success">
+                    Active
+                </span>
+
+                <span class="badge badge-warning">
+                    Pending
+                </span>
+
+                <span class="badge badge-danger">
+                    Failed
+                </span>
+
+                <span class="badge badge-info">
+                    New
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Labels -->
+
+        <div class="section">
+
+            <h2>Labels</h2>
+
+            <div class="items">
+
+                <span class="label label-primary">
+                    Primary
+                </span>
+
+                <span class="label label-secondary">
+                    Secondary
+                </span>
+
+                <span class="label label-dark">
+                    Important
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Tags -->
+
+        <div class="section">
+
+            <h2>Tags</h2>
+
+            <div class="items">
+
+                <span class="tag">
+                    HTML
+                </span>
+
+                <span class="tag">
+                    CSS
+                </span>
+
+                <span class="tag">
+                    JavaScript
+                </span>
+
+                <span class="tag">
+                    Web Design
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Chips -->
+
+        <div class="section">
+
+            <h2>Chips</h2>
+
+            <div class="items">
+
+                <span class="chip">
+                    Design
+                    <span>×</span>
+                </span>
+
+                <span class="chip chip-green">
+                    Development
+                    <span>×</span>
+                </span>
+
+                <span class="chip chip-purple">
+                    Marketing
+                    <span>×</span>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="example-box">
+
+            <h3>Usage</h3>
+
+            <p>
+                Badges can show status, labels can identify
+                information, tags can represent categories,
+                and chips can display selectable or removable items.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

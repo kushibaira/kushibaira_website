@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 46 - SaaS Card Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .container > p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #dbeafe;
+            border-radius: 10px;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            color: #1e293b;
+            margin: 0 0 12px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media (max-width: 800px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h1>SaaS Card Components</h1>
+
+        <p>
+            A simple collection of cards for a SaaS website.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">
+                    ☁️
+                </div>
+
+                <h2>Cloud Storage</h2>
+
+                <p>
+                    Store and manage your files securely in the
+                    cloud and access them from anywhere.
+                </p>
+
+                <a href="#" class="button">
+                    Learn More
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h2>Analytics</h2>
+
+                <p>
+                    Monitor your business data and understand
+                    important trends using useful analytics.
+                </p>
+
+                <a href="#" class="button">
+                    View Analytics
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    👥
+                </div>
+
+                <h2>Team Collaboration</h2>
+
+                <p>
+                    Work together with your team, share projects,
+                    and improve productivity.
+                </p>
+
+                <a href="#" class="button">
+                    Get Started
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Form Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        form {
+            width: 400px;
+            margin: 40px auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .valid {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+
+        <h2>Real-Time Validation</h2>
+
+        <input type="text" id="name"
+               placeholder="Enter name"
+               oninput="validateName()">
+
+        <p id="nameMessage"></p>
+
+        <input type="email" id="email"
+               placeholder="Enter email"
+               oninput="validateEmail()">
+
+        <p id="emailMessage"></p>
+
+    </form>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value;
+            let message = document.getElementById("nameMessage");
+
+            if (name.length >= 3) {
+                message.textContent = "Name is valid.";
+                message.className = "valid";
+            } else {
+                message.textContent = "Name must contain 3 characters.";
+                message.className = "error";
+            }
+        }
+
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let message = document.getElementById("emailMessage");
+
+            if (pattern.test(email)) {
+                message.textContent = "Email is valid.";
+                message.className = "valid";
+            } else {
+                message.textContent = "Enter a valid email.";
+                message.className = "error";
+            }
+        }
+    </script>
+
+</body>
+</html>

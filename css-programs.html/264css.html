@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Invoice Management</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f6f8fb;color:#1e293b}
+.wrap{max-width:1050px;margin:auto;padding:30px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.btn{background:#2563eb;color:white;border:0;padding:10px 18px;border-radius:7px}
+.table{margin-top:25px;background:white;border-radius:12px;overflow:auto;box-shadow:0 4px 15px #0001}
+table{width:100%;border-collapse:collapse}
+th,td{padding:16px;text-align:left;border-bottom:1px solid #eee}
+.paid{color:#16a34a}.pending{color:#d97706}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top">
+<div><h1>Invoice Management</h1><p>View and manage your invoices.</p></div>
+<button class="btn">Create Invoice</button>
+</div>
+<div class="table">
+<table>
+<tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Amount</th><th>Status</th></tr>
+<tr><td>#INV-1001</td><td>Sep 15</td><td>Acme Corp</td><td>$490</td><td class="paid">Paid</td></tr>
+<tr><td>#INV-1002</td><td>Sep 18</td><td>Nova Ltd</td><td>$720</td><td class="pending">Pending</td></tr>
+<tr><td>#INV-1003</td><td>Sep 20</td><td>TechSoft</td><td>$350</td><td class="paid">Paid</td></tr>
+</table>
+</div>
+</div>
+</body>
+</html>

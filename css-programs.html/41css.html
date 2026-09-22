@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 41 - Mega Navigation Menu</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        .nav-item > a:hover {
+            color: white;
+        }
+
+        .mega-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: -150px;
+            width: 700px;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        .nav-item:hover .mega-menu {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .mega-column h3 {
+            color: #2563eb;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .mega-column a {
+            display: block;
+            color: #475569;
+            text-decoration: none;
+            padding: 8px 0;
+        }
+
+        .mega-column a:hover {
+            color: #2563eb;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #64748b;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+                padding: 20px;
+            }
+
+            .logo {
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .nav-item > a {
+                text-align: center;
+            }
+
+            .mega-menu {
+                position: static;
+                width: 100%;
+                margin-top: 5px;
+            }
+
+            .nav-item:hover .mega-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+        <div class="nav-item">
+            <a href="#">Home</a>
+        </div>
+
+        <div class="nav-item">
+
+            <a href="#">Products ▾</a>
+
+            <div class="mega-menu">
+
+                <div class="mega-column">
+
+                    <h3>Cloud Services</h3>
+
+                    <a href="#">Cloud Storage</a>
+                    <a href="#">Cloud Computing</a>
+                    <a href="#">Cloud Database</a>
+                    <a href="#">Cloud Backup</a>
+
+                </div>
+
+                <div class="mega-column">
+
+                    <h3>Business Tools</h3>
+
+                    <a href="#">Project Management</a>
+                    <a href="#">Team Collaboration</a>
+                    <a href="#">Task Management</a>
+                    <a href="#">Business Analytics</a>
+
+                </div>
+
+                <div class="mega-column">
+
+                    <h3>Resources</h3>
+
+                    <a href="#">Documentation</a>
+                    <a href="#">Tutorials</a>
+                    <a href="#">Community</a>
+                    <a href="#">Support</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="nav-item">
+            <a href="#">Pricing</a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#">About</a>
+        </div>
+
+    </nav>
+
+
+    <section class="hero">
+
+        <h1>CloudFlow SaaS Platform</h1>
+
+        <p>
+            Hover over the Products menu to view the
+            mega navigation menu with multiple categories.
+        </p>
+
+    </section>
+
+</body>
+
+</html>

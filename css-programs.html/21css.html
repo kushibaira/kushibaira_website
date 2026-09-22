@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Positioning</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        .box {
+            width: 150px;
+            height: 100px;
+            padding: 15px;
+            margin: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Static Position */
+        .static {
+            position: static;
+            background-color: blue;
+        }
+
+        /* Relative Position */
+        .relative {
+            position: relative;
+            left: 50px;
+            top: 20px;
+            background-color: green;
+        }
+
+        /* Parent for Absolute Position */
+        .parent {
+            position: relative;
+            width: 400px;
+            height: 250px;
+            background-color: lightgray;
+            margin: 30px;
+        }
+
+        /* Absolute Position */
+        .absolute {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            background-color: orange;
+        }
+
+        /* Fixed Position */
+        .fixed {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: red;
+            margin: 0;
+        }
+
+        /* Sticky Position */
+        .sticky {
+            position: sticky;
+            top: 0;
+            background-color: purple;
+            margin: 20px 0;
+            z-index: 1;
+        }
+
+        .space {
+            height: 600px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Positioning</h1>
+
+    <div class="box static">
+        Static Position
+    </div>
+
+    <div class="box relative">
+        Relative Position
+    </div>
+
+    <div class="parent">
+
+        <div class="box absolute">
+            Absolute Position
+        </div>
+
+    </div>
+
+    <div class="box sticky">
+        Sticky Position
+    </div>
+
+    <div class="space">
+        <h2>Scroll the page</h2>
+        <p>
+            The sticky element remains at the top while scrolling
+            within its scrolling area.
+        </p>
+    </div>
+
+    <div class="box fixed">
+        Fixed Position
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tooltip Components</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .tooltip-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip-button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 190px;
+            padding: 10px 14px;
+            background-color: #172554;
+            color: white;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.4;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #172554 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tooltip-bottom .tooltip-text {
+            bottom: auto;
+            top: 130%;
+        }
+
+        .tooltip-bottom .tooltip-text::after {
+            top: auto;
+            bottom: 100%;
+            border-color: transparent transparent #172554 transparent;
+        }
+
+        .tooltip-left .tooltip-text {
+            left: auto;
+            right: 130%;
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        .tooltip-left .tooltip-text::after {
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent #172554;
+        }
+
+        .tooltip-right .tooltip-text {
+            left: 130%;
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        .tooltip-right .tooltip-text::after {
+            top: 50%;
+            left: auto;
+            right: 100%;
+            transform: translateY(-50%);
+            border-color: transparent #172554 transparent transparent;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #7c3aed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .info-box {
+            margin-top: 70px;
+            padding: 20px;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .info-box h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .tooltip-section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Tooltip Components</h1>
+
+        <p class="description">
+            Tooltips provide additional information when the user
+            moves the mouse over an element.
+        </p>
+
+        <div class="tooltip-section">
+
+            <div class="tooltip">
+                <button class="tooltip-button">
+                    Hover Me
+                </button>
+
+                <div class="tooltip-text">
+                    This is a top tooltip.
+                </div>
+            </div>
+
+            <div class="tooltip tooltip-bottom">
+                <button class="tooltip-button">
+                    Bottom
+                </button>
+
+                <div class="tooltip-text">
+                    This tooltip appears below the button.
+                </div>
+            </div>
+
+            <div class="tooltip tooltip-left">
+                <button class="tooltip-button">
+                    Left
+                </button>
+
+                <div class="tooltip-text">
+                    This tooltip appears on the left.
+                </div>
+            </div>
+
+            <div class="tooltip tooltip-right">
+                <button class="tooltip-button">
+                    Right
+                </button>
+
+                <div class="tooltip-text">
+                    This tooltip appears on the right.
+                </div>
+            </div>
+
+            <div class="tooltip">
+                <div class="icon">
+                    ?
+                </div>
+
+                <div class="tooltip-text">
+                    This is an information tooltip.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="info-box">
+            <h2>How It Works</h2>
+
+            <p>
+                Move the mouse over the buttons or information icon
+                to display different tooltip positions.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

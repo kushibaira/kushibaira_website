@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Active Sessions & Device Management</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+            width: 240px;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 7px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #d1d5db;
+            border-radius: 7px;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Main */
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .header p {
+            color: #6b7280;
+        }
+
+        .logout-all {
+            border: none;
+            background: #dc2626;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .logout-all:hover {
+            background: #b91c1c;
+        }
+
+        /* Current session */
+
+        .current-session {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .current-session h2 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .current-session p {
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        /* Sessions */
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .session {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .session:last-child {
+            border-bottom: none;
+        }
+
+        .device-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .device-icon {
+            width: 50px;
+            height: 50px;
+            background: #eef2ff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .device-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .device-info p {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .session-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .active-badge {
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .revoke-btn {
+            border: none;
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 8px 13px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .revoke-btn:hover {
+            background: #fecaca;
+        }
+
+        @media (max-width: 700px) {
+
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .menu li {
+                margin-bottom: 0;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .session {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .session-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Security Panel
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="#">Security</a>
+            </li>
+
+            <li>
+                <a href="#" class="active">
+                    Active Sessions
+                </a>
+            </li>
+
+            <li>
+                <a href="#">Two-Factor Authentication</a>
+            </li>
+
+            <li>
+                <a href="#">Audit Log</a>
+            </li>
+
+            <li>
+                <a href="#">Settings</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <div class="header">
+
+            <div>
+
+                <h1>
+                    Active Sessions
+                </h1>
+
+                <p>
+                    Manage devices currently signed in to your account.
+                </p>
+
+            </div>
+
+            <button
+                class="logout-all"
+                onclick="logoutAll()">
+
+                Sign Out All Devices
+
+            </button>
+
+        </div>
+
+
+        <!-- Current Session -->
+
+        <div class="current-session">
+
+            <h2>
+                🟢 Current Session
+            </h2>
+
+            <p>
+                You are currently signed in from this device.
+                This session cannot be revoked from this page.
+            </p>
+
+        </div>
+
+
+        <!-- Device List -->
+
+        <div class="card">
+
+            <h2>
+                Your Devices
+            </h2>
+
+
+            <div
+                class="session"
+                id="session1">
+
+                <div class="device-info">
+
+                    <div class="device-icon">
+                        💻
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Windows PC
+                        </h3>
+
+                        <p>
+                            Chrome · Windows 11
+                            <br>
+                            New York, United States
+                            <br>
+                            Last active: Just now
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="session-actions">
+
+                    <span class="active-badge">
+                        Current
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="session"
+                id="session2">
+
+                <div class="device-info">
+
+                    <div class="device-icon">
+                        📱
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Android Phone
+                        </h3>
+
+                        <p>
+                            Chrome Mobile · Android
+                            <br>
+                            Chennai, India
+                            <br>
+                            Last active: 15 minutes ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="session-actions">
+
+                    <span class="active-badge">
+                        Active
+                    </span>
+
+                    <button
+                        class="revoke-btn"
+                        onclick="revokeSession('session2')">
+
+                        Revoke
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="session"
+                id="session3">
+
+                <div class="device-info">
+
+                    <div class="device-icon">
+                        🍎
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            iPhone
+                        </h3>
+
+                        <p>
+                            Safari · iOS
+                            <br>
+                            Mumbai, India
+                            <br>
+                            Last active: 2 hours ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="session-actions">
+
+                    <span class="active-badge">
+                        Active
+                    </span>
+
+                    <button
+                        class="revoke-btn"
+                        onclick="revokeSession('session3')">
+
+                        Revoke
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="session"
+                id="session4">
+
+                <div class="device-info">
+
+                    <div class="device-icon">
+                        🖥️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            MacBook Pro
+                        </h3>
+
+                        <p>
+                            Safari · macOS
+                            <br>
+                            Bengaluru, India
+                            <br>
+                            Last active: Yesterday
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="session-actions">
+
+                    <span class="active-badge">
+                        Active
+                    </span>
+
+                    <button
+                        class="revoke-btn"
+                        onclick="revokeSession('session4')">
+
+                        Revoke
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    function revokeSession(sessionId) {
+
+        const confirmed = confirm(
+            "Are you sure you want to revoke this session?"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const session =
+            document.getElementById(sessionId);
+
+        session.remove();
+
+        alert(
+            "The selected session has been revoked."
+        );
+
+    }
+
+
+    function logoutAll() {
+
+        const confirmed = confirm(
+            "Sign out all other devices?"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const sessions =
+            document.querySelectorAll(".session");
+
+        sessions.forEach(function(session) {
+
+            if (
+                !session
+                    .querySelector(".active-badge")
+                    .innerText
+                    .includes("Current")
+            ) {
+                session.remove();
+            }
+
+        });
+
+        alert(
+            "All other devices have been signed out."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

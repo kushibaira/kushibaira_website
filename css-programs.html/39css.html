@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 39 - Mobile Sidebar Navigation Drawer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .header {
+            background-color: #1e293b;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu-button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background-color: #1e293b;
+            padding: 25px 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar:target {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 14px 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .sidebar a:hover {
+            background-color: #334155;
+            color: white;
+        }
+
+        .close-button {
+            display: block;
+            text-align: right;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .content h1 {
+            color: #1e293b;
+            font-size: 40px;
+        }
+
+        .content p {
+            color: #64748b;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        @media (min-width: 700px) {
+            .menu-button {
+                display: none;
+            }
+
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding: 15px 30px;
+                display: flex;
+                align-items: center;
+                gap: 25px;
+            }
+
+            .sidebar h2 {
+                margin: 0;
+            }
+
+            .sidebar a {
+                display: inline-block;
+                margin: 0;
+            }
+
+            .close-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+        <a href="#sidebar">
+            <button class="menu-button">
+                ☰ Menu
+            </button>
+        </a>
+
+    </header>
+
+
+    <aside class="sidebar" id="sidebar">
+
+        <a href="#" class="close-button">
+            ×
+        </a>
+
+        <h2>CloudFlow</h2>
+
+        <a href="#">Home</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Projects</a>
+        <a href="#">Tasks</a>
+        <a href="#">Analytics</a>
+        <a href="#">Settings</a>
+
+    </aside>
+
+
+    <main class="content">
+
+        <h1>Welcome to CloudFlow</h1>
+
+        <p>
+            This page demonstrates a mobile sidebar navigation drawer.
+            Click the Menu button to open the navigation drawer.
+        </p>
+
+    </main>
+
+</body>
+
+</html>

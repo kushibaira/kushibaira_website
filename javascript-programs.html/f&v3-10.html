@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Date of Birth Validation</h1>
+
+    <input type="date" id="dob">
+    <button onclick="validateDOB()">Validate</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validateDOB() {
+            let dob = document.getElementById("dob").value;
+
+            if (dob === "") {
+                document.getElementById("message").textContent =
+                    "Please select your date of birth.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Date of birth is valid.";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dropdown Validation</h1>
+
+    <select id="country">
+        <option value="">Select Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+    </select>
+
+    <button onclick="validateCountry()">Submit</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validateCountry() {
+            let country = document.getElementById("country").value;
+
+            if (country === "") {
+                document.getElementById("message").textContent =
+                    "Please select a country.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Selected: " + country;
+            }
+        }
+    </script>
+
+</body>
+</html>

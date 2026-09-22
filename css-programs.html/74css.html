@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error-State Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .error-state {
+            padding: 40px 25px;
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+        }
+
+        .error-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: #fee2e2;
+            color: #dc2626;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .error-state h2 {
+            color: #991b1b;
+            margin-bottom: 12px;
+        }
+
+        .error-state p {
+            max-width: 520px;
+            margin: 0 auto 25px;
+            color: #7f1d1d;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #dc2626;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .button:hover {
+            background-color: #b91c1c;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-left: 8px;
+            background-color: white;
+            color: #334155;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .secondary-button:hover {
+            background-color: #f1f5f9;
+        }
+
+        .error-details {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            .secondary-button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .error-state {
+                padding: 30px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Error-State Component</h1>
+
+        <p class="description">
+            An error-state component informs users when something
+            goes wrong and provides options to recover.
+        </p>
+
+        <div class="error-state">
+
+            <div class="error-icon">
+                !
+            </div>
+
+            <h2>Something Went Wrong</h2>
+
+            <p>
+                We could not complete your request. Please try again
+                or return to the previous page.
+            </p>
+
+            <a href="#" class="button">
+                Try Again
+            </a>
+
+            <a href="#" class="secondary-button">
+                Go Back
+            </a>
+
+            <div class="error-details">
+                Error Code: 500 | Please try again later.
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

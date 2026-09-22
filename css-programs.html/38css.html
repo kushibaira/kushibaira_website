@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 38 - Responsive SaaS Navigation Menu</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .menu a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login {
+            color: white;
+            text-decoration: none;
+            padding: 9px 15px;
+        }
+
+        .signup {
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 6px;
+        }
+
+        .signup:hover {
+            background-color: #1d4ed8;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .navbar {
+                align-items: center;
+            }
+
+            .menu {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">About</a>
+        </div>
+
+        <div class="buttons">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="signup">Sign Up</a>
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <h1>Simple SaaS Solution</h1>
+
+        <p>
+            CloudFlow helps teams manage their projects,
+            tasks, and business activities from one simple platform.
+        </p>
+
+    </section>
+
+</body>
+
+</html>

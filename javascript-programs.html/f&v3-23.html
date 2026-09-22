@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Regex Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Password Regex Validation</h1>
+
+    <input type="password" id="password"
+           placeholder="Enter password">
+
+    <button onclick="validatePassword()">Validate</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+
+            let pattern = /^(?=.*[A-Za-z])(?=.*[0-9]).{6,}$/;
+
+            if (pattern.test(password)) {
+                document.getElementById("message").textContent =
+                    "Valid password.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Password must have at least 6 characters and contain letters and numbers.";
+            }
+        }
+    </script>
+
+</body>
+</html>

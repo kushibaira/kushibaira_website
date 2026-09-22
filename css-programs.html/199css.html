@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing Plan Comparison</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    header p {
+      color: #6b7280;
+      font-size: 16px;
+    }
+
+    .billing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .billing-toggle span {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .toggle {
+      width: 54px;
+      height: 28px;
+      background: #2563eb;
+      border-radius: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .toggle-circle {
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 4px;
+      transition: 0.3s;
+    }
+
+    .toggle.yearly .toggle-circle {
+      left: 28px;
+    }
+
+    .comparison-wrapper {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 850px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 18px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      color: #111827;
+      font-size: 17px;
+    }
+
+    td:first-child,
+    th:first-child {
+      text-align: left;
+      width: 240px;
+    }
+
+    .plan {
+      position: relative;
+      padding: 25px 15px;
+    }
+
+    .plan h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .plan p {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .price small {
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: normal;
+    }
+
+    .popular {
+      background: #eff6ff;
+      border-top: 4px solid #2563eb;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .feature-name {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .check {
+      color: #16a34a;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .cross {
+      color: #dc2626;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .value {
+      color: #4b5563;
+    }
+
+    .choose-btn {
+      border: none;
+      padding: 11px 22px;
+      border-radius: 7px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .choose-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .secondary-btn {
+      background: #111827;
+    }
+
+    .secondary-btn:hover {
+      background: #374151;
+    }
+
+    .section-title {
+      background: #f3f4f6;
+      font-weight: bold;
+      color: #111827;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .note {
+      text-align: center;
+      margin-top: 20px;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      .comparison-wrapper {
+        border-radius: 10px;
+      }
+
+      th,
+      td {
+        padding: 14px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>Compare Pricing Plans</h1>
+      <p>Choose the plan that best fits your needs.</p>
+
+      <div class="billing-toggle">
+        <span>Monthly</span>
+
+        <div class="toggle" id="billingToggle">
+          <div class="toggle-circle"></div>
+        </div>
+
+        <span>Yearly</span>
+      </div>
+    </header>
+
+    <div class="comparison-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Features</th>
+
+            <th>
+              <div class="plan">
+                <h2>Starter</h2>
+                <p>For individuals</p>
+
+                <div class="price">
+                  $<span class="starter-price">9</span>
+                  <small>/month</small>
+                </div>
+              </div>
+            </th>
+
+            <th class="popular">
+              <div class="plan">
+                <span class="badge">MOST POPULAR</span>
+
+                <h2>Professional</h2>
+                <p>For growing teams</p>
+
+                <div class="price">
+                  $<span class="pro-price">29</span>
+                  <small>/month</small>
+                </div>
+              </div>
+            </th>
+
+            <th>
+              <div class="plan">
+                <h2>Enterprise</h2>
+                <p>For large organizations</p>
+
+                <div class="price">
+                  $<span class="enterprise-price">79</span>
+                  <small>/month</small>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td class="section-title" colspan="4">
+              General
+            </td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Users</td>
+            <td class="value">1 User</td>
+            <td class="value">10 Users</td>
+            <td class="value">Unlimited</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Projects</td>
+            <td class="value">5</td>
+            <td class="value">50</td>
+            <td class="value">Unlimited</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Storage</td>
+            <td class="value">5 GB</td>
+            <td class="value">100 GB</td>
+            <td class="value">1 TB</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Analytics</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="section-title" colspan="4">
+              Integrations & API
+            </td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">API Access</td>
+            <td class="cross">✕</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Third-party Integrations</td>
+            <td class="value">3</td>
+            <td class="value">20</td>
+            <td class="value">Unlimited</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Webhooks</td>
+            <td class="cross">✕</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="section-title" colspan="4">
+              Security
+            </td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Two-Factor Authentication</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Single Sign-On</td>
+            <td class="cross">✕</td>
+            <td class="cross">✕</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Advanced Security</td>
+            <td class="cross">✕</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="section-title" colspan="4">
+              Support
+            </td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Email Support</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Priority Support</td>
+            <td class="cross">✕</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Dedicated Account Manager</td>
+            <td class="cross">✕</td>
+            <td class="cross">✕</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr>
+            <td class="section-title" colspan="4">
+              Select Your Plan
+            </td>
+          </tr>
+
+          <tr>
+            <td class="feature-name">Subscription</td>
+
+            <td>
+              <button class="choose-btn" onclick="choosePlan('Starter')">
+                Choose Starter
+              </button>
+            </td>
+
+            <td class="popular">
+              <button class="choose-btn" onclick="choosePlan('Professional')">
+                Choose Professional
+              </button>
+            </td>
+
+            <td>
+              <button
+                class="choose-btn secondary-btn"
+                onclick="choosePlan('Enterprise')">
+                Choose Enterprise
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <p class="note">
+      Prices are shown for demonstration purposes. Yearly billing includes a
+      discounted monthly equivalent.
+    </p>
+
+  </div>
+
+  <script>
+
+    const billingToggle = document.getElementById("billingToggle");
+
+    const starterPrice = document.querySelector(".starter-price");
+    const proPrice = document.querySelector(".pro-price");
+    const enterprisePrice = document.querySelector(".enterprise-price");
+
+    let yearly = false;
+
+    billingToggle.addEventListener("click", function () {
+
+      yearly = !yearly;
+
+      billingToggle.classList.toggle("yearly");
+
+      if (yearly) {
+
+        // Discounted yearly pricing
+        starterPrice.textContent = "7";
+        proPrice.textContent = "23";
+        enterprisePrice.textContent = "63";
+
+      } else {
+
+        starterPrice.textContent = "9";
+        proPrice.textContent = "29";
+        enterprisePrice.textContent = "79";
+
+      }
+
+    });
+
+
+    function choosePlan(plan) {
+
+      alert(
+        "You selected the " +
+        plan +
+        " plan."
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Data Table</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #60a5fa;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1250px;
+      margin: 35px auto;
+    }
+
+    .page-heading {
+      margin-bottom: 25px;
+    }
+
+    .page-heading h1 {
+      font-size: 30px;
+      margin-bottom: 7px;
+    }
+
+    .page-heading p {
+      color: #6b7280;
+    }
+
+    .table-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .table-toolbar {
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .table-toolbar h2 {
+      font-size: 19px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search {
+      width: 220px;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: #2563eb;
+    }
+
+    .button {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .secondary {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 800px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #f9fafb;
+      color: #6b7280;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    td {
+      font-size: 14px;
+    }
+
+    tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .customer {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #dbeafe;
+      color: #1d4ed8;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: bold;
+    }
+
+    .customer-name {
+      font-weight: bold;
+    }
+
+    .customer-email {
+      color: #9ca3af;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .active-status {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .pending-status {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .inactive-status {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    .actions {
+      display: flex;
+      gap: 7px;
+    }
+
+    .action-btn {
+      border: 1px solid #d1d5db;
+      background: white;
+      padding: 7px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .action-btn:hover {
+      background: #f3f4f6;
+    }
+
+    .pagination {
+      padding: 18px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .pagination-info {
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    .page-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .page-btn {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .page-btn:hover,
+    .page-btn.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    .footer {
+      margin-top: 35px;
+      padding: 25px 6%;
+      background: #111827;
+      color: #9ca3af;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: 94%;
+        margin: 22px auto;
+      }
+
+      .page-heading h1 {
+        font-size: 25px;
+      }
+
+      .table-toolbar {
+        align-items: stretch;
+      }
+
+      .toolbar-actions {
+        width: 100%;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .button {
+        flex: 1;
+      }
+
+      .pagination {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="logo">
+      Data<span>Flow</span>
+    </div>
+
+    <nav class="nav">
+      <a href="#">Dashboard</a>
+      <a href="#" class="active">Customers</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+
+  </header>
+
+  <main class="container">
+
+    <section class="page-heading">
+      <h1>Customer Management</h1>
+      <p>
+        View and manage customer information in a responsive data table.
+      </p>
+    </section>
+
+    <section class="table-card">
+
+      <div class="table-toolbar">
+
+        <h2>Customers</h2>
+
+        <div class="toolbar-actions">
+
+          <input
+            type="search"
+            id="searchInput"
+            class="search"
+            placeholder="Search customers..."
+          >
+
+          <button class="button secondary" id="filterButton">
+            Filter
+          </button>
+
+          <button class="button primary" id="addButton">
+            + Add Customer
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Company</th>
+              <th>Plan</th>
+              <th>Status</th>
+              <th>Joined</th>
+              <th>Revenue</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="customerTable">
+
+            <tr>
+              <td>
+                <div class="customer">
+                  <div class="avatar">AM</div>
+                  <div>
+                    <div class="customer-name">Alex Morgan</div>
+                    <div class="customer-email">alex@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>Acme Inc.</td>
+              <td>Professional</td>
+              <td>
+                <span class="status active-status">Active</span>
+              </td>
+              <td>Jan 12, 2026</td>
+              <td>$2,450</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="customer">
+                  <div class="avatar">JS</div>
+                  <div>
+                    <div class="customer-name">Jordan Smith</div>
+                    <div class="customer-email">jordan@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>Tech Solutions</td>
+              <td>Enterprise</td>
+              <td>
+                <span class="status active-status">Active</span>
+              </td>
+              <td>Feb 04, 2026</td>
+              <td>$5,890</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="customer">
+                  <div class="avatar">ER</div>
+                  <div>
+                    <div class="customer-name">Emily Roberts</div>
+                    <div class="customer-email">emily@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>Bright Labs</td>
+              <td>Starter</td>
+              <td>
+                <span class="status pending-status">Pending</span>
+              </td>
+              <td>Mar 18, 2026</td>
+              <td>$890</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="customer">
+                  <div class="avatar">DW</div>
+                  <div>
+                    <div class="customer-name">Daniel Wilson</div>
+                    <div class="customer-email">daniel@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>Cloud Works</td>
+              <td>Professional</td>
+              <td>
+                <span class="status active-status">Active</span>
+              </td>
+              <td>Apr 02, 2026</td>
+              <td>$3,210</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="customer">
+                  <div class="avatar">SL</div>
+                  <div>
+                    <div class="customer-name">Sophia Lee</div>
+                    <div class="customer-email">sophia@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>Nova Systems</td>
+              <td>Enterprise</td>
+              <td>
+                <span class="status inactive-status">Inactive</span>
+              </td>
+              <td>May 15, 2026</td>
+              <td>$1,750</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="customer">
+                  <div class="avatar">MB</div>
+                  <div>
+                    <div class="customer-name">Michael Brown</div>
+                    <div class="customer-email">michael@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>Digital Works</td>
+              <td>Professional</td>
+              <td>
+                <span class="status active-status">Active</span>
+              </td>
+              <td>Jun 21, 2026</td>
+              <td>$2,980</td>
+              <td>
+                <div class="actions">
+                  <button class="action-btn">View</button>
+                  <button class="action-btn">Edit</button>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="pagination">
+
+        <div class="pagination-info">
+          Showing 1–6 of 24 customers
+        </div>
+
+        <div class="page-buttons">
+
+          <button class="page-btn">‹</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <button class="page-btn">›</button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div>
+      © 2026 DataFlow
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Documentation</a>
+      <a href="#">Support</a>
+      <a href="#">Privacy</a>
+    </div>
+
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const table = document.getElementById("customerTable");
+    const rows = table.querySelectorAll("tr");
+
+    searchInput.addEventListener("input", function () {
+
+      const searchTerm = this.value.toLowerCase();
+
+      rows.forEach(row => {
+
+        const text = row.textContent.toLowerCase();
+
+        if (text.includes(searchTerm)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+
+      });
+
+    });
+
+    document.getElementById("filterButton").addEventListener("click", () => {
+      alert("Filter options can be added here.");
+    });
+
+    document.getElementById("addButton").addEventListener("click", () => {
+      alert("Add Customer form can be opened here.");
+    });
+
+    document.querySelectorAll(".action-btn").forEach(button => {
+
+      button.addEventListener("click", function () {
+
+        const action = this.textContent;
+        const customer =
+          this.closest("tr")
+              .querySelector(".customer-name")
+              .textContent;
+
+        alert(action + " customer: " + customer);
+
+      });
+
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Event</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Change Event</h1>
+
+    <select onchange="showChoice(this.value)">
+        <option value="">Select a color</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+    </select>
+
+    <p id="result"></p>
+
+    <script>
+        function showChoice(value) {
+            document.getElementById("result").textContent =
+                "You selected: " + value;
+        }
+    </script>
+
+</body>
+</html>

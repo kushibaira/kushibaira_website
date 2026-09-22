@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 7 - Fibonacci</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Fibonacci Series</h1>
+
+    <input type="number" id="number" placeholder="Number of terms">
+    <button onclick="fibonacci()">Generate</button>
+
+    <p id="result"></p>
+
+    <script>
+        function fibonacci() {
+            let n = Number(document.getElementById("number").value);
+            let a = 0;
+            let b = 1;
+            let result = "";
+
+            for (let i = 0; i < n; i++) {
+                result += a + " ";
+                let next = a + b;
+                a = b;
+                b = next;
+            }
+
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+
+</body>
+</html>

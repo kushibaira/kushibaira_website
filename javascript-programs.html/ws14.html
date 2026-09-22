@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Switcher</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+            transition: 0.3s;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+
+        .dark {
+            background-color: #222;
+            color: white;
+        }
+
+        .light {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dark / Light Theme</h1>
+
+    <button onclick="setTheme('light')">
+        Light Mode
+    </button>
+
+    <button onclick="setTheme('dark')">
+        Dark Mode
+    </button>
+
+    <script>
+        function setTheme(theme) {
+            document.body.className = theme;
+
+            localStorage.setItem("theme", theme);
+        }
+
+        window.onload = function() {
+            let theme = localStorage.getItem("theme");
+
+            if (theme) {
+                document.body.className = theme;
+            }
+        };
+    </script>
+
+</body>
+</html>

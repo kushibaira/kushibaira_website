@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toast Notification Components</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #334155;
+            margin-bottom: 18px;
+        }
+
+        .toast-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .toast-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-content h3 {
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .toast-content p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .close {
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .success-toast {
+            background-color: #f0fdf4;
+            border-color: #86efac;
+            color: #166534;
+        }
+
+        .success-toast .toast-icon {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .info-toast {
+            background-color: #eff6ff;
+            border-color: #93c5fd;
+            color: #1e40af;
+        }
+
+        .info-toast .toast-icon {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .warning-toast {
+            background-color: #fffbeb;
+            border-color: #fcd34d;
+            color: #92400e;
+        }
+
+        .warning-toast .toast-icon {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .error-toast {
+            background-color: #fef2f2;
+            border-color: #fca5a5;
+            color: #991b1b;
+        }
+
+        .error-toast .toast-icon {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .bottom-toast {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #172554;
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bottom-toast .toast-content h3 {
+            color: white;
+        }
+
+        .bottom-toast .toast-content p {
+            color: #cbd5e1;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .toast {
+                padding: 14px;
+            }
+
+            .close {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Toast Notification Components</h1>
+
+        <p class="description">
+            Different types of toast notifications used to display
+            short messages and updates to users.
+        </p>
+
+        <div class="section">
+
+            <h2>Toast Examples</h2>
+
+            <div class="toast-container">
+
+                <div class="toast success-toast">
+
+                    <div class="toast-icon">
+                        ✓
+                    </div>
+
+                    <div class="toast-content">
+                        <h3>Success</h3>
+                        <p>
+                            Your changes have been saved successfully.
+                        </p>
+                    </div>
+
+                    <span class="close">
+                        ×
+                    </span>
+
+                </div>
+
+                <div class="toast info-toast">
+
+                    <div class="toast-icon">
+                        i
+                    </div>
+
+                    <div class="toast-content">
+                        <h3>Information</h3>
+                        <p>
+                            A new update is available for your account.
+                        </p>
+                    </div>
+
+                    <span class="close">
+                        ×
+                    </span>
+
+                </div>
+
+                <div class="toast warning-toast">
+
+                    <div class="toast-icon">
+                        !
+                    </div>
+
+                    <div class="toast-content">
+                        <h3>Warning</h3>
+                        <p>
+                            Your storage space is almost full.
+                        </p>
+                    </div>
+
+                    <span class="close">
+                        ×
+                    </span>
+
+                </div>
+
+                <div class="toast error-toast">
+
+                    <div class="toast-icon">
+                        ×
+                    </div>
+
+                    <div class="toast-content">
+                        <h3>Error</h3>
+                        <p>
+                            Your request could not be completed.
+                        </p>
+                    </div>
+
+                    <span class="close">
+                        ×
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bottom-toast">
+
+            <div class="toast-icon">
+                ✓
+            </div>
+
+            <div class="toast-content">
+                <h3>File Uploaded</h3>
+                <p>
+                    Your file has been uploaded successfully.
+                </p>
+            </div>
+
+            <span class="close">
+                ×
+            </span>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

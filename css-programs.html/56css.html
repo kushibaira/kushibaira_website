@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testimonial Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #222;
+        }
+
+        .navbar {
+            background-color: #172554;
+            color: white;
+            padding: 18px 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 35px;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .quote {
+            font-size: 42px;
+            color: #2563eb;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid #eee;
+            padding-top: 18px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+
+        .profile h2 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .profile p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        @media (max-width: 800px) {
+            .testimonials {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar {
+                padding: 15px 20px;
+                font-size: 20px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        CloudFlow
+    </div>
+
+    <div class="container">
+
+        <h1>Customer Testimonials</h1>
+
+        <p class="description">
+            What our customers say about our service
+        </p>
+
+        <div class="testimonials">
+
+            <div class="testimonial">
+
+                <div class="quote">“</div>
+
+                <p class="message">
+                    CloudFlow has made managing our projects much easier.
+                    The dashboard is simple, fast, and very useful.
+                </p>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <div class="profile">
+                    <div class="avatar">A</div>
+
+                    <div>
+                        <h2>Arun Kumar</h2>
+                        <p>Project Manager</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="testimonial">
+
+                <div class="quote">“</div>
+
+                <p class="message">
+                    The analytics features helped our team understand
+                    our business performance and make better decisions.
+                </p>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <div class="profile">
+                    <div class="avatar">P</div>
+
+                    <div>
+                        <h2>Priya Sharma</h2>
+                        <p>Business Analyst</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="testimonial">
+
+                <div class="quote">“</div>
+
+                <p class="message">
+                    I really like the clean interface and responsive design.
+                    It works perfectly on both desktop and mobile devices.
+                </p>
+
+                <div class="stars">
+                    ★★★★☆
+                </div>
+
+                <div class="profile">
+                    <div class="avatar">R</div>
+
+                    <div>
+                        <h2>Rahul Singh</h2>
+                        <p>Web Developer</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

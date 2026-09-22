@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keydown Event</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Keydown Event</h1>
+
+    <input type="text" onkeydown="keyDown()" placeholder="Press any key">
+
+    <p id="message"></p>
+
+    <script>
+        function keyDown() {
+            document.getElementById("message").textContent =
+                "A key was pressed!";
+        }
+    </script>
+
+</body>
+</html>

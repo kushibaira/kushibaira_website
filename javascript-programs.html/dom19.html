@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Dropdown Menu</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dynamic Dropdown Menu</h1>
+
+    <select id="courseMenu"></select>
+
+    <p id="result"></p>
+
+    <script>
+
+        let courses = ["BCA", "BSc", "BCom", "BA", "BBA"];
+
+        let menu = document.getElementById("courseMenu");
+
+        courses.forEach(function(course) {
+
+            let option = document.createElement("option");
+
+            option.textContent = course;
+            option.value = course;
+
+            menu.appendChild(option);
+        });
+
+        menu.addEventListener("change", function() {
+
+            document.getElementById("result").textContent =
+                "Selected Course: " + menu.value;
+
+        });
+
+    </script>
+
+</body>
+</html>

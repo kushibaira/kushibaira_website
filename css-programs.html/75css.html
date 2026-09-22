@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success-State Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .success-state {
+            padding: 40px 25px;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: #dcfce7;
+            color: #16a34a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .success-state h2 {
+            color: #166534;
+            margin-bottom: 12px;
+        }
+
+        .success-state p {
+            max-width: 520px;
+            margin: 0 auto 25px;
+            color: #166534;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #16a34a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .button:hover {
+            background-color: #15803d;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-left: 8px;
+            background-color: white;
+            color: #334155;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .secondary-button:hover {
+            background-color: #f1f5f9;
+        }
+
+        .success-details {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            .secondary-button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .success-state {
+                padding: 30px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Success-State Component</h1>
+
+        <p class="description">
+            A success-state component informs users that an action
+            has been completed successfully.
+        </p>
+
+        <div class="success-state">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>Action Completed Successfully</h2>
+
+            <p>
+                Your request has been completed successfully.
+                Everything has been saved and is ready to use.
+            </p>
+
+            <a href="#" class="button">
+                Continue
+            </a>
+
+            <a href="#" class="secondary-button">
+                View Details
+            </a>
+
+            <div class="success-details">
+                Transaction completed successfully.
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

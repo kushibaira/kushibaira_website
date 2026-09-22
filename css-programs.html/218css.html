@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Charts & Data Visualization</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f4f6fa;
+      color: #1f2937;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .header h1 {
+      font-size: 22px;
+    }
+
+    .header p {
+      color: #9ca3af;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .header button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1400px, 94%);
+      margin: 30px auto;
+    }
+
+    .controls {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .controls label {
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .controls select {
+      margin-left: 8px;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: white;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .summary-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .summary-card small {
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    .summary-card h2 {
+      margin-top: 8px;
+      font-size: 25px;
+    }
+
+    .summary-card span {
+      display: block;
+      margin-top: 6px;
+      color: #16a34a;
+      font-size: 12px;
+    }
+
+    .charts {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .chart-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 22px;
+      min-width: 0;
+    }
+
+    .chart-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .chart-title h2 {
+      font-size: 17px;
+    }
+
+    .chart-title span {
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    /* Line chart */
+    .line-chart {
+      position: relative;
+      height: 300px;
+      border-left: 1px solid #d1d5db;
+      border-bottom: 1px solid #d1d5db;
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 24%,
+          #e5e7eb 25%,
+          transparent 26%,
+          transparent 49%,
+          #e5e7eb 50%,
+          transparent 51%,
+          transparent 74%,
+          #e5e7eb 75%,
+          transparent 76%
+        );
+    }
+
+    .line-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .line-path {
+      fill: none;
+      stroke: #2563eb;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .line-point {
+      fill: white;
+      stroke: #2563eb;
+      stroke-width: 3;
+      cursor: pointer;
+    }
+
+    .line-point:hover {
+      r: 7;
+    }
+
+    .x-labels {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-top: 9px;
+      color: #9ca3af;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* Doughnut chart */
+    .donut-wrapper {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .donut {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          #2563eb 0 42%,
+          #60a5fa 42% 68%,
+          #93c5fd 68% 84%,
+          #dbeafe 84% 100%
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .donut::after {
+      content: "";
+      width: 105px;
+      height: 105px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .legend {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .legend-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .blue {
+      background: #2563eb;
+    }
+
+    .light-blue {
+      background: #60a5fa;
+    }
+
+    .sky {
+      background: #93c5fd;
+    }
+
+    .pale {
+      background: #dbeafe;
+    }
+
+    /* Bar chart */
+    .bar-chart {
+      height: 280px;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      border-bottom: 1px solid #d1d5db;
+      padding: 15px 10px 0;
+    }
+
+    .bar-group {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .bar {
+      width: 100%;
+      background: #3b82f6;
+      border-radius: 5px 5px 0 0;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .bar:hover {
+      opacity: 0.65;
+    }
+
+    .bar-labels {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .bar-labels span {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* Area chart */
+    .area-chart {
+      height: 280px;
+      border-bottom: 1px solid #d1d5db;
+      border-left: 1px solid #d1d5db;
+      position: relative;
+    }
+
+    .area-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .area-fill {
+      fill: #dbeafe;
+    }
+
+    .area-line {
+      fill: none;
+      stroke: #2563eb;
+      stroke-width: 3;
+    }
+
+    /* Data table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 13px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    td:last-child {
+      font-weight: bold;
+    }
+
+    .bottom-chart {
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 35px;
+      background: #111827;
+      color: #9ca3af;
+      padding: 20px 30px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .charts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding: 16px 18px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .container {
+        width: 92%;
+        margin: 20px auto;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        align-items: stretch;
+      }
+
+      .controls label {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .controls select {
+        margin-left: 0;
+      }
+
+      .chart-card {
+        padding: 16px;
+      }
+
+      .line-chart,
+      .donut-wrapper,
+      .area-chart {
+        height: 230px;
+      }
+
+      .bar-chart {
+        height: 230px;
+        gap: 7px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .bar-labels {
+        gap: 7px;
+      }
+
+      .x-labels {
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div>
+      <h1>Data Visualization</h1>
+      <p>Responsive charts and analytics overview</p>
+    </div>
+
+    <button id="downloadBtn">
+      Export Data
+    </button>
+  </header>
+
+  <main class="container">
+
+    <section class="controls">
+
+      <label>
+        Date Range
+        <select id="rangeSelect">
+          <option>Last 7 Days</option>
+          <option>Last 30 Days</option>
+          <option>Last 90 Days</option>
+          <option>This Year</option>
+        </select>
+      </label>
+
+      <label>
+        Metric
+        <select id="metricSelect">
+          <option>Revenue</option>
+          <option>Visitors</option>
+          <option>Orders</option>
+        </select>
+      </label>
+
+    </section>
+
+    <!-- Summary -->
+    <section class="summary">
+
+      <div class="summary-card">
+        <small>Total Revenue</small>
+        <h2>$84,250</h2>
+        <span>↑ 12.4%</span>
+      </div>
+
+      <div class="summary-card">
+        <small>Total Visitors</small>
+        <h2>128.5K</h2>
+        <span>↑ 8.7%</span>
+      </div>
+
+      <div class="summary-card">
+        <small>Total Orders</small>
+        <h2>4,820</h2>
+        <span>↑ 15.2%</span>
+      </div>
+
+      <div class="summary-card">
+        <small>Conversion Rate</small>
+        <h2>7.84%</h2>
+        <span>↑ 2.1%</span>
+      </div>
+
+    </section>
+
+    <section class="charts">
+
+      <!-- Line Chart -->
+      <article class="chart-card">
+
+        <div class="chart-title">
+          <h2>Revenue Trend</h2>
+          <span id="selectedRange">Last 7 Days</span>
+        </div>
+
+        <div class="line-chart">
+
+          <svg
+            class="line-svg"
+            viewBox="0 0 700 300"
+            preserveAspectRatio="none"
+          >
+
+            <polyline
+              class="line-path"
+              points="
+                0,230
+                115,190
+                230,210
+                345,140
+                460,165
+                575,85
+                700,110
+              "
+            />
+
+            <circle
+              class="line-point"
+              cx="0"
+              cy="230"
+              r="5"
+              data-value="$42,000"
+            />
+
+            <circle
+              class="line-point"
+              cx="115"
+              cy="190"
+              r="5"
+              data-value="$48,500"
+            />
+
+            <circle
+              class="line-point"
+              cx="230"
+              cy="210"
+              r="5"
+              data-value="$46,200"
+            />
+
+            <circle
+              class="line-point"
+              cx="345"
+              cy="140"
+              r="5"
+              data-value="$57,800"
+            />
+
+            <circle
+              class="line-point"
+              cx="460"
+              cy="165"
+              r="5"
+              data-value="$53,400"
+            />
+
+            <circle
+              class="line-point"
+              cx="575"
+              cy="85"
+              r="5"
+              data-value="$67,900"
+            />
+
+            <circle
+              class="line-point"
+              cx="700"
+              cy="110"
+              r="5"
+              data-value="$63,500"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="x-labels">
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+          <span>Sun</span>
+        </div>
+
+      </article>
+
+      <!-- Donut Chart -->
+      <article class="chart-card">
+
+        <div class="chart-title">
+          <h2>Traffic Sources</h2>
+          <span>Visitors</span>
+        </div>
+
+        <div class="donut-wrapper">
+          <div class="donut"></div>
+        </div>
+
+        <div class="legend">
+
+          <div class="legend-item">
+            <div class="legend-name">
+              <span class="legend-dot blue"></span>
+              Organic Search
+            </div>
+            <strong>42%</strong>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-name">
+              <span class="legend-dot light-blue"></span>
+              Direct
+            </div>
+            <strong>26%</strong>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-name">
+              <span class="legend-dot sky"></span>
+              Social
+            </div>
+            <strong>16%</strong>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-name">
+              <span class="legend-dot pale"></span>
+              Referral
+            </div>
+            <strong>16%</strong>
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- Bar Chart -->
+    <section class="bottom-chart">
+
+      <article class="chart-card">
+
+        <div class="chart-title">
+          <h2>Monthly Performance</h2>
+          <span>Orders</span>
+        </div>
+
+        <div class="bar-chart">
+
+          <div class="bar-group">
+            <div
+              class="bar"
+              style="height: 45%;"
+              data-value="January: 1,850 orders"
+            ></div>
+          </div>
+
+          <div class="bar-group">
+            <div
+              class="bar"
+              style="height: 55%;"
+              data-value="February: 2,100 orders"
+            ></div>
+          </div>
+
+          <div class="bar-group">
+            <div
+              class="bar"
+              style="height: 48%;"
+              data-value="March: 1,980 orders"
+            ></div>
+          </div>
+
+          <div class="bar-group">
+            <div
+              class="bar"
+              style="height: 68%;"
+              data-value="April: 2,650 orders"
+            ></div>
+          </div>
+
+          <div class="bar-group">
+            <div
+              class="bar"
+              style="height: 73%;"
+              data-value="May: 2,920 orders"
+            ></div>
+          </div>
+
+          <div class="bar-group">
+            <div
+              class="bar"
+              style="height: 88%;"
+              data-value="June: 3,420 orders"
+            ></div>
+          </div>
+
+        </div>
+
+        <div class="bar-labels">
+          <span>Jan</span>
+          <span>Feb</span>
+          <span>Mar</span>
+          <span>Apr</span>
+          <span>May</span>
+          <span>Jun</span>
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- Area Chart -->
+    <section class="bottom-chart">
+
+      <article class="chart-card">
+
+        <div class="chart-title">
+          <h2>Active Users</h2>
+          <span>Daily activity</span>
+        </div>
+
+        <div class="area-chart">
+
+          <svg
+            class="area-svg"
+            viewBox="0 0 700 280"
+            preserveAspectRatio="none"
+          >
+
+            <polygon
+              class="area-fill"
+              points="
+                0,220
+                100,180
+                200,195
+                300,125
+                400,145
+                500,90
+                600,115
+                700,55
+                700,280
+                0,280
+              "
+            />
+
+            <polyline
+              class="area-line"
+              points="
+                0,220
+                100,180
+                200,195
+                300,125
+                400,145
+                500,90
+                600,115
+                700,55
+              "
+            />
+
+          </svg>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- Data Table -->
+    <section class="bottom-chart">
+
+      <article class="chart-card">
+
+        <div class="chart-title">
+          <h2>Detailed Data</h2>
+          <span>Current period</span>
+        </div>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Visitors</th>
+                <th>Orders</th>
+                <th>Revenue</th>
+                <th>Conversion</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>Monday</td>
+                <td>18,420</td>
+                <td>620</td>
+                <td>$9,850</td>
+                <td>3.36%</td>
+              </tr>
+
+              <tr>
+                <td>Tuesday</td>
+                <td>21,360</td>
+                <td>710</td>
+                <td>$11,420</td>
+                <td>3.32%</td>
+              </tr>
+
+              <tr>
+                <td>Wednesday</td>
+                <td>19,850</td>
+                <td>680</td>
+                <td>$10,950</td>
+                <td>3.43%</td>
+              </tr>
+
+              <tr>
+                <td>Thursday</td>
+                <td>23,740</td>
+                <td>820</td>
+                <td>$13,680</td>
+                <td>3.45%</td>
+              </tr>
+
+              <tr>
+                <td>Friday</td>
+                <td>20,640</td>
+                <td>760</td>
+                <td>$12,420</td>
+                <td>3.68%</td>
+              </tr>
+
+              <tr>
+                <td>Saturday</td>
+                <td>13,920</td>
+                <td>590</td>
+                <td>$8,740</td>
+                <td>4.24%</td>
+              </tr>
+
+              <tr>
+                <td>Sunday</td>
+                <td>10,610</td>
+                <td>640</td>
+                <td>$8,190</td>
+                <td>6.03%</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Responsive Charts & Data Visualization Dashboard
+  </footer>
+
+  <script>
+    const rangeSelect =
+      document.getElementById("rangeSelect");
+
+    const selectedRange =
+      document.getElementById("selectedRange");
+
+    rangeSelect.addEventListener("change", function () {
+      selectedRange.textContent = this.value;
+    });
+
+    const metricSelect =
+      document.getElementById("metricSelect");
+
+    metricSelect.addEventListener("change", function () {
+      alert(
+        "Selected metric: " + this.value
+      );
+    });
+
+    document
+      .getElementById("downloadBtn")
+      .addEventListener("click", function () {
+
+        alert(
+          "Your visualization data is ready to export."
+        );
+
+      });
+
+    document
+      .querySelectorAll(".bar")
+      .forEach(function (bar) {
+
+        bar.addEventListener("click", function () {
+
+          alert(
+            this.dataset.value
+          );
+
+        });
+
+      });
+
+    document
+      .querySelectorAll(".line-point")
+      .forEach(function (point) {
+
+        point.addEventListener("click", function () {
+
+          alert(
+            this.dataset.value
+          );
+
+        });
+
+      });
+  </script>
+
+</body>
+</html>

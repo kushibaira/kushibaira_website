@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Element Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        #text {
+            font-size: 22px;
+            margin: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Remove HTML Element</h1>
+
+    <p id="text">This paragraph will be removed.</p>
+
+    <button onclick="removeElement()">Remove Element</button>
+
+    <script>
+
+        function removeElement() {
+            document.getElementById("text").remove();
+        }
+
+    </script>
+
+</body>
+</html>

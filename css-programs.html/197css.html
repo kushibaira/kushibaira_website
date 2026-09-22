@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Log</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 7px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px 15px;
+            color: #d1d5db;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 30px;
+            min-width: 0;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #6b7280;
+        }
+
+        /* Summary cards */
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .summary-card h3 {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .summary-card .number {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* Filters */
+        .filter-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #2563eb;
+        }
+
+        .filter-btn {
+            padding: 10px 17px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Table */
+        .table-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 850px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 14px 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f9fafb;
+            color: #4b5563;
+            font-size: 13px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .event {
+            font-weight: bold;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .details-btn {
+            border: none;
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 7px 11px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .details-btn:hover {
+            background: #e0e7ff;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+        }
+
+        .close {
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+            gap: 20px;
+        }
+
+        .detail-row strong {
+            color: #4b5563;
+        }
+
+        @media (max-width: 1000px) {
+            .summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filters {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .menu li {
+                margin: 0;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            Admin Panel
+        </div>
+
+        <ul class="menu">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="#">Security</a>
+            </li>
+
+            <li>
+                <a href="#">Active Sessions</a>
+            </li>
+
+            <li>
+                <a href="#" class="active">Audit Log</a>
+            </li>
+
+            <li>
+                <a href="#">Developers</a>
+            </li>
+
+            <li>
+                <a href="#">Settings</a>
+            </li>
+        </ul>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <div class="header">
+            <h1>Audit Log</h1>
+
+            <p>
+                Review and monitor activity performed in your application.
+            </p>
+        </div>
+
+
+        <!-- Summary -->
+        <section class="summary">
+
+            <div class="summary-card">
+                <h3>Total Events</h3>
+                <div class="number" id="totalEvents">8</div>
+            </div>
+
+            <div class="summary-card">
+                <h3>Successful</h3>
+                <div class="number" id="successfulEvents">6</div>
+            </div>
+
+            <div class="summary-card">
+                <h3>Warnings</h3>
+                <div class="number" id="warningEvents">1</div>
+            </div>
+
+            <div class="summary-card">
+                <h3>Failed</h3>
+                <div class="number" id="failedEvents">1</div>
+            </div>
+
+        </section>
+
+
+        <!-- Filters -->
+        <section class="filter-card">
+
+            <div class="filters">
+
+                <div class="form-group">
+                    <label for="search">
+                        Search
+                    </label>
+
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search events, users, IP..."
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="eventFilter">
+                        Event
+                    </label>
+
+                    <select id="eventFilter">
+
+                        <option value="all">
+                            All Events
+                        </option>
+
+                        <option value="login">
+                            Login
+                        </option>
+
+                        <option value="logout">
+                            Logout
+                        </option>
+
+                        <option value="password">
+                            Password Change
+                        </option>
+
+                        <option value="settings">
+                            Settings
+                        </option>
+
+                        <option value="api">
+                            API
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="statusFilter">
+                        Status
+                    </label>
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Statuses
+                        </option>
+
+                        <option value="success">
+                            Success
+                        </option>
+
+                        <option value="warning">
+                            Warning
+                        </option>
+
+                        <option value="failed">
+                            Failed
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="dateFilter">
+                        Date
+                    </label>
+
+                    <select id="dateFilter">
+
+                        <option value="all">
+                            All Dates
+                        </option>
+
+                        <option value="today">
+                            Today
+                        </option>
+
+                        <option value="week">
+                            Last 7 Days
+                        </option>
+
+                        <option value="month">
+                            Last 30 Days
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <button
+                    class="filter-btn"
+                    onclick="filterLogs()">
+                    Filter
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Audit Table -->
+        <section class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>User</th>
+                        <th>Event</th>
+                        <th>IP Address</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="auditTable">
+
+                    <tr
+                        data-event="login"
+                        data-status="success">
+
+                        <td>
+                            Sep 17, 2026 10:30 AM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    JD
+                                </div>
+
+                                John Doe
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            User Login
+                        </td>
+
+                        <td>
+                            192.168.1.20
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="password"
+                        data-status="success">
+
+                        <td>
+                            Sep 17, 2026 09:45 AM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    AS
+                                </div>
+
+                                Alice Smith
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            Password Change
+                        </td>
+
+                        <td>
+                            192.168.1.45
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="settings"
+                        data-status="warning">
+
+                        <td>
+                            Sep 17, 2026 09:12 AM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    MJ
+                                </div>
+
+                                Mike Johnson
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            Settings Updated
+                        </td>
+
+                        <td>
+                            10.0.0.25
+                        </td>
+
+                        <td>
+                            <span class="badge warning">
+                                Warning
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="api"
+                        data-status="success">
+
+                        <td>
+                            Sep 16, 2026 06:20 PM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    SR
+                                </div>
+
+                                Sarah Roy
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            API Key Created
+                        </td>
+
+                        <td>
+                            172.16.0.15
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="login"
+                        data-status="failed">
+
+                        <td>
+                            Sep 16, 2026 05:05 PM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    RK
+                                </div>
+
+                                Robert King
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            Login Attempt
+                        </td>
+
+                        <td>
+                            203.0.113.15
+                        </td>
+
+                        <td>
+                            <span class="badge danger">
+                                Failed
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="logout"
+                        data-status="success">
+
+                        <td>
+                            Sep 16, 2026 04:30 PM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    JD
+                                </div>
+
+                                John Doe
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            User Logout
+                        </td>
+
+                        <td>
+                            192.168.1.20
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="api"
+                        data-status="success">
+
+                        <td>
+                            Sep 16, 2026 02:10 PM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    AS
+                                </div>
+
+                                Alice Smith
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            API Key Updated
+                        </td>
+
+                        <td>
+                            192.168.1.45
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-event="settings"
+                        data-status="success">
+
+                        <td>
+                            Sep 15, 2026 11:15 AM
+                        </td>
+
+                        <td>
+                            <div class="user">
+
+                                <div class="avatar">
+                                    MJ
+                                </div>
+
+                                Mike Johnson
+
+                            </div>
+                        </td>
+
+                        <td class="event">
+                            Profile Updated
+                        </td>
+
+                        <td>
+                            10.0.0.25
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Success
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="details-btn"
+                                onclick="showDetails(this)">
+                                Details
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+            <div
+                class="no-results"
+                id="noResults">
+                No audit log entries found.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Details Modal -->
+
+<div
+    class="modal"
+    id="detailsModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                Audit Event Details
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal()">
+                &times;
+            </button>
+
+        </div>
+
+
+        <div id="modalDetails">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* Filter audit logs */
+
+    function filterLogs() {
+
+        const search =
+            document
+                .getElementById("search")
+                .value
+                .toLowerCase();
+
+        const eventFilter =
+            document
+                .getElementById("eventFilter")
+                .value;
+
+        const statusFilter =
+            document
+                .getElementById("statusFilter")
+                .value;
+
+        const rows =
+            document.querySelectorAll(
+                "#auditTable tr"
+            );
+
+        let visibleRows = 0;
+
+
+        rows.forEach(function(row) {
+
+            const text =
+                row.innerText.toLowerCase();
+
+            const event =
+                row.dataset.event;
+
+            const status =
+                row.dataset.status;
+
+
+            const matchesSearch =
+                text.includes(search);
+
+            const matchesEvent =
+                eventFilter === "all" ||
+                event === eventFilter;
+
+            const matchesStatus =
+                statusFilter === "all" ||
+                status === statusFilter;
+
+
+            if (
+                matchesSearch &&
+                matchesEvent &&
+                matchesStatus
+            ) {
+
+                row.style.display = "";
+                visibleRows++;
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+
+        document.getElementById(
+            "noResults"
+        ).style.display =
+            visibleRows === 0
+            ? "block"
+            : "none";
+
+    }
+
+
+    /* Show details */
+
+    function showDetails(button) {
+
+        const row =
+            button.closest("tr");
+
+        const cells =
+            row.querySelectorAll("td");
+
+
+        const date =
+            cells[0].innerText;
+
+        const user =
+            cells[1].innerText.trim();
+
+        const event =
+            cells[2].innerText;
+
+        const ip =
+            cells[3].innerText;
+
+        const status =
+            cells[4].innerText.trim();
+
+
+        document.getElementById(
+            "modalDetails"
+        ).innerHTML = `
+
+            <div class="detail-row">
+                <strong>Date & Time</strong>
+                <span>${date}</span>
+            </div>
+
+            <div class="detail-row">
+                <strong>User</strong>
+                <span>${user}</span>
+            </div>
+
+            <div class="detail-row">
+                <strong>Event</strong>
+                <span>${event}</span>
+            </div>
+
+            <div class="detail-row">
+                <strong>IP Address</strong>
+                <span>${ip}</span>
+            </div>
+
+            <div class="detail-row">
+                <strong>Status</strong>
+                <span>${status}</span>
+            </div>
+
+        `;
+
+
+        document.getElementById(
+            "detailsModal"
+        ).style.display = "flex";
+
+    }
+
+
+    /* Close modal */
+
+    function closeModal() {
+
+        document.getElementById(
+            "detailsModal"
+        ).style.display = "none";
+
+    }
+
+
+    /* Close modal when clicking outside */
+
+    window.onclick = function(event) {
+
+        const modal =
+            document.getElementById(
+                "detailsModal"
+            );
+
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+
+    };
+
+
+    /* Search while typing */
+
+    document.getElementById(
+        "search"
+    ).addEventListener(
+        "keyup",
+        filterLogs
+    );
+
+</script>
+
+</body>
+</html>

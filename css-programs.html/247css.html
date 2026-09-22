@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Project Hub</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f8fafc;color:#111827}
+header{
+ background:white;padding:18px 6%;
+ display:flex;justify-content:space-between;align-items:center;
+ border-bottom:1px solid #e5e7eb
+}
+nav a{margin-left:20px;color:#64748b;text-decoration:none}
+.hero{
+ text-align:center;padding:80px 20px;
+ background:linear-gradient(120deg,#2563eb,#7c3aed);
+ color:white
+}
+.hero h1{font-size:clamp(2.3rem,6vw,4.5rem)}
+.hero p{max-width:650px;margin:auto;line-height:1.7}
+.btn{
+ display:inline-block;margin-top:25px;padding:13px 22px;
+ background:white;color:#2563eb;border-radius:7px;
+ text-decoration:none;font-weight:bold
+}
+.container{width:88%;max-width:1100px;margin:40px auto}
+.features{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.card{
+ background:white;padding:28px;border-radius:12px;
+ border:1px solid #e5e7eb
+}
+.card p{color:#64748b;line-height:1.6}
+footer{
+ margin-top:60px;background:#111827;color:#9ca3af;
+ padding:30px;text-align:center
+}
+@media(max-width:700px){
+ nav{display:none}
+ .features{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>LaunchPro</h2>
+<nav>
+<a href="#">Features</a>
+<a href="#">Solutions</a>
+<a href="#">Pricing</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Everything Your Business Needs</h1>
+<p>
+A complete SaaS platform for managing projects,
+teams, analytics and business operations.
+</p>
+<a href="#" class="btn">Get Started</a>
+</section>
+
+<main class="container">
+
+<h2>Powerful Features</h2><br>
+
+<div class="features">
+
+<div class="card">
+<h2>Analytics</h2>
+<p>Track important business metrics and performance.</p>
+</div>
+
+<div class="card">
+<h2>Collaboration</h2>
+<p>Connect your team and work together efficiently.</p>
+</div>
+
+<div class="card">
+<h2>Automation</h2>
+<p>Automate repetitive tasks and workflows.</p>
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 LaunchPro. All rights reserved.
+</footer>
+
+</body>
+</html>

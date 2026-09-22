@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>removeEventListener</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Remove Event Listener</h1>
+
+    <button id="clickBtn">Click Me</button>
+    <button onclick="removeClick()">Remove Listener</button>
+
+    <p id="message"></p>
+
+    <script>
+        let button = document.getElementById("clickBtn");
+
+        function showMessage() {
+            document.getElementById("message").textContent =
+                "Button clicked!";
+        }
+
+        button.addEventListener("click", showMessage);
+
+        function removeClick() {
+            button.removeEventListener("click", showMessage);
+
+            document.getElementById("message").textContent =
+                "Click event listener removed.";
+        }
+    </script>
+
+</body>
+</html>

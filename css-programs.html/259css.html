@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Security Settings</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f5f7fb;color:#1e293b}
+.wrap{max-width:900px;margin:40px auto;padding:20px}
+.card{background:white;padding:25px;border-radius:14px;box-shadow:0 4px 18px #0001;margin-bottom:20px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid #eee}
+.item:last-child{border:0}
+.status{color:#16a34a}
+.btn{padding:9px 15px;border:1px solid #d1d5db;background:white;border-radius:7px}
+.danger{color:#dc2626}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Security Settings</h1>
+<p>Protect your account and manage security options.</p>
+<div class="card">
+<div class="item"><div><h3>Two-Factor Authentication</h3><p>Add an extra layer of protection.</p></div><span class="status">Enabled</span></div>
+<div class="item"><div><h3>Password</h3><p>Last changed 30 days ago.</p></div><button class="btn">Change</button></div>
+<div class="item"><div><h3>Active Sessions</h3><p>3 devices are currently signed in.</p></div><button class="btn">Manage</button></div>
+</div>
+<div class="card"><h2>Danger Zone</h2><p>Deleting your account permanently removes your data.</p><button class="btn danger">Delete Account</button></div>
+</div>
+</body>
+</html>

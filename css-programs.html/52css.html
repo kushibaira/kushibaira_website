@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 52 - KPI and Metric Card</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .container > p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .metric-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .metric-title {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .metric-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #dbeafe;
+            border-radius: 9px;
+            font-size: 20px;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .metric-description {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            height: 7px;
+            background-color: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #2563eb;
+            border-radius: 10px;
+        }
+
+        .progress-75 {
+            width: 75%;
+        }
+
+        .progress-60 {
+            width: 60%;
+        }
+
+        .progress-85 {
+            width: 85%;
+        }
+
+        .progress-45 {
+            width: 45%;
+        }
+
+        .change {
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .positive {
+            color: #16a34a;
+        }
+
+        .negative {
+            color: #dc2626;
+        }
+
+        @media (max-width: 900px) {
+            .metrics-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .metrics-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            CloudFlow
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>KPI & Metric Dashboard</h1>
+
+        <p>
+            Track important business performance indicators.
+        </p>
+
+        <div class="metrics-container">
+
+            <div class="metric-card">
+
+                <div class="metric-header">
+                    <div class="metric-title">
+                        Monthly Revenue
+                    </div>
+
+                    <div class="metric-icon">
+                        💰
+                    </div>
+                </div>
+
+                <div class="metric-value">
+                    ₹8.4L
+                </div>
+
+                <div class="metric-description">
+                    Revenue achieved this month
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-75"></div>
+                </div>
+
+                <div class="change positive">
+                    ↑ 12.5% from last month
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-header">
+                    <div class="metric-title">
+                        Customer Growth
+                    </div>
+
+                    <div class="metric-icon">
+                        👥
+                    </div>
+                </div>
+
+                <div class="metric-value">
+                    24.8%
+                </div>
+
+                <div class="metric-description">
+                    Increase in new customers
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-60"></div>
+                </div>
+
+                <div class="change positive">
+                    ↑ 8.4% this month
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-header">
+                    <div class="metric-title">
+                        Conversion Rate
+                    </div>
+
+                    <div class="metric-icon">
+                        📈
+                    </div>
+                </div>
+
+                <div class="metric-value">
+                    68.5%
+                </div>
+
+                <div class="metric-description">
+                    Visitors converted to users
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-85"></div>
+                </div>
+
+                <div class="change positive">
+                    ↑ 5.2% this month
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-header">
+                    <div class="metric-title">
+                        Churn Rate
+                    </div>
+
+                    <div class="metric-icon">
+                        📉
+                    </div>
+                </div>
+
+                <div class="metric-value">
+                    2.4%
+                </div>
+
+                <div class="metric-description">
+                    Customers lost this month
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-45"></div>
+                </div>
+
+                <div class="change negative">
+                    ↓ 0.8% this month
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

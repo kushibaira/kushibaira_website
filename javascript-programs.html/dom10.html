@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change HTML Attributes</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        img {
+            width: 250px;
+            height: 180px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Change HTML Attribute Dynamically</h1>
+
+    <img id="myImage"
+         src="https://via.placeholder.com/250x180"
+         alt="Original Image">
+
+    <br>
+
+    <button onclick="changeAttribute()">Change Image</button>
+
+    <script>
+
+        function changeAttribute() {
+
+            let image = document.getElementById("myImage");
+
+            image.setAttribute(
+                "src",
+                "https://via.placeholder.com/250x180/0000FF/FFFFFF"
+            );
+
+            image.setAttribute("alt", "New Image");
+        }
+
+    </script>
+
+</body>
+</html>

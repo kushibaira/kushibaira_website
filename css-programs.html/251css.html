@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Onboarding Page</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f3f6fb;color:#1f2937}
+.container{max-width:900px;margin:50px auto;padding:20px}
+.header{text-align:center;margin-bottom:30px}
+.progress{display:flex;justify-content:center;gap:10px;margin:25px}
+.step{width:38px;height:38px;border-radius:50%;background:#2563eb;color:white;display:grid;place-items:center;font-weight:bold}
+.line{width:70px;height:3px;background:#2563eb;align-self:center}
+.card{background:white;padding:35px;border-radius:16px;box-shadow:0 8px 25px #0001}
+.options{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:25px 0}
+.option{padding:25px;border:2px solid #e5e7eb;border-radius:12px;text-align:center}
+.option:hover{border-color:#2563eb}
+.icon{font-size:38px}
+.option p{color:#64748b;font-size:14px}
+.actions{display:flex;justify-content:space-between;align-items:center}
+.btn{background:#2563eb;color:white;border:0;padding:12px 22px;border-radius:8px}
+@media(max-width:650px){.options{grid-template-columns:1fr}.line{width:30px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Welcome to CloudFlow</h1>
+<p>Let's set up your workspace in a few simple steps.</p>
+</div>
+<div class="progress">
+<div class="step">1</div><div class="line"></div>
+<div class="step">2</div><div class="line"></div>
+<div class="step">3</div>
+</div>
+<div class="card">
+<h2>What will you use CloudFlow for?</h2>
+<p>Choose the option that best matches your work.</p>
+<div class="options">
+<div class="option"><div class="icon">📊</div><h3>Analytics</h3><p>Track and understand your business data.</p></div>
+<div class="option"><div class="icon">👥</div><h3>Team Work</h3><p>Collaborate and manage projects.</p></div>
+<div class="option"><div class="icon">🤖</div><h3>AI Tools</h3><p>Automate tasks with AI-powered tools.</p></div>
+</div>
+<div class="actions"><span>Skip for now</span><button class="btn">Continue →</button></div>
+</div>
+</div>
+</body>
+</html>

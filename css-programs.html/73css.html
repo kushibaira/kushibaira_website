@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Empty-State Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .empty-state {
+            padding: 40px 25px;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+        }
+
+        .empty-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: #dbeafe;
+            color: #2563eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .empty-state h2 {
+            color: #334155;
+            margin-bottom: 12px;
+        }
+
+        .empty-state p {
+            max-width: 500px;
+            margin: 0 auto 25px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .action-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-left: 8px;
+            background-color: white;
+            color: #334155;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .secondary-button:hover {
+            background-color: #f1f5f9;
+        }
+
+        .examples {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .example {
+            padding: 12px 18px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            .secondary-button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .empty-state {
+                padding: 30px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Empty-State Component</h1>
+
+        <p class="description">
+            An empty-state component informs users when there is
+            no content or data available.
+        </p>
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                📁
+            </div>
+
+            <h2>No Files Found</h2>
+
+            <p>
+                You do not have any files yet. Upload your first
+                file to get started and manage your documents here.
+            </p>
+
+            <a href="#" class="action-button">
+                Upload File
+            </a>
+
+            <a href="#" class="secondary-button">
+                Learn More
+            </a>
+
+        </div>
+
+        <div class="examples">
+
+            <div class="example">
+                No Search Results
+            </div>
+
+            <div class="example">
+                No Messages
+            </div>
+
+            <div class="example">
+                No Notifications
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

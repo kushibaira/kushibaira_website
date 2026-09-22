@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 42 - Breadcrumb Navigation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .breadcrumb-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .breadcrumb a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: #94a3b8;
+            margin: 0 10px;
+        }
+
+        .current {
+            color: #64748b;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            color: #1e293b;
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .breadcrumb-container {
+                margin: 25px auto;
+            }
+
+            .breadcrumb {
+                font-size: 14px;
+                line-height: 2;
+            }
+
+            .separator {
+                margin: 0 5px;
+            }
+
+            .content {
+                margin: 15px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+    </nav>
+
+
+    <div class="breadcrumb-container">
+
+        <div class="breadcrumb">
+
+            <a href="#">Home</a>
+
+            <span class="separator">›</span>
+
+            <a href="#">Products</a>
+
+            <span class="separator">›</span>
+
+            <a href="#">Cloud Services</a>
+
+            <span class="separator">›</span>
+
+            <span class="current">Cloud Storage</span>
+
+        </div>
+
+    </div>
+
+
+    <section class="content">
+
+        <h1>Cloud Storage</h1>
+
+        <p>
+            This page demonstrates a breadcrumb navigation component.
+            Breadcrumbs help users understand their current location
+            within a website and easily navigate back to previous pages.
+        </p>
+
+    </section>
+
+</body>
+
+</html>

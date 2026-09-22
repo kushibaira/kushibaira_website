@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>getElementById and getElementsByClassName</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>getElementById() and getElementsByClassName()</h2>
+
+    <p id="heading">This is an ID element.</p>
+
+    <p class="text">First paragraph</p>
+    <p class="text">Second paragraph</p>
+    <p class="text">Third paragraph</p>
+
+    <button onclick="changeElements()">
+        Change Elements
+    </button>
+
+    <script>
+        function changeElements() {
+
+            // Using getElementById()
+            let heading = document.getElementById("heading");
+            heading.textContent = "ID Element Changed!";
+            heading.style.color = "red";
+
+            // Using getElementsByClassName()
+            let paragraphs = document.getElementsByClassName("text");
+
+            for (let i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].textContent = "Paragraph Changed!";
+                paragraphs[i].style.color = "blue";
+            }
+        }
+    </script>
+
+</body>
+</html>

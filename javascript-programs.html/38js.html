@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date and Math</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Date and Math Objects</h1>
+
+    <button onclick="showDate()">Show Date</button>
+    <button onclick="showMath()">Show Math</button>
+
+    <div id="result"></div>
+
+    <script>
+        function showDate() {
+            let today = new Date();
+
+            document.getElementById("result").innerHTML =
+                "Current Date and Time: " + today;
+        }
+
+        function showMath() {
+            let number = 25;
+
+            document.getElementById("result").innerHTML =
+                "Square Root: " + Math.sqrt(number) + "<br>" +
+                "Power: " + Math.pow(number, 2) + "<br>" +
+                "Random Number: " + Math.random();
+        }
+    </script>
+
+</body>
+</html>

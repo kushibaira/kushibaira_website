@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Show Hide</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>Password Show / Hide</h2>
+
+    <input type="password" id="password"
+           placeholder="Enter password">
+
+    <br>
+
+    <button onclick="showHidePassword()">
+        Show Password
+    </button>
+
+    <script>
+        function showHidePassword() {
+
+            // Get password input
+            let password = document.getElementById("password");
+
+            // Get button
+            let button = document.querySelector("button");
+
+            // Change password visibility
+            if (password.type === "password") {
+                password.type = "text";
+                button.textContent = "Hide Password";
+            } else {
+                password.type = "password";
+                button.textContent = "Show Password";
+            }
+        }
+    </script>
+
+</body>
+</html>

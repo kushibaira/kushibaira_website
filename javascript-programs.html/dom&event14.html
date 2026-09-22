@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dependent Dropdown</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>Country → State → City</h2>
+
+    <select id="country" onchange="loadStates()">
+        <option value="">Select Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+    </select>
+
+    <br>
+
+    <select id="state" onchange="loadCities()">
+        <option value="">Select State</option>
+    </select>
+
+    <br>
+
+    <select id="city">
+        <option value="">Select City</option>
+    </select>
+
+    <script>
+        function loadStates() {
+
+            let country = document.getElementById("country").value;
+            let state = document.getElementById("state");
+
+            // Clear previous states
+            state.innerHTML =
+                '<option value="">Select State</option>';
+
+            if (country === "India") {
+
+                addOption(state, "Tamil Nadu");
+                addOption(state, "Kerala");
+
+            } else if (country === "USA") {
+
+                addOption(state, "California");
+                addOption(state, "Texas");
+            }
+
+            // Clear cities
+            document.getElementById("city").innerHTML =
+                '<option value="">Select City</option>';
+        }
+
+        function loadCities() {
+
+            let state = document.getElementById("state").value;
+            let city = document.getElementById("city");
+
+            // Clear previous cities
+            city.innerHTML =
+                '<option value="">Select City</option>';
+
+            if (state === "Tamil Nadu") {
+
+                addOption(city, "Chennai");
+                addOption(city, "Madurai");
+
+            } else if (state === "Kerala") {
+
+                addOption(city, "Kochi");
+                addOption(city, "Kozhikode");
+
+            } else if (state === "California") {
+
+                addOption(city, "Los Angeles");
+                addOption(city, "San Francisco");
+
+            } else if (state === "Texas") {
+
+                addOption(city, "Houston");
+                addOption(city, "Dallas");
+            }
+        }
+
+        function addOption(dropdown, text) {
+
+            let option = document.createElement("option");
+
+            option.textContent = text;
+            option.value = text;
+
+            dropdown.appendChild(option);
+        }
+    </script>
+
+</body>
+</html>

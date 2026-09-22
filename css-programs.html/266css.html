@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Documentation</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;color:#1e293b}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:240px;background:#f8fafc;padding:25px;position:fixed;height:100vh;border-right:1px solid #e5e7eb}
+.sidebar a{display:block;text-decoration:none;color:#475569;padding:10px 0}
+.main{margin-left:240px;padding:45px;max-width:950px}
+.code{background:#111827;color:#e5e7eb;padding:18px;border-radius:8px;overflow:auto}
+.note{background:#eff6ff;border-left:4px solid #2563eb;padding:15px;margin:20px 0}
+@media(max-width:700px){
+.sidebar{width:100px;padding:15px}
+.sidebar h2{font-size:14px}
+.sidebar a{font-size:12px}
+.main{margin-left:100px;padding:25px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h2>CloudFlow Docs</h2>
+<a href="#">Introduction</a>
+<a href="#">Installation</a>
+<a href="#">Authentication</a>
+<a href="#">API Reference</a>
+<a href="#">Examples</a>
+</aside>
+<main class="main">
+<h1>Getting Started</h1>
+<p>Welcome to the CloudFlow documentation.</p>
+<div class="note">CloudFlow provides tools for analytics, automation, and team collaboration.</div>
+<h2>Installation</h2>
+<p>Follow these steps to start using the platform.</p>
+<div class="code">npm install cloudflow-sdk</div>
+<h2>Next Steps</h2>
+<p>Configure your workspace and create your first project.</p>
+</main>
+</div>
+</body>
+</html>

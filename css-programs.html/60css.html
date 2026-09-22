@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Buttons and Action Buttons</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #334155;
+            margin-bottom: 20px;
+        }
+
+        .icon-buttons,
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .icon-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .icon-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        .edit {
+            background-color: #16a34a;
+        }
+
+        .edit:hover {
+            background-color: #15803d;
+        }
+
+        .delete {
+            background-color: #dc2626;
+        }
+
+        .delete:hover {
+            background-color: #b91c1c;
+        }
+
+        .favorite {
+            background-color: #db2777;
+        }
+
+        .favorite:hover {
+            background-color: #be185d;
+        }
+
+        .action-btn {
+            padding: 13px 24px;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .save {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .save:hover {
+            background-color: #1d4ed8;
+        }
+
+        .cancel {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+
+        .cancel:hover {
+            background-color: #cbd5e1;
+        }
+
+        .download {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .download:hover {
+            background-color: #15803d;
+        }
+
+        .share {
+            background-color: #7c3aed;
+            color: white;
+        }
+
+        .share:hover {
+            background-color: #6d28d9;
+        }
+
+        .examples {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background-color: #f8fafc;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            color: #172554;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .examples {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Icon Buttons and Action Buttons</h1>
+
+        <p class="description">
+            Examples of icon buttons and action buttons commonly
+            used in modern web applications.
+        </p>
+
+        <div class="section">
+
+            <h2>Icon Buttons</h2>
+
+            <div class="icon-buttons">
+
+                <button class="icon-btn" title="Home">
+                    🏠
+                </button>
+
+                <button class="icon-btn edit" title="Edit">
+                    ✏️
+                </button>
+
+                <button class="icon-btn delete" title="Delete">
+                    🗑️
+                </button>
+
+                <button class="icon-btn favorite" title="Favorite">
+                    ❤️
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>Action Buttons</h2>
+
+            <div class="action-buttons">
+
+                <button class="action-btn save">
+                    Save Changes
+                </button>
+
+                <button class="action-btn cancel">
+                    Cancel
+                </button>
+
+                <button class="action-btn download">
+                    Download
+                </button>
+
+                <button class="action-btn share">
+                    Share
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="examples">
+
+            <div class="card">
+                <h3>Icon Buttons</h3>
+                <p>
+                    Small buttons that use icons to represent
+                    actions such as edit, delete, home, and favorite.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Action Buttons</h3>
+                <p>
+                    Buttons containing text that clearly describes
+                    an action such as save, download, or share.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 230px;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 8px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px;
+            color: #d1d5db;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .menu a:hover,
+        .menu .active {
+            background: #2563eb;
+            color: white;
+        }
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .panel h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f9fafb;
+        }
+
+        .badge {
+            padding: 5px 9px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .failed {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .action-btn {
+            border: none;
+            padding: 7px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .edit {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .delete {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        @media(max-width: 700px) {
+
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .panel {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 700px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Developer Panel
+        </div>
+
+        <ul class="menu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#" class="active">Webhooks</a></li>
+            <li><a href="#">API Keys</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Security</a></li>
+        </ul>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="header">
+
+            <h1>Webhook Management</h1>
+
+            <button class="primary-btn"
+                    onclick="showWebhookForm()">
+                + Create Webhook
+            </button>
+
+        </div>
+
+
+        <!-- Webhook Form -->
+        <div class="panel" id="webhookForm">
+
+            <h2>Create Webhook</h2>
+
+            <div class="form-group">
+                <label>Webhook Name</label>
+                <input
+                    type="text"
+                    id="webhookName"
+                    placeholder="Enter webhook name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Endpoint URL</label>
+                <input
+                    type="url"
+                    id="endpoint"
+                    placeholder="https://example.com/webhook"
+                >
+            </div>
+
+            <div class="form-group">
+
+                <label>Events</label>
+
+                <div class="checkbox-group">
+
+                    <label>
+                        <input type="checkbox">
+                        user.created
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        user.updated
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        payment.success
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        payment.failed
+                    </label>
+
+                </div>
+
+            </div>
+
+            <button class="primary-btn"
+                    onclick="createWebhook()">
+                Save Webhook
+            </button>
+
+        </div>
+
+
+        <!-- Webhook Table -->
+        <div class="panel">
+
+            <h2>Configured Webhooks</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Endpoint</th>
+                        <th>Events</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="webhookTable">
+
+                    <tr>
+
+                        <td>User Events</td>
+
+                        <td>
+                            https://example.com/users
+                        </td>
+
+                        <td>
+                            user.created
+                        </td>
+
+                        <td>
+                            <span class="badge success">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="action-btn edit"
+                                onclick="editWebhook(this)">
+                                Edit
+                            </button>
+
+                            <button
+                                class="action-btn delete"
+                                onclick="deleteWebhook(this)">
+                                Delete
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>Payment Events</td>
+
+                        <td>
+                            https://example.com/payments
+                        </td>
+
+                        <td>
+                            payment.success
+                        </td>
+
+                        <td>
+                            <span class="badge failed">
+                                Failed
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="action-btn edit"
+                                onclick="editWebhook(this)">
+                                Edit
+                            </button>
+
+                            <button
+                                class="action-btn delete"
+                                onclick="deleteWebhook(this)">
+                                Delete
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    function showWebhookForm() {
+
+        document
+            .getElementById("webhookForm")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    function createWebhook() {
+
+        const name =
+            document.getElementById("webhookName").value;
+
+        const endpoint =
+            document.getElementById("endpoint").value;
+
+        if (name === "" || endpoint === "") {
+
+            alert("Please enter webhook name and endpoint.");
+
+            return;
+        }
+
+        const table =
+            document.getElementById("webhookTable");
+
+        const row =
+            table.insertRow();
+
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${endpoint}</td>
+            <td>user.created</td>
+            <td>
+                <span class="badge success">
+                    Active
+                </span>
+            </td>
+            <td>
+                <button
+                    class="action-btn edit"
+                    onclick="editWebhook(this)">
+                    Edit
+                </button>
+
+                <button
+                    class="action-btn delete"
+                    onclick="deleteWebhook(this)">
+                    Delete
+                </button>
+            </td>
+        `;
+
+        document.getElementById("webhookName").value = "";
+        document.getElementById("endpoint").value = "";
+
+        alert("Webhook created successfully.");
+
+    }
+
+
+    function deleteWebhook(button) {
+
+        if (confirm("Delete this webhook?")) {
+
+            button
+                .closest("tr")
+                .remove();
+
+        }
+
+    }
+
+
+    function editWebhook(button) {
+
+        const row =
+            button.closest("tr");
+
+        alert(
+            "Editing webhook: " +
+            row.cells[0].innerText
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

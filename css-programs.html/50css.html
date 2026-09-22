@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 50 - Pricing Card Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .container > p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card h2 {
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 38px;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 15px;
+            color: #64748b;
+            font-weight: normal;
+        }
+
+        .description {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 45px;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #475569;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #16a34a;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .choose-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .choose-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .popular {
+            border: 3px solid #2563eb;
+        }
+
+        .popular-label {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2563eb;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 850px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .price {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            CloudFlow
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>Choose Your Plan</h1>
+
+        <p>
+            Select a pricing plan that suits your needs.
+        </p>
+
+        <div class="pricing-container">
+
+            <div class="pricing-card">
+
+                <h2>Basic</h2>
+
+                <div class="price">
+                    ₹499
+                    <span>/month</span>
+                </div>
+
+                <p class="description">
+                    Perfect for individuals getting started.
+                </p>
+
+                <ul class="features">
+                    <li>5 Projects</li>
+                    <li>10 GB Storage</li>
+                    <li>Email Support</li>
+                    <li>Basic Analytics</li>
+                </ul>
+
+                <a href="#" class="choose-button">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <div class="pricing-card popular">
+
+                <div class="popular-label">
+                    Most Popular
+                </div>
+
+                <h2>Professional</h2>
+
+                <div class="price">
+                    ₹999
+                    <span>/month</span>
+                </div>
+
+                <p class="description">
+                    Great for growing teams and businesses.
+                </p>
+
+                <ul class="features">
+                    <li>20 Projects</li>
+                    <li>100 GB Storage</li>
+                    <li>Priority Support</li>
+                    <li>Advanced Analytics</li>
+                </ul>
+
+                <a href="#" class="choose-button">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <div class="pricing-card">
+
+                <h2>Enterprise</h2>
+
+                <div class="price">
+                    ₹1999
+                    <span>/month</span>
+                </div>
+
+                <p class="description">
+                    Advanced features for large organizations.
+                </p>
+
+                <ul class="features">
+                    <li>Unlimited Projects</li>
+                    <li>500 GB Storage</li>
+                    <li>24/7 Support</li>
+                    <li>Advanced Security</li>
+                </ul>
+
+                <a href="#" class="choose-button">
+                    Choose Plan
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q50 - LCM</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 80px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Least Common Multiple</h1>
+
+<input type="number" id="a" placeholder="Number 1">
+
+<input type="number" id="b" placeholder="Number 2">
+
+<br>
+
+<button onclick="findLCM()">Find LCM</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+    function gcd(a, b) {
+
+        while (b !== 0) {
+
+            let temp = b;
+            b = a % b;
+            a = temp;
+        }
+
+        return Math.abs(a);
+    }
+
+
+    function findLCM() {
+
+        let a = Number(
+            document.getElementById("a").value
+        );
+
+        let b = Number(
+            document.getElementById("b").value
+        );
+
+        if (a === 0 || b === 0) {
+
+            document.getElementById("result").innerHTML =
+                "LCM = 0";
+
+            return;
+        }
+
+        let lcm =
+            Math.abs(a * b) / gcd(a, b);
+
+        document.getElementById("result").innerHTML =
+            "LCM = " + lcm;
+    }
+
+</script>
+
+</body>
+</html>

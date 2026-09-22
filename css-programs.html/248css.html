@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complete SaaS Landing Page</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;color:#111827;background:white}
+header{
+ padding:20px 7%;display:flex;justify-content:space-between;
+ align-items:center;border-bottom:1px solid #eee
+}
+nav a{margin-left:20px;text-decoration:none;color:#475569}
+.btn{
+ display:inline-block;background:#2563eb;color:white;
+ padding:12px 20px;border-radius:7px;text-decoration:none
+}
+.hero{
+ padding:100px 7%;display:grid;
+ grid-template-columns:1.2fr 1fr;gap:50px;align-items:center;
+ background:#eff6ff
+}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);margin:0 0 20px}
+.hero p{color:#64748b;line-height:1.7}
+.dashboard{
+ background:#111827;border-radius:15px;padding:25px;color:white;
+ box-shadow:0 20px 40px #0002
+}
+.stats{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:15px
+}
+.stat{background:#1f2937;padding:18px;border-radius:8px}
+.features{
+ width:86%;margin:70px auto;
+ display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.feature{padding:25px;text-align:center}
+.feature p{color:#64748b;line-height:1.6}
+footer{background:#111827;color:#9ca3af;text-align:center;padding:30px}
+@media(max-width:800px){
+ nav{display:none}
+ .hero{grid-template-columns:1fr;padding:60px 7%}
+ .features{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>GrowthOS</h2>
+<nav>
+<a href="#">Product</a>
+<a href="#">Solutions</a>
+<a href="#">Pricing</a>
+<a href="#">Resources</a>
+</nav>
+<a href="#" class="btn">Sign Up</a>
+</header>
+
+<section class="hero">
+
+<div>
+<h1>Grow Your Business Faster</h1>
+<p>
+Manage customers, projects, analytics and workflows
+from one powerful SaaS platform.
+</p>
+<br>
+<a href="#" class="btn">Start Free Trial</a>
+</div>
+
+<div class="dashboard">
+<h2>Dashboard</h2><br>
+<div class="stats">
+<div class="stat"><small>Revenue</small><h2>$42K</h2></div>
+<div class="stat"><small>Users</small><h2>8.4K</h2></div>
+<div class="stat"><small>Growth</small><h2>24%</h2></div>
+</div>
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="feature">
+<h2>Analytics</h2>
+<p>Understand your business with detailed analytics.</p>
+</div>
+
+<div class="feature">
+<h2>Automation</h2>
+<p>Automate repetitive tasks and improve productivity.</p>
+</div>
+
+<div class="feature">
+<h2>Security</h2>
+<p>Keep your business data safe and protected.</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 GrowthOS
+</footer>
+
+</body>
+</html>

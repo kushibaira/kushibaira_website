@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Progress Stepper Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 45px;
+        }
+
+        .stepper {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .stepper::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            right: 40px;
+            height: 4px;
+            background-color: #e2e8f0;
+            z-index: 0;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            width: 52%;
+            height: 4px;
+            background-color: #2563eb;
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 25%;
+        }
+
+        .step-number {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 4px solid white;
+        }
+
+        .step.completed .step-number {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .step.active .step-number {
+            background-color: white;
+            color: #2563eb;
+            border: 4px solid #2563eb;
+        }
+
+        .step-title {
+            color: #334155;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .step-description {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .status {
+            text-align: center;
+            padding: 20px;
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            color: #1e40af;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .button {
+            padding: 11px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .previous {
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+
+        .next {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .previous:hover {
+            background-color: #e2e8f0;
+        }
+
+        .next:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            .stepper {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .stepper::before,
+            .progress-line {
+                top: 20px;
+                bottom: 20px;
+                left: 20px;
+                width: 4px;
+                height: auto;
+            }
+
+            .progress-line {
+                height: 52%;
+                bottom: auto;
+            }
+
+            .step {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 15px;
+            }
+
+            .step-number {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            .step-content {
+                flex: 1;
+            }
+
+            .step-title {
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Progress Stepper Component</h1>
+
+        <p class="description">
+            A progress stepper shows the different stages of a
+            process and indicates the user's current progress.
+        </p>
+
+        <div class="stepper">
+
+            <div class="progress-line"></div>
+
+            <div class="step completed">
+
+                <div class="step-number">
+                    ✓
+                </div>
+
+                <div class="step-content">
+                    <div class="step-title">Account</div>
+                    <div class="step-description">Created</div>
+                </div>
+
+            </div>
+
+            <div class="step completed">
+
+                <div class="step-number">
+                    ✓
+                </div>
+
+                <div class="step-content">
+                    <div class="step-title">Profile</div>
+                    <div class="step-description">Completed</div>
+                </div>
+
+            </div>
+
+            <div class="step active">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <div class="step-content">
+                    <div class="step-title">Settings</div>
+                    <div class="step-description">In Progress</div>
+                </div>
+
+            </div>
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <div class="step-content">
+                    <div class="step-title">Finish</div>
+                    <div class="step-description">Pending</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status">
+            <strong>Step 3 of 4:</strong>
+            Please complete your settings to continue.
+        </div>
+
+        <div class="buttons">
+            <a href="#" class="button previous">Previous</a>
+            <a href="#" class="button next">Continue</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

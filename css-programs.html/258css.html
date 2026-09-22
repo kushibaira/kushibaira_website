@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Account Settings</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f6f8fb;color:#1f2937}
+.wrap{max-width:900px;margin:40px auto;padding:20px}
+.card{background:white;padding:30px;border-radius:14px;box-shadow:0 4px 18px #0001}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input,select{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:7px}
+.save{margin-top:25px;background:#2563eb;color:white;border:0;padding:12px 22px;border-radius:8px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+<h1>Account Settings</h1>
+<p>Manage your account information.</p>
+<div class="row">
+<div><label>First Name</label><input value="Sanjana"></div>
+<div><label>Last Name</label><input value="Student"></div>
+</div>
+<label>Email</label>
+<input type="email" value="student@example.com">
+<label>Company</label>
+<input value="CloudFlow">
+<label>Language</label>
+<select><option>English</option><option>Hindi</option></select>
+<button class="save">Save Changes</button>
+</div>
+</div>
+</body>
+</html>

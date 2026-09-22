@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Integrations Page</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f6f8fc;color:#1f2937}
+.wrap{max-width:1100px;margin:auto;padding:30px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.card{background:white;padding:22px;border-radius:13px;box-shadow:0 4px 15px #0001}
+.icon{font-size:35px}
+.connected{color:#16a34a;font-size:14px}
+.btn{padding:9px 16px;border:0;border-radius:7px;background:#2563eb;color:white}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Integrations</h1>
+<p>Connect your favorite tools with CloudFlow.</p>
+<div class="grid">
+<div class="card"><div class="icon">💬</div><h2>Slack</h2><p>Receive notifications and collaborate with your team.</p><p class="connected">● Connected</p><button class="btn">Manage</button></div>
+<div class="card"><div class="icon">📧</div><h2>Gmail</h2><p>Connect email workflows to your workspace.</p><p>Not connected</p><button class="btn">Connect</button></div>
+<div class="card"><div class="icon">📅</div><h2>Google Calendar</h2><p>Sync meetings and scheduled activities.</p><p>Not connected</p><button class="btn">Connect</button></div>
+</div>
+</div>
+</body>
+</html>

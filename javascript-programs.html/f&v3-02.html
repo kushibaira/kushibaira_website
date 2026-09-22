@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: lightgray;
+        }
+
+        form {
+            width: 350px;
+            margin: 50px auto;
+            padding: 25px;
+            background: white;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #message {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <form onsubmit="return validateLogin()">
+        <h2>Login Form</h2>
+
+        <input type="text" id="username" placeholder="Username">
+
+        <input type="password" id="password" placeholder="Password">
+
+        <button type="submit">Login</button>
+
+        <p id="message"></p>
+    </form>
+
+    <script>
+        function validateLogin() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (username === "") {
+                document.getElementById("message").textContent =
+                    "Username is required.";
+                return false;
+            }
+
+            if (password === "") {
+                document.getElementById("message").textContent =
+                    "Password is required.";
+                return false;
+            }
+
+            document.getElementById("message").textContent =
+                "Login successful!";
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

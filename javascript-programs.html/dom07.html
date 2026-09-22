@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Replace HTML Element</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        #oldText {
+            font-size: 22px;
+            margin: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Replace HTML Element</h1>
+
+    <p id="oldText">This is the old paragraph.</p>
+
+    <button onclick="replaceElement()">Replace Element</button>
+
+    <script>
+
+        function replaceElement() {
+
+            let newElement = document.createElement("h2");
+
+            newElement.textContent =
+                "This is the new element.";
+
+            let oldElement = document.getElementById("oldText");
+
+            oldElement.replaceWith(newElement);
+        }
+
+    </script>
+
+</body>
+</html>

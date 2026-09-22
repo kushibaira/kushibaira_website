@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS 3D Transforms</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            perspective: 600px;
+        }
+
+        .box {
+            width: 150px;
+            height: 120px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s;
+        }
+
+        .rotate-x:hover {
+            transform: rotateX(60deg);
+        }
+
+        .rotate-y:hover {
+            transform: rotateY(60deg);
+        }
+
+        .rotate-z:hover {
+            transform: rotateZ(45deg);
+        }
+
+        .translate-z:hover {
+            transform: translateZ(100px);
+        }
+
+        .scale-z:hover {
+            transform: perspective(300px)
+                       translateZ(80px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS 3D Transforms</h1>
+
+    <div class="container">
+
+        <div class="box rotate-x">
+            Rotate X
+        </div>
+
+        <div class="box rotate-y">
+            Rotate Y
+        </div>
+
+        <div class="box rotate-z">
+            Rotate Z
+        </div>
+
+        <div class="box translate-z">
+            Translate Z
+        </div>
+
+        <div class="box scale-z">
+            Perspective
+        </div>
+
+    </div>
+
+</body>
+</html>

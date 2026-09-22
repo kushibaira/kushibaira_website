@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>querySelector and querySelectorAll</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>querySelector() and querySelectorAll()</h2>
+
+    <p class="text">First Paragraph</p>
+    <p class="text">Second Paragraph</p>
+    <p class="text">Third Paragraph</p>
+
+    <button onclick="changeElements()">
+        Change Elements
+    </button>
+
+    <script>
+        function changeElements() {
+
+            // Using querySelector()
+            let first = document.querySelector(".text");
+            first.textContent = "First paragraph changed!";
+            first.style.color = "red";
+
+            // Using querySelectorAll()
+            let paragraphs = document.querySelectorAll(".text");
+
+            for (let i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].style.fontSize = "25px";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Z-Index</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        .container {
+            position: relative;
+            height: 300px;
+            margin: 30px;
+        }
+
+        .box {
+            width: 180px;
+            height: 120px;
+            position: absolute;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Lower Layer */
+        .box1 {
+            background-color: red;
+            left: 50px;
+            top: 50px;
+            z-index: 1;
+        }
+
+        /* Higher Layer */
+        .box2 {
+            background-color: blue;
+            left: 120px;
+            top: 100px;
+            z-index: 2;
+        }
+
+        /* Highest Layer */
+        .box3 {
+            background-color: green;
+            left: 190px;
+            top: 150px;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Z-Index Property</h1>
+
+    <div class="container">
+
+        <div class="box box1">
+            Box 1<br>
+            z-index: 1
+        </div>
+
+        <div class="box box2">
+            Box 2<br>
+            z-index: 2
+        </div>
+
+        <div class="box box3">
+            Box 3<br>
+            z-index: 3
+        </div>
+
+    </div>
+
+</body>
+</html>

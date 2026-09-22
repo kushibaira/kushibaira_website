@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Background Color</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        #box {
+            width: 250px;
+            height: 150px;
+            margin: 20px auto;
+            background-color: lightgray;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Change Background Color</h1>
+
+    <div id="box">
+        Click the button to change my background color.
+    </div>
+
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+
+        function changeColor() {
+            document.getElementById("box").style.backgroundColor = "lightblue";
+        }
+
+    </script>
+
+</body>
+</html>

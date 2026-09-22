@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Textarea Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 120px;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Textarea Validation</h1>
+
+    <textarea id="messageBox"
+              placeholder="Enter your message"></textarea>
+
+    <br>
+
+    <button onclick="validateTextarea()">Submit</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validateTextarea() {
+            let text = document.getElementById("messageBox").value.trim();
+
+            if (text === "") {
+                document.getElementById("message").textContent =
+                    "Please enter a message.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Message is valid.";
+            }
+        }
+    </script>
+
+</body>
+</html>

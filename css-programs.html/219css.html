@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Pricing Page</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .header {
+      text-align: center;
+      padding: 55px 20px 30px;
+    }
+
+    .header h1 {
+      font-size: 40px;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      color: #6b7280;
+      font-size: 16px;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .billing {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 25px auto 40px;
+    }
+
+    .billing span {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .billing span.active {
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .switch {
+      width: 52px;
+      height: 28px;
+      background: #2563eb;
+      border-radius: 20px;
+      padding: 3px;
+      cursor: pointer;
+    }
+
+    .switch-circle {
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.25s;
+    }
+
+    .switch.yearly .switch-circle {
+      transform: translateX(24px);
+    }
+
+    .save {
+      background: #dcfce7;
+      color: #15803d;
+      padding: 5px 9px;
+      border-radius: 15px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .pricing-container {
+      width: min(1200px, 92%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid #2563eb;
+      transform: translateY(-8px);
+    }
+
+    .popular-label {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2563eb;
+      color: white;
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .pricing-card h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 42px;
+    }
+
+    .price {
+      margin: 25px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .price strong {
+      font-size: 42px;
+      color: #111827;
+    }
+
+    .price span {
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    .price .old-price {
+      text-decoration: line-through;
+      color: #9ca3af;
+      font-size: 15px;
+      margin-right: 5px;
+    }
+
+    .choose-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 7px;
+      border: 1px solid #2563eb;
+      background: white;
+      color: #2563eb;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 25px;
+    }
+
+    .choose-btn:hover {
+      background: #eff6ff;
+    }
+
+    .popular .choose-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .features-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #374151;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .features li {
+      font-size: 13px;
+      color: #4b5563;
+      display: flex;
+      gap: 9px;
+      line-height: 1.4;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .faq {
+      width: min(900px, 92%);
+      margin: 70px auto;
+    }
+
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: none;
+      background: white;
+      padding: 17px;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 17px 17px;
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 25px;
+      font-size: 12px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+
+      .pricing-card.popular {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding-top: 35px;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+
+      .header p {
+        font-size: 14px;
+      }
+
+      .pricing-card {
+        padding: 24px;
+      }
+
+      .price strong {
+        font-size: 36px;
+      }
+
+      .billing {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>Simple, Transparent Pricing</h1>
+
+    <p>
+      Choose the plan that fits your needs. Upgrade or
+      downgrade whenever you want.
+    </p>
+  </header>
+
+  <!-- Billing Toggle -->
+  <div class="billing">
+
+    <span id="monthlyText" class="active">
+      Monthly
+    </span>
+
+    <div class="switch" id="billingSwitch">
+      <div class="switch-circle"></div>
+    </div>
+
+    <span id="yearlyText">
+      Yearly
+    </span>
+
+    <span class="save">
+      SAVE 20%
+    </span>
+
+  </div>
+
+  <!-- Pricing Cards -->
+  <main class="pricing-container">
+
+    <!-- Starter -->
+    <article class="pricing-card">
+
+      <h2>Starter</h2>
+
+      <p class="description">
+        Essential tools for individuals and small projects.
+      </p>
+
+      <div class="price">
+        <span>$</span>
+        <strong class="price-value" data-monthly="9" data-yearly="7">
+          9
+        </strong>
+        <span>/month</span>
+      </div>
+
+      <button
+        class="choose-btn"
+        onclick="selectPlan('Starter')"
+      >
+        Get Started
+      </button>
+
+      <p class="features-title">
+        FEATURES
+      </p>
+
+      <ul class="features">
+        <li>5 projects</li>
+        <li>10 GB storage</li>
+        <li>Basic analytics</li>
+        <li>Email support</li>
+        <li>Community access</li>
+      </ul>
+
+    </article>
+
+    <!-- Professional -->
+    <article class="pricing-card popular">
+
+      <div class="popular-label">
+        MOST POPULAR
+      </div>
+
+      <h2>Professional</h2>
+
+      <p class="description">
+        Advanced features for growing teams and businesses.
+      </p>
+
+      <div class="price">
+        <span class="old-price" id="oldPrice">$29</span>
+        <span>$</span>
+
+        <strong
+          class="price-value"
+          data-monthly="29"
+          data-yearly="23"
+        >
+          29
+        </strong>
+
+        <span>/month</span>
+      </div>
+
+      <button
+        class="choose-btn"
+        onclick="selectPlan('Professional')"
+      >
+        Start Free Trial
+      </button>
+
+      <p class="features-title">
+        EVERYTHING IN STARTER, PLUS
+      </p>
+
+      <ul class="features">
+        <li>Unlimited projects</li>
+        <li>100 GB storage</li>
+        <li>Advanced analytics</li>
+        <li>Priority support</li>
+        <li>Team collaboration</li>
+        <li>Custom integrations</li>
+      </ul>
+
+    </article>
+
+    <!-- Enterprise -->
+    <article class="pricing-card">
+
+      <h2>Enterprise</h2>
+
+      <p class="description">
+        Powerful solutions for larger organizations.
+      </p>
+
+      <div class="price">
+        <span>$</span>
+
+        <strong
+          class="price-value"
+          data-monthly="79"
+          data-yearly="63"
+        >
+          79
+        </strong>
+
+        <span>/month</span>
+      </div>
+
+      <button
+        class="choose-btn"
+        onclick="selectPlan('Enterprise')"
+      >
+        Contact Sales
+      </button>
+
+      <p class="features-title">
+        EVERYTHING IN PROFESSIONAL, PLUS
+      </p>
+
+      <ul class="features">
+        <li>Unlimited storage</li>
+        <li>Advanced security</li>
+        <li>Dedicated support</li>
+        <li>SSO and SAML</li>
+        <li>Audit logs</li>
+        <li>Custom contracts</li>
+      </ul>
+
+    </article>
+
+  </main>
+
+  <!-- FAQ -->
+  <section class="faq">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Can I change my plan later?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes. You can upgrade or downgrade your plan
+        whenever your requirements change.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Is there a free trial?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        The Professional plan includes a free trial so
+        you can explore its features before subscribing.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Can I cancel anytime?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes. Your subscription can be cancelled at any
+        time from the account settings.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Do you offer enterprise support?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes. Enterprise customers can receive dedicated
+        support and additional account features.
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    Responsive Pricing Page &copy; 2026
+  </footer>
+
+  <script>
+    const billingSwitch =
+      document.getElementById("billingSwitch");
+
+    const monthlyText =
+      document.getElementById("monthlyText");
+
+    const yearlyText =
+      document.getElementById("yearlyText");
+
+    const priceValues =
+      document.querySelectorAll(".price-value");
+
+    const oldPrice =
+      document.getElementById("oldPrice");
+
+    let yearly = false;
+
+    billingSwitch.addEventListener("click", function () {
+
+      yearly = !yearly;
+
+      billingSwitch.classList.toggle(
+        "yearly",
+        yearly
+      );
+
+      monthlyText.classList.toggle(
+        "active",
+        !yearly
+      );
+
+      yearlyText.classList.toggle(
+        "active",
+        yearly
+      );
+
+      priceValues.forEach(function (price) {
+
+        if (yearly) {
+          price.textContent =
+            price.dataset.yearly;
+        } else {
+          price.textContent =
+            price.dataset.monthly;
+        }
+
+      });
+
+      if (yearly) {
+        oldPrice.textContent = "$29";
+      } else {
+        oldPrice.textContent = "";
+      }
+
+    });
+
+    function selectPlan(plan) {
+
+      alert(
+        "You selected the " +
+        plan +
+        " plan."
+      );
+
+    }
+
+    document
+      .querySelectorAll(".faq-question")
+      .forEach(function (button) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            const item =
+              this.parentElement;
+
+            item.classList.toggle("open");
+
+            const symbol =
+              this.querySelector("span");
+
+            symbol.textContent =
+              item.classList.contains("open")
+                ? "−"
+                : "+";
+
+          }
+        );
+
+      });
+  </script>
+
+</body>
+</html>

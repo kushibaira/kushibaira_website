@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes Application</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        textarea {
+            width: 60%;
+            height: 150px;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+        }
+
+        #message {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Notes Application</h1>
+
+    <textarea id="note" placeholder="Write your note"></textarea>
+    <br>
+
+    <button onclick="saveNote()">Save Note</button>
+    <button onclick="loadNote()">Load Note</button>
+    <button onclick="deleteNote()">Delete Note</button>
+
+    <p id="message"></p>
+
+    <script>
+        function saveNote() {
+            let note = document.getElementById("note").value;
+
+            localStorage.setItem("note", note);
+
+            document.getElementById("message").innerHTML =
+                "Note saved!";
+        }
+
+        function loadNote() {
+            let note = localStorage.getItem("note");
+
+            document.getElementById("note").value =
+                note || "";
+
+            document.getElementById("message").innerHTML =
+                "Note loaded!";
+        }
+
+        function deleteNote() {
+            localStorage.removeItem("note");
+
+            document.getElementById("note").value = "";
+
+            document.getElementById("message").innerHTML =
+                "Note deleted!";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Object</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Location Object</h1>
+
+    <button onclick="showLocation()">Show Current URL</button>
+    <button onclick="reloadPage()">Reload Page</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        function showLocation() {
+
+            let url = window.location.href;
+
+            document.getElementById("output").innerHTML =
+                "Current Page URL:<br>" + url;
+        }
+
+        function reloadPage() {
+
+            window.location.reload();
+        }
+
+    </script>
+
+</body>
+</html>

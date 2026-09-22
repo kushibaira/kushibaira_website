@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Methods</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #container {
+            padding: 20px;
+            margin: 20px auto;
+            width: 400px;
+            border: 1px solid black;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Methods</h1>
+
+    <div id="container">
+        <p id="oldText">Original paragraph</p>
+    </div>
+
+    <button onclick="createElementDemo()">Create Element</button>
+    <button onclick="removeElementDemo()">Remove Element</button>
+    <button onclick="replaceElementDemo()">Replace Element</button>
+
+    <script>
+
+        function createElementDemo() {
+
+            let newElement = document.createElement("p");
+
+            newElement.textContent = "New paragraph created.";
+
+            document.getElementById("container").appendChild(newElement);
+        }
+
+        function removeElementDemo() {
+
+            let element = document.getElementById("oldText");
+
+            if (element) {
+                element.remove();
+            }
+        }
+
+        function replaceElementDemo() {
+
+            let oldElement = document.getElementById("oldText");
+
+            if (oldElement) {
+
+                let newElement = document.createElement("p");
+
+                newElement.textContent = "Paragraph has been replaced.";
+
+                document.getElementById("container")
+                    .replaceChild(newElement, oldElement);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

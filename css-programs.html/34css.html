@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Keyframe Animations</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .move {
+            animation: moveBox 3s infinite alternate;
+        }
+
+        .color {
+            animation: changeColor 3s infinite alternate;
+        }
+
+        .rotate {
+            animation: rotateBox 3s infinite linear;
+        }
+
+        .bounce {
+            animation: bounceBox 2s infinite;
+        }
+
+        @keyframes moveBox {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(100px);
+            }
+        }
+
+        @keyframes changeColor {
+            from {
+                background-color: lightblue;
+            }
+
+            to {
+                background-color: orange;
+            }
+        }
+
+        @keyframes rotateBox {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounceBox {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-80px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Keyframe Animations</h1>
+
+    <div class="container">
+
+        <div class="box move">
+            Moving
+        </div>
+
+        <div class="box color">
+            Color
+        </div>
+
+        <div class="box rotate">
+            Rotate
+        </div>
+
+        <div class="box bounce">
+            Bounce
+        </div>
+
+    </div>
+
+</body>
+</html>

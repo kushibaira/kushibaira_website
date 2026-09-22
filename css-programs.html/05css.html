@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Background Properties</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .background-box {
+            height: 500px;
+
+            /* Background Image */
+            background-image: url(
+                "https://picsum.photos/1200/600"
+            );
+
+            /* Background Color */
+            background-color: lightblue;
+
+            /* Background Position */
+            background-position: center;
+
+            /* Background Size */
+            background-size: cover;
+
+            /* Background Repeat */
+            background-repeat: no-repeat;
+
+            /* Background Attachment */
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="background-box">
+
+        <div class="content">
+
+            <h1>CSS Background Properties</h1>
+
+            <p>
+                This page demonstrates background image,
+                color, position, size, repeat and attachment.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100px;
+            font-size: 18px;
+        }
+
+        #display {
+            font-size: 45px;
+            font-weight: bold;
+            margin: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Countdown Timer</h1>
+
+    <input type="number" id="time" placeholder="Seconds">
+
+    <br>
+
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button>
+
+    <div id="display">00</div>
+
+    <script>
+
+        let seconds = 0;
+        let timer = null;
+
+        function startTimer() {
+
+            if (timer === null) {
+
+                if (seconds === 0) {
+                    seconds = Number(document.getElementById("time").value);
+                }
+
+                timer = setInterval(function() {
+
+                    if (seconds > 0) {
+                        seconds--;
+
+                        document.getElementById("display").innerHTML =
+                            String(seconds).padStart(2, "0");
+                    } else {
+                        clearInterval(timer);
+                        timer = null;
+                        alert("Time's up!");
+                    }
+
+                }, 1000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function resetTimer() {
+
+            stopTimer();
+
+            seconds = 0;
+
+            document.getElementById("display").innerHTML = "00";
+            document.getElementById("time").value = "";
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search and Filter Table Records</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>Search / Filter Table Records</h2>
+
+    <input type="text" id="search"
+           placeholder="Search by name..."
+           onkeyup="filterTable()">
+
+    <table id="studentTable">
+
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+        </tr>
+
+        <tr>
+            <td>John</td>
+            <td>20</td>
+            <td>JavaScript</td>
+        </tr>
+
+        <tr>
+            <td>Alice</td>
+            <td>21</td>
+            <td>Python</td>
+        </tr>
+
+        <tr>
+            <td>David</td>
+            <td>19</td>
+            <td>HTML</td>
+        </tr>
+
+        <tr>
+            <td>Emma</td>
+            <td>22</td>
+            <td>CSS</td>
+        </tr>
+
+    </table>
+
+    <script>
+        function filterTable() {
+
+            // Get search value
+            let input = document.getElementById("search");
+            let filter = input.value.toLowerCase();
+
+            // Get table rows
+            let table = document.getElementById("studentTable");
+            let rows = table.getElementsByTagName("tr");
+
+            // Check each row
+            for (let i = 1; i < rows.length; i++) {
+
+                let name = rows[i]
+                    .getElementsByTagName("td")[0];
+
+                if (name) {
+
+                    let text = name.textContent
+                        .toLowerCase();
+
+                    // Show or hide the row
+                    if (text.includes(filter)) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

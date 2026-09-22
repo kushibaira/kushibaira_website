@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI-Powered SaaS Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f5f3ff;color:#1f2937}
+.container{max-width:1150px;margin:auto;padding:25px}
+header{display:flex;justify-content:space-between;align-items:center}
+.badge{background:#ede9fe;color:#6d28d9;padding:7px 12px;border-radius:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.card{background:white;padding:22px;border-radius:14px;box-shadow:0 5px 18px #0001}
+.big{grid-column:span 2}
+.metric{font-size:30px;font-weight:bold;margin:10px 0}
+.insight{border-left:4px solid #7c3aed;padding-left:15px;margin:15px 0}
+.btn{background:#7c3aed;color:white;border:0;padding:11px 18px;border-radius:8px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}.big{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div><h1>AI Workspace</h1><p>Intelligent insights for your business.</p></div>
+<span class="badge">✦ AI Enabled</span>
+</header>
+<div class="grid">
+<div class="card big">
+<h2>AI Performance Overview</h2>
+<p>AI detected a positive growth pattern in your recent data.</p>
+<div class="metric">+24.8%</div>
+<div class="insight"><b>AI Insight:</b> Customer engagement increased after your latest campaign.</div>
+<button class="btn">Generate Report</button>
+</div>
+<div class="card"><h2>AI Requests</h2><div class="metric">12,480</div><p>Requests processed this month.</p></div>
+<div class="card"><h2>Predictions</h2><p>Next month revenue</p><div class="metric">$124K</div><p>Confidence: 91%</p></div>
+<div class="card"><h2>Smart Recommendations</h2><p>• Improve onboarding</p><p>• Contact inactive users</p><p>• Review campaign results</p></div>
+<div class="card"><h2>AI Status</h2><p>🟢 All systems operational</p><p>Models updated today.</p></div>
+</div>
+</div>
+</body>
+</html>

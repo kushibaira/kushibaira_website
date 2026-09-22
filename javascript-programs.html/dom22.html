@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Image Gallery</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .image-box {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dynamic Image Gallery</h1>
+
+    <div id="gallery"></div>
+
+    <script>
+        let images = [
+            {
+                src: "https://picsum.photos/id/1015/300/200",
+                title: "Mountain"
+            },
+            {
+                src: "https://picsum.photos/id/1016/300/200",
+                title: "Nature"
+            },
+            {
+                src: "https://picsum.photos/id/1025/300/200",
+                title: "Dog"
+            }
+        ];
+
+        let gallery = document.getElementById("gallery");
+
+        images.forEach(function(imageData) {
+
+            let box = document.createElement("div");
+            box.className = "image-box";
+
+            let image = document.createElement("img");
+            image.src = imageData.src;
+            image.alt = imageData.title;
+
+            let title = document.createElement("p");
+            title.textContent = imageData.title;
+
+            box.appendChild(image);
+            box.appendChild(title);
+
+            gallery.appendChild(box);
+        });
+    </script>
+
+</body>
+</html>

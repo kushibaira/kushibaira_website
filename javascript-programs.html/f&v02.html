@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 350px;
+            margin: 80px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        #success {
+            color: green;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Login Form</h1>
+
+    <form id="loginForm">
+
+        <label>Username:</label>
+        <input type="text" id="username">
+        <div id="usernameError" class="error"></div>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <div id="passwordError" class="error"></div>
+
+        <button type="submit">Login</button>
+
+        <div id="success"></div>
+
+    </form>
+
+</div>
+
+<script>
+
+    let form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value;
+
+        let usernameError = document.getElementById("usernameError");
+        let passwordError = document.getElementById("passwordError");
+        let success = document.getElementById("success");
+
+        usernameError.textContent = "";
+        passwordError.textContent = "";
+        success.textContent = "";
+
+        let valid = true;
+
+        // Username validation
+        if (username === "") {
+            usernameError.textContent = "Username is required";
+            valid = false;
+        } else if (username.length < 3) {
+            usernameError.textContent =
+                "Username must contain at least 3 characters";
+            valid = false;
+        }
+
+        // Password validation
+        if (password === "") {
+            passwordError.textContent = "Password is required";
+            valid = false;
+        } else if (password.length < 6) {
+            passwordError.textContent =
+                "Password must contain at least 6 characters";
+            valid = false;
+        }
+
+        // Result
+        if (valid) {
+            success.textContent = "Login successful!";
+            form.reset();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

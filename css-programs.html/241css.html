@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Help & Support</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f5f7fb;color:#111827}
+.hero{
+ background:#2563eb;color:white;text-align:center;padding:55px 20px
+}
+.hero h1{font-size:38px}
+.search{
+ width:min(650px,90%);padding:15px;border:0;
+ border-radius:8px;font-size:15px
+}
+.container{width:90%;max-width:1000px;margin:35px auto}
+.categories{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+}
+.card{
+ background:white;padding:25px;border-radius:12px;
+ border:1px solid #e5e7eb
+}
+.card h3{margin-bottom:10px}
+.card p{color:#64748b;line-height:1.5;font-size:13px}
+.support{
+ margin-top:25px;background:#111827;color:white;
+ padding:30px;border-radius:12px
+}
+button{
+ background:#2563eb;color:white;border:0;
+ padding:11px 18px;border-radius:7px;cursor:pointer
+}
+@media(max-width:700px){
+ .categories{grid-template-columns:1fr}
+ .hero h1{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<h1>How can we help?</h1>
+<p>Search our help center or browse the categories.</p>
+<br>
+<input class="search" id="search" placeholder="Search for help...">
+</section>
+
+<main class="container">
+
+<div class="categories" id="categories">
+
+<div class="card">
+<h3>Getting Started</h3>
+<p>Learn how to create and configure your account.</p>
+</div>
+
+<div class="card">
+<h3>Account & Billing</h3>
+<p>Manage subscriptions, payments and account settings.</p>
+</div>
+
+<div class="card">
+<h3>Integrations</h3>
+<p>Connect your favorite tools and services.</p>
+</div>
+
+<div class="card">
+<h3>Security</h3>
+<p>Learn about authentication and security features.</p>
+</div>
+
+<div class="card">
+<h3>API & Developers</h3>
+<p>Find developer documentation and API information.</p>
+</div>
+
+<div class="card">
+<h3>Troubleshooting</h3>
+<p>Find solutions to common problems.</p>
+</div>
+
+</div>
+
+<div class="support">
+<h2>Still need help?</h2>
+<p>Contact our support team for additional assistance.</p>
+<br>
+<button onclick="contactSupport()">Contact Support</button>
+</div>
+
+</main>
+
+<script>
+document.getElementById("search").addEventListener("input",function(){
+ const value=this.value.toLowerCase();
+
+ document.querySelectorAll(".card").forEach(card=>{
+  card.style.display=
+   card.innerText.toLowerCase().includes(value)
+   ?"block":"none";
+ });
+});
+
+function contactSupport(){
+ alert("Support request form would open here.");
+}
+</script>
+
+</body>
+</html>

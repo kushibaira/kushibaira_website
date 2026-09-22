@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accordion Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .accordion {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item input {
+            display: none;
+        }
+
+        .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            background-color: #ffffff;
+            color: #334155;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .question:hover {
+            background-color: #f1f5f9;
+        }
+
+        .arrow {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #f8fafc;
+            transition: max-height 0.3s ease;
+        }
+
+        .answer p {
+            padding: 18px 20px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .item input:checked ~ .answer {
+            max-height: 150px;
+        }
+
+        .item input:checked + .question {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .item input:checked + .question .arrow {
+            transform: rotate(180deg);
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            color: #64748b;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .question {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Accordion Component</h1>
+
+        <p class="description">
+            An accordion allows users to expand and collapse
+            sections of content.
+        </p>
+
+        <div class="accordion">
+
+            <div class="item">
+
+                <input type="checkbox" id="question1">
+
+                <label class="question" for="question1">
+                    <span>What is an accordion?</span>
+                    <span class="arrow">▼</span>
+                </label>
+
+                <div class="answer">
+                    <p>
+                        An accordion is a user interface component
+                        that displays content in expandable and
+                        collapsible sections.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="item">
+
+                <input type="checkbox" id="question2">
+
+                <label class="question" for="question2">
+                    <span>Why are accordions useful?</span>
+                    <span class="arrow">▼</span>
+                </label>
+
+                <div class="answer">
+                    <p>
+                        Accordions help organize large amounts of
+                        information while keeping the webpage clean
+                        and easy to navigate.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="item">
+
+                <input type="checkbox" id="question3">
+
+                <label class="question" for="question3">
+                    <span>Can multiple sections be opened?</span>
+                    <span class="arrow">▼</span>
+                </label>
+
+                <div class="answer">
+                    <p>
+                        Yes. This accordion uses checkboxes, so
+                        multiple sections can remain open at the
+                        same time.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="item">
+
+                <input type="checkbox" id="question4">
+
+                <label class="question" for="question4">
+                    <span>Where are accordions commonly used?</span>
+                    <span class="arrow">▼</span>
+                </label>
+
+                <div class="answer">
+                    <p>
+                        Accordions are commonly used in FAQs,
+                        documentation pages, settings panels,
+                        and help centers.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="info">
+            Click any question to expand or collapse its answer.
+        </div>
+
+    </div>
+
+</body>
+</html>

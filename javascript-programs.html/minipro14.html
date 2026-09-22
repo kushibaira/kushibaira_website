@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Password Generator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        input {
+            padding: 10px;
+            width: 280px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Random Password Generator</h1>
+
+    <input type="text" id="password" readonly>
+
+    <br>
+
+    <button onclick="generatePassword()">
+        Generate Password
+    </button>
+
+    <script>
+
+        function generatePassword() {
+
+            let characters =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+                "abcdefghijklmnopqrstuvwxyz" +
+                "0123456789";
+
+            let password = "";
+
+            for (let i = 0; i < 8; i++) {
+
+                let randomIndex =
+                    Math.floor(Math.random() * characters.length);
+
+                password += characters[randomIndex];
+            }
+
+            document.getElementById("password").value = password;
+        }
+
+    </script>
+
+</body>
+</html>

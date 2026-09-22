@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 16 - Arrow Function</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Arrow Function</h1>
+
+    <input type="number" id="number" placeholder="Enter number">
+    <button onclick="showResult()">Calculate</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        const square = (num) => num * num;
+
+        function showResult() {
+            let n = Number(document.getElementById("number").value);
+
+            document.getElementById("result").innerHTML =
+                "Square = " + square(n);
+        }
+    </script>
+
+</body>
+</html>

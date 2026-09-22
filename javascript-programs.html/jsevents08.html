@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Pressed Key</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        #result {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Key Press Display</h1>
+
+    <input type="text" onkeydown="displayKey(event)"
+           placeholder="Press a key">
+
+    <p id="result"></p>
+
+    <script>
+        function displayKey(event) {
+            document.getElementById("result").textContent =
+                "Key pressed: " + event.key;
+        }
+    </script>
+
+</body>
+</html>

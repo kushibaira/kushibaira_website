@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Gradients</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        /* Linear Gradient */
+        .linear {
+            height: 150px;
+            padding: 20px;
+
+            background: linear-gradient(
+                to right,
+                red,
+                yellow,
+                green
+            );
+
+            text-align: center;
+            font-size: 25px;
+            color: white;
+        }
+
+        /* Linear Gradient - Diagonal */
+        .diagonal {
+            height: 150px;
+            padding: 20px;
+
+            background: linear-gradient(
+                45deg,
+                blue,
+                purple
+            );
+
+            text-align: center;
+            font-size: 25px;
+            color: white;
+        }
+
+        /* Radial Gradient */
+        .radial {
+            height: 200px;
+            padding: 20px;
+
+            background: radial-gradient(
+                circle,
+                yellow,
+                orange,
+                red
+            );
+
+            text-align: center;
+            font-size: 25px;
+            color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Gradients</h1>
+
+    <h2>Linear Gradient</h2>
+
+    <div class="linear">
+        Linear Gradient
+    </div>
+
+    <h2>Diagonal Linear Gradient</h2>
+
+    <div class="diagonal">
+        Diagonal Gradient
+    </div>
+
+    <h2>Radial Gradient</h2>
+
+    <div class="radial">
+        Radial Gradient
+    </div>
+
+</body>
+</html>

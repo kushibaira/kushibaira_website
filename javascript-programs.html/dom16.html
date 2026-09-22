@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Table Data</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 25px auto;
+            width: 600px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 6px;
+            width: 90%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Edit Table Data</h1>
+
+    <table id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Action</th>
+        </tr>
+
+        <tr>
+            <td>Arun</td>
+            <td>20</td>
+            <td>BCA</td>
+            <td><button onclick="editRow(this)">Edit</button></td>
+        </tr>
+
+        <tr>
+            <td>Priya</td>
+            <td>21</td>
+            <td>BSc</td>
+            <td><button onclick="editRow(this)">Edit</button></td>
+        </tr>
+    </table>
+
+    <script>
+
+        function editRow(button) {
+
+            let row = button.parentNode.parentNode;
+
+            let name = row.cells[0].innerText;
+            let age = row.cells[1].innerText;
+            let course = row.cells[2].innerText;
+
+            row.cells[0].innerHTML =
+                "<input type='text' value='" + name + "'>";
+
+            row.cells[1].innerHTML =
+                "<input type='text' value='" + age + "'>";
+
+            row.cells[2].innerHTML =
+                "<input type='text' value='" + course + "'>";
+
+            button.innerText = "Save";
+            button.setAttribute("onclick", "saveRow(this)");
+        }
+
+        function saveRow(button) {
+
+            let row = button.parentNode.parentNode;
+
+            let name = row.cells[0].querySelector("input").value;
+            let age = row.cells[1].querySelector("input").value;
+            let course = row.cells[2].querySelector("input").value;
+
+            row.cells[0].innerText = name;
+            row.cells[1].innerText = age;
+            row.cells[2].innerText = course;
+
+            button.innerText = "Edit";
+            button.setAttribute("onclick", "editRow(this)");
+        }
+
+    </script>
+
+</body>
+</html>

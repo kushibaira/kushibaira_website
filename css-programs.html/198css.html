@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Pricing Plans</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .header {
+            background: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .header button {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .billing-toggle {
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .billing-toggle button {
+            border: 1px solid #d1d5db;
+            background: white;
+            padding: 9px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .billing-toggle button.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .pricing-container {
+            width: 90%;
+            max-width: 1150px;
+            margin: 0 auto 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .plan {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .plan.featured {
+            border: 2px solid #2563eb;
+        }
+
+        .popular {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .plan h2 {
+            margin-bottom: 10px;
+        }
+
+        .plan-description {
+            color: #6b7280;
+            min-height: 45px;
+            line-height: 1.5;
+        }
+
+        .price {
+            margin: 22px 0;
+        }
+
+        .price .amount {
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .price span {
+            color: #6b7280;
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .plan-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .features {
+            list-style: none;
+        }
+
+        .features li {
+            padding: 9px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #16a34a;
+            font-weight: bold;
+            margin-right: 9px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            color: #6b7280;
+        }
+
+        @media (max-width: 850px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        CloudApp
+    </div>
+
+    <button onclick="login()">
+        Login
+    </button>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        Simple, Transparent Pricing
+    </h1>
+
+    <p>
+        Choose the plan that fits your needs.
+    </p>
+
+
+    <div class="billing-toggle">
+
+        <button
+            id="monthlyBtn"
+            class="active"
+            onclick="setBilling('monthly')">
+            Monthly
+        </button>
+
+        <button
+            id="yearlyBtn"
+            onclick="setBilling('yearly')">
+            Yearly
+        </button>
+
+    </div>
+
+</section>
+
+
+<main class="pricing-container">
+
+
+    <!-- Starter -->
+    <div class="plan">
+
+        <h2>Starter</h2>
+
+        <p class="plan-description">
+            For individuals getting started.
+        </p>
+
+        <div class="price">
+
+            <span class="amount"
+                  data-monthly="9"
+                  data-yearly="7">
+                $9
+            </span>
+
+            <span>/month</span>
+
+        </div>
+
+        <button
+            class="plan-btn"
+            onclick="selectPlan('Starter')">
+            Choose Starter
+        </button>
+
+        <ul class="features">
+
+            <li>5 Projects</li>
+            <li>10 GB Storage</li>
+            <li>Email Support</li>
+            <li>Basic Analytics</li>
+            <li>Community Access</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Professional -->
+    <div class="plan featured">
+
+        <div class="popular">
+            Most Popular
+        </div>
+
+        <h2>Professional</h2>
+
+        <p class="plan-description">
+            For growing teams and businesses.
+        </p>
+
+        <div class="price">
+
+            <span class="amount"
+                  data-monthly="29"
+                  data-yearly="23">
+                $29
+            </span>
+
+            <span>/month</span>
+
+        </div>
+
+        <button
+            class="plan-btn"
+            onclick="selectPlan('Professional')">
+            Choose Professional
+        </button>
+
+        <ul class="features">
+
+            <li>Unlimited Projects</li>
+            <li>100 GB Storage</li>
+            <li>Priority Support</li>
+            <li>Advanced Analytics</li>
+            <li>Team Collaboration</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Enterprise -->
+    <div class="plan">
+
+        <h2>Enterprise</h2>
+
+        <p class="plan-description">
+            For large organizations with advanced needs.
+        </p>
+
+        <div class="price">
+
+            <span class="amount"
+                  data-monthly="79"
+                  data-yearly="63">
+                $79
+            </span>
+
+            <span>/month</span>
+
+        </div>
+
+        <button
+            class="plan-btn"
+            onclick="selectPlan('Enterprise')">
+            Choose Enterprise
+        </button>
+
+        <ul class="features">
+
+            <li>Unlimited Projects</li>
+            <li>1 TB Storage</li>
+            <li>24/7 Support</li>
+            <li>Advanced Security</li>
+            <li>Dedicated Account Manager</li>
+
+        </ul>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 CloudApp. All rights reserved.
+
+</footer>
+
+
+<script>
+
+    let billing = "monthly";
+
+
+    function setBilling(type) {
+
+        billing = type;
+
+        const monthlyBtn =
+            document.getElementById("monthlyBtn");
+
+        const yearlyBtn =
+            document.getElementById("yearlyBtn");
+
+        if (type === "monthly") {
+
+            monthlyBtn.classList.add("active");
+            yearlyBtn.classList.remove("active");
+
+        } else {
+
+            yearlyBtn.classList.add("active");
+            monthlyBtn.classList.remove("active");
+
+        }
+
+
+        const prices =
+            document.querySelectorAll(".amount");
+
+        prices.forEach(function(price) {
+
+            const value =
+                price.dataset[type];
+
+            price.innerText =
+                "$" + value;
+
+        });
+
+    }
+
+
+    function selectPlan(plan) {
+
+        alert(
+            "You selected the " +
+            plan +
+            " plan with " +
+            billing +
+            " billing."
+        );
+
+    }
+
+
+    function login() {
+
+        alert("Login page would open here.");
+
+    }
+
+</script>
+
+</body>
+</html>

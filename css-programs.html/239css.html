@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>User Profile Menu</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f1f5f9}
+header{
+ height:70px;background:white;border-bottom:1px solid #e5e7eb;
+ display:flex;align-items:center;justify-content:space-between;
+ padding:0 6%
+}
+.profile{
+ display:flex;align-items:center;gap:10px;cursor:pointer
+}
+.avatar{
+ width:40px;height:40px;border-radius:50%;
+ background:#2563eb;color:white;
+ display:flex;align-items:center;justify-content:center;
+ font-weight:bold
+}
+.menu{
+ position:absolute;right:6%;top:62px;width:230px;
+ background:white;border:1px solid #e5e7eb;
+ border-radius:10px;box-shadow:0 15px 35px #0002;
+ display:none;overflow:hidden
+}
+.menu.show{display:block}
+.user-info{padding:16px;border-bottom:1px solid #e5e7eb}
+.user-info strong{display:block}
+.user-info span{font-size:12px;color:#64748b}
+.menu a{
+ display:block;padding:13px 16px;text-decoration:none;
+ color:#374151;font-size:13px
+}
+.menu a:hover{background:#f1f5f9}
+.logout{color:#dc2626!important}
+main{padding:50px 6%}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2>CloudFlow</h2>
+
+<div class="profile" id="profile">
+<div class="avatar">JD</div>
+<span>John Doe ▾</span>
+</div>
+
+<div class="menu" id="menu">
+
+<div class="user-info">
+<strong>John Doe</strong>
+<span>john@example.com</span>
+</div>
+
+<a href="#">My Profile</a>
+<a href="#">Account Settings</a>
+<a href="#">Billing</a>
+<a href="#">Help Center</a>
+<a href="#" class="logout">Sign Out</a>
+
+</div>
+
+</header>
+
+<main>
+<h1>Dashboard</h1>
+<p>Welcome back, John.</p>
+</main>
+
+<script>
+const profile=document.getElementById("profile");
+const menu=document.getElementById("menu");
+
+profile.onclick=()=>{
+ menu.classList.toggle("show");
+};
+
+document.addEventListener("click",e=>{
+ if(!profile.contains(e.target)&&!menu.contains(e.target)){
+  menu.classList.remove("show");
+ }
+});
+</script>
+
+</body>
+</html>

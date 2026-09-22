@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade & Downgrade Subscription</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    .navbar {
+      background: #111827;
+      color: white;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      font-size: 21px;
+    }
+
+    .navbar a {
+      color: #d1d5db;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .header h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #6b7280;
+    }
+
+    .current-plan {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .current-plan h2 {
+      margin-bottom: 8px;
+    }
+
+    .current-plan p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .current-price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #2563eb;
+      margin-top: 8px;
+    }
+
+    .status {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .billing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .billing-toggle span {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .toggle {
+      width: 52px;
+      height: 28px;
+      background: #2563eb;
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-circle {
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      left: 4px;
+      top: 3px;
+      transition: 0.3s;
+    }
+
+    .toggle.yearly .toggle-circle {
+      left: 26px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .plan {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .plan:hover {
+      border-color: #bfdbfe;
+    }
+
+    .plan.popular {
+      border-color: #2563eb;
+    }
+
+    .badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2563eb;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .plan h2 {
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: #6b7280;
+      font-size: 14px;
+      min-height: 38px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: bold;
+      color: #2563eb;
+      margin: 18px 0 5px;
+    }
+
+    .price span {
+      color: #6b7280;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .yearly-note {
+      color: #16a34a;
+      font-size: 12px;
+      min-height: 18px;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .features li {
+      padding: 9px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: bold;
+      margin-right: 9px;
+    }
+
+    .plan-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #2563eb;
+      color: white;
+    }
+
+    .plan-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .plan-btn.current {
+      background: #e5e7eb;
+      color: #6b7280;
+      cursor: not-allowed;
+    }
+
+    .downgrade {
+      background: #374151;
+    }
+
+    .downgrade:hover {
+      background: #1f2937;
+    }
+
+    .info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .toast {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #111827;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 900px) {
+      .plans {
+        grid-template-columns: 1fr;
+      }
+
+      .plan {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .current-plan {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .navbar a {
+        margin: 0 7px;
+      }
+
+      .container {
+        margin-top: 25px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <h2>CloudSuite</h2>
+
+    <div>
+      <a href="#">Dashboard</a>
+      <a href="#">Billing</a>
+      <a href="#">Account</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <section class="header">
+      <h1>Upgrade or Downgrade Your Plan</h1>
+      <p>Choose the subscription that fits your current requirements.</p>
+    </section>
+
+    <!-- CURRENT PLAN -->
+    <section class="current-plan">
+
+      <div>
+        <span class="status">CURRENT PLAN</span>
+
+        <h2 style="margin-top: 12px;">
+          Professional
+        </h2>
+
+        <p>
+          Your current subscription includes advanced features
+          for growing teams.
+        </p>
+
+        <div class="current-price">
+          $<span id="currentPrice">29</span>
+          <small style="font-size:14px;color:#6b7280;">/month</small>
+        </div>
+      </div>
+
+      <div>
+        <strong>Next billing date</strong>
+        <p style="margin-top:6px;">October 17, 2026</p>
+      </div>
+
+    </section>
+
+    <!-- BILLING TOGGLE -->
+    <div class="billing-toggle">
+
+      <span>Monthly</span>
+
+      <div class="toggle" id="billingToggle">
+        <div class="toggle-circle"></div>
+      </div>
+
+      <span>Yearly</span>
+
+    </div>
+
+    <!-- PLANS -->
+    <section class="plans">
+
+      <!-- STARTER -->
+      <div class="plan">
+
+        <h2>Starter</h2>
+
+        <p class="description">
+          Essential tools for individuals and small projects.
+        </p>
+
+        <div class="price">
+          $<span class="starter-price">9</span>
+          <span>/month</span>
+        </div>
+
+        <div class="yearly-note">
+          Save 22% with yearly billing
+        </div>
+
+        <ul class="features">
+          <li>1 user</li>
+          <li>5 projects</li>
+          <li>5 GB storage</li>
+          <li>Basic analytics</li>
+          <li>Email support</li>
+        </ul>
+
+        <button
+          class="plan-btn downgrade"
+          onclick="changePlan('Starter', 'downgrade')">
+          Downgrade
+        </button>
+
+      </div>
+
+      <!-- PROFESSIONAL -->
+      <div class="plan popular">
+
+        <span class="badge">CURRENT PLAN</span>
+
+        <h2>Professional</h2>
+
+        <p class="description">
+          Advanced tools for growing teams and businesses.
+        </p>
+
+        <div class="price">
+          $<span class="pro-price">29</span>
+          <span>/month</span>
+        </div>
+
+        <div class="yearly-note">
+          Save 21% with yearly billing
+        </div>
+
+        <ul class="features">
+          <li>10 users</li>
+          <li>50 projects</li>
+          <li>100 GB storage</li>
+          <li>Advanced analytics</li>
+          <li>API access</li>
+          <li>Priority support</li>
+        </ul>
+
+        <button class="plan-btn current" disabled>
+          Current Plan
+        </button>
+
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="plan">
+
+        <h2>Enterprise</h2>
+
+        <p class="description">
+          Powerful features for large organizations.
+        </p>
+
+        <div class="price">
+          $<span class="enterprise-price">79</span>
+          <span>/month</span>
+        </div>
+
+        <div class="yearly-note">
+          Save 20% with yearly billing
+        </div>
+
+        <ul class="features">
+          <li>Unlimited users</li>
+          <li>Unlimited projects</li>
+          <li>1 TB storage</li>
+          <li>Advanced analytics</li>
+          <li>SSO and advanced security</li>
+          <li>Dedicated account manager</li>
+        </ul>
+
+        <button
+          class="plan-btn"
+          onclick="changePlan('Enterprise', 'upgrade')">
+          Upgrade
+        </button>
+
+      </div>
+
+    </section>
+
+    <div class="info">
+      <strong>How plan changes work:</strong><br>
+      Upgrades can provide access to additional features immediately.
+      Downgrades can take effect at the end of the current billing period.
+      Your exact billing adjustment depends on the selected plan and
+      billing cycle.
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+
+    const billingToggle =
+      document.getElementById("billingToggle");
+
+    const starterPrice =
+      document.querySelector(".starter-price");
+
+    const proPrice =
+      document.querySelector(".pro-price");
+
+    const enterprisePrice =
+      document.querySelector(".enterprise-price");
+
+    const currentPrice =
+      document.getElementById("currentPrice");
+
+    let yearly = false;
+
+    billingToggle.addEventListener("click", function () {
+
+      yearly = !yearly;
+
+      billingToggle.classList.toggle("yearly");
+
+      if (yearly) {
+
+        starterPrice.textContent = "7";
+        proPrice.textContent = "23";
+        enterprisePrice.textContent = "63";
+        currentPrice.textContent = "23";
+
+      } else {
+
+        starterPrice.textContent = "9";
+        proPrice.textContent = "29";
+        enterprisePrice.textContent = "79";
+        currentPrice.textContent = "29";
+
+      }
+
+    });
+
+
+    function changePlan(plan, action) {
+
+      let message;
+
+      if (action === "upgrade") {
+
+        message =
+          "Upgrade to the " +
+          plan +
+          " plan?";
+
+      } else {
+
+        message =
+          "Downgrade to the " +
+          plan +
+          " plan?";
+
+      }
+
+      const confirmed = confirm(message);
+
+      if (confirmed) {
+
+        showToast(
+          "Your " +
+          action +
+          " request for the " +
+          plan +
+          " plan has been submitted."
+        );
+
+      }
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.style.display = "block";
+
+      setTimeout(function () {
+        toast.style.display = "none";
+      }, 3500);
+
+    }
+
+  </script>
+
+</body>
+</html>

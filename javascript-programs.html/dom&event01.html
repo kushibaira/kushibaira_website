@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Element Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #container {
+            margin-top: 20px;
+        }
+
+        p {
+            color: blue;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>Add New Element Dynamically</h2>
+
+    <div id="container">
+        <p>Existing paragraph</p>
+    </div>
+
+    <button onclick="addElement()">
+        Add New Element
+    </button>
+
+    <script>
+        function addElement() {
+
+            // Create a new paragraph element
+            let newElement = document.createElement("p");
+
+            // Add text to the new element
+            newElement.textContent =
+                "This is a new element added dynamically.";
+
+            // Add the new element to the webpage
+            document.getElementById("container")
+                .appendChild(newElement);
+        }
+    </script>
+
+</body>
+</html>

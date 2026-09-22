@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Date and Time</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #datetime {
+            font-size: 25px;
+            padding: 20px;
+            border: 2px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Current Date and Time</h1>
+
+    <div id="datetime"></div>
+
+    <script>
+        function displayDateTime() {
+
+            let now = new Date();
+
+            document.getElementById("datetime").textContent =
+                now.toLocaleString();
+        }
+
+        displayDateTime();
+
+        setInterval(displayDateTime, 1000);
+    </script>
+
+</body>
+</html>

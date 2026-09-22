@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Bubbling</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #parent {
+            background-color: lightblue;
+            padding: 40px;
+        }
+
+        #child {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Event Bubbling</h1>
+
+    <div id="parent">
+        Parent
+        <button id="child">Child</button>
+    </div>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("child").addEventListener("click", function() {
+            document.getElementById("message").textContent =
+                "Child clicked.";
+        });
+
+        document.getElementById("parent").addEventListener("click", function() {
+            document.getElementById("message").textContent +=
+                " Parent event also executed.";
+        });
+    </script>
+
+</body>
+</html>

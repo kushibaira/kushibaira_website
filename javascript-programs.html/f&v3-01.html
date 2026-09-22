@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightgray;
+        }
+
+        form {
+            width: 350px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;">Student Registration</h1>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Name:</label>
+        <input type="text" id="name">
+
+        <label>Email:</label>
+        <input type="text" id="email">
+
+        <label>Age:</label>
+        <input type="number" id="age">
+
+        <label>Gender:</label>
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label>Course:</label>
+        <select id="course">
+            <option value="">Select Course</option>
+            <option value="BCA">BCA</option>
+            <option value="B.Sc">B.Sc</option>
+            <option value="B.Com">B.Com</option>
+        </select>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+
+        <button type="submit">Register</button>
+
+        <p id="message"></p>
+
+    </form>
+
+    <script>
+        function validateForm() {
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let age = document.getElementById("age").value;
+            let gender = document.getElementById("gender").value;
+            let course = document.getElementById("course").value;
+            let password = document.getElementById("password").value;
+
+            if (name === "") {
+                document.getElementById("message").textContent =
+                    "Please enter your name.";
+                return false;
+            }
+
+            if (email === "") {
+                document.getElementById("message").textContent =
+                    "Please enter your email.";
+                return false;
+            }
+
+            if (age === "") {
+                document.getElementById("message").textContent =
+                    "Please enter your age.";
+                return false;
+            }
+
+            if (gender === "") {
+                document.getElementById("message").textContent =
+                    "Please select your gender.";
+                return false;
+            }
+
+            if (course === "") {
+                document.getElementById("message").textContent =
+                    "Please select a course.";
+                return false;
+            }
+
+            if (password === "") {
+                document.getElementById("message").textContent =
+                    "Please enter a password.";
+                return false;
+            }
+
+            document.getElementById("message").textContent =
+                "Registration successful!";
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

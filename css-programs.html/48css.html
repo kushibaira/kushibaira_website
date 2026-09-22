@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 48 - Product Card Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .container > p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 220px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+        }
+
+        .product-content {
+            padding: 22px;
+        }
+
+        .category {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .product-content h2 {
+            margin: 8px 0;
+            color: #1e293b;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e293b;
+            margin: 15px 0;
+        }
+
+        .rating {
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media (max-width: 800px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudStore
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h1>Product Card Component</h1>
+
+        <p>
+            A responsive product card layout for an online store.
+        </p>
+
+        <div class="products">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    💻
+                </div>
+
+                <div class="product-content">
+
+                    <div class="category">
+                        Electronics
+                    </div>
+
+                    <h2>Laptop</h2>
+
+                    <p class="description">
+                        Powerful laptop suitable for programming,
+                        studying, and everyday work.
+                    </p>
+
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+
+                    <div class="price">
+                        ₹55,999
+                    </div>
+
+                    <a href="#" class="buy-button">
+                        Buy Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    🎧
+                </div>
+
+                <div class="product-content">
+
+                    <div class="category">
+                        Audio
+                    </div>
+
+                    <h2>Wireless Headphones</h2>
+
+                    <p class="description">
+                        Comfortable wireless headphones with
+                        high-quality sound and long battery life.
+                    </p>
+
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
+
+                    <div class="price">
+                        ₹2,499
+                    </div>
+
+                    <a href="#" class="buy-button">
+                        Buy Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    ⌚
+                </div>
+
+                <div class="product-content">
+
+                    <div class="category">
+                        Accessories
+                    </div>
+
+                    <h2>Smart Watch</h2>
+
+                    <p class="description">
+                        Smart watch with fitness tracking,
+                        notifications, and health features.
+                    </p>
+
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+
+                    <div class="price">
+                        ₹3,999
+                    </div>
+
+                    <a href="#" class="buy-button">
+                        Buy Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

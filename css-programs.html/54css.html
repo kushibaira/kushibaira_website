@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notification Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #222;
+        }
+
+        .navbar {
+            background-color: #172554;
+            color: white;
+            padding: 18px 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .notifications {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .notification {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid;
+        }
+
+        .notification:hover {
+            transform: translateX(5px);
+        }
+
+        .icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .content h2 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .time {
+            color: #999;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .success {
+            border-left-color: #16a34a;
+        }
+
+        .success .icon {
+            background-color: #dcfce7;
+        }
+
+        .warning {
+            border-left-color: #f59e0b;
+        }
+
+        .warning .icon {
+            background-color: #fef3c7;
+        }
+
+        .error {
+            border-left-color: #dc2626;
+        }
+
+        .error .icon {
+            background-color: #fee2e2;
+        }
+
+        .info {
+            border-left-color: #2563eb;
+        }
+
+        .info .icon {
+            background-color: #dbeafe;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 15px 20px;
+                font-size: 20px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .notification {
+                padding: 15px;
+            }
+
+            .time {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        CloudFlow Dashboard
+    </div>
+
+    <div class="container">
+
+        <h1>Notifications</h1>
+
+        <p class="description">
+            Recent updates and important notifications
+        </p>
+
+        <div class="notifications">
+
+            <div class="notification success">
+                <div class="icon">✓</div>
+
+                <div class="content">
+                    <h2>Payment Successful</h2>
+                    <p>Your monthly subscription payment was completed successfully.</p>
+                </div>
+
+                <div class="time">2 min ago</div>
+            </div>
+
+            <div class="notification warning">
+                <div class="icon">⚠</div>
+
+                <div class="content">
+                    <h2>Storage Almost Full</h2>
+                    <p>Your cloud storage is 85% full. Consider upgrading your plan.</p>
+                </div>
+
+                <div class="time">15 min ago</div>
+            </div>
+
+            <div class="notification error">
+                <div class="icon">✕</div>
+
+                <div class="content">
+                    <h2>Payment Failed</h2>
+                    <p>We could not process your recent payment. Please check your payment details.</p>
+                </div>
+
+                <div class="time">1 hour ago</div>
+            </div>
+
+            <div class="notification info">
+                <div class="icon">i</div>
+
+                <div class="content">
+                    <h2>New Feature Available</h2>
+                    <p>A new analytics dashboard is now available in your account.</p>
+                </div>
+
+                <div class="time">3 hours ago</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

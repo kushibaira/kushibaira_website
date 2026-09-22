@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Inheritance and Specificity</title>
+
+    <style>
+
+        /* Element Selector */
+        p {
+            color: blue;
+            font-size: 18px;
+        }
+
+        /* Class Selector */
+        .text {
+            color: green;
+        }
+
+        /* ID Selector */
+        #special {
+            color: red;
+        }
+
+        /* Inheritance */
+        .parent {
+            color: purple;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Cascade Example */
+        .cascade {
+            color: orange;
+        }
+
+        .cascade {
+            color: brown;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Inheritance, Specificity and Cascade</h1>
+
+    <h2>1. Inheritance</h2>
+
+    <div class="parent">
+        <p>
+            This paragraph inherits the font family
+            from its parent element.
+        </p>
+    </div>
+
+    <h2>2. Specificity</h2>
+
+    <p>
+        This paragraph uses the element selector.
+    </p>
+
+    <p class="text">
+        This paragraph uses the class selector.
+    </p>
+
+    <p id="special" class="text">
+        This paragraph uses the ID selector.
+    </p>
+
+    <h2>3. Cascade</h2>
+
+    <p class="cascade">
+        The last matching rule is applied when
+        specificity is the same.
+    </p>
+
+</body>
+</html>

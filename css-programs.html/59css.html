@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Styles</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .primary {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .primary:hover {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            background-color: #64748b;
+            color: white;
+            border-color: #64748b;
+        }
+
+        .secondary:hover {
+            background-color: #475569;
+            border-color: #475569;
+            transform: translateY(-2px);
+        }
+
+        .outline {
+            background-color: transparent;
+            color: #2563eb;
+            border-color: #2563eb;
+        }
+
+        .outline:hover {
+            background-color: #2563eb;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .destructive {
+            background-color: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
+        .destructive:hover {
+            background-color: #b91c1c;
+            border-color: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        .examples {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            text-align: left;
+        }
+
+        .example {
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .example h3 {
+            margin-bottom: 8px;
+            color: #172554;
+        }
+
+        .example p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .examples {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Button Styles</h1>
+
+        <p class="description">
+            Different button styles commonly used in modern
+            web interfaces and SaaS applications.
+        </p>
+
+        <div class="button-container">
+
+            <button class="btn primary">
+                Primary
+            </button>
+
+            <button class="btn secondary">
+                Secondary
+            </button>
+
+            <button class="btn outline">
+                Outline
+            </button>
+
+            <button class="btn destructive">
+                Destructive
+            </button>
+
+        </div>
+
+
+        <div class="examples">
+
+            <div class="example">
+                <h3>Primary Button</h3>
+                <p>
+                    Used for the main or most important action
+                    on a webpage.
+                </p>
+            </div>
+
+            <div class="example">
+                <h3>Secondary Button</h3>
+                <p>
+                    Used for supporting actions that are less
+                    important than the primary action.
+                </p>
+            </div>
+
+            <div class="example">
+                <h3>Outline Button</h3>
+                <p>
+                    Uses a border and transparent background
+                    for secondary interface actions.
+                </p>
+            </div>
+
+            <div class="example">
+                <h3>Destructive Button</h3>
+                <p>
+                    Used for actions that can delete or remove
+                    important information.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

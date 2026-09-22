@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dark Mode SaaS</title>
+
+<style>
+:root{
+  --bg:#f4f7fb;
+  --card:#fff;
+  --text:#111827;
+  --muted:#64748b;
+  --primary:#2563eb;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:var(--bg);color:var(--text)}
+header{
+  padding:20px 6%;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+}
+header h1{font-size:22px}
+button{
+  border:0;padding:10px 16px;border-radius:7px;
+  background:var(--primary);color:white;cursor:pointer
+}
+.container{width:88%;margin:35px auto}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:25px;border-radius:12px
+}
+.card h2{margin-bottom:10px}
+.card p{color:var(--muted);line-height:1.6}
+.stat{font-size:30px;font-weight:bold;margin:18px 0}
+body.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --border:#334155;
+}
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>CloudFlow</h1>
+  <button id="theme">Toggle Theme</button>
+</header>
+
+<main class="container">
+  <h2>Dashboard</h2><br>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Revenue</h2>
+      <div class="stat">$24,850</div>
+      <p>12.5% increase this month.</p>
+    </div>
+
+    <div class="card">
+      <h2>Customers</h2>
+      <div class="stat">8,420</div>
+      <p>New customers are increasing.</p>
+    </div>
+
+    <div class="card">
+      <h2>Projects</h2>
+      <div class="stat">156</div>
+      <p>Active projects in your workspace.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById("theme").onclick=()=>{
+  document.body.classList.toggle("dark");
+};
+</script>
+
+</body>
+</html>

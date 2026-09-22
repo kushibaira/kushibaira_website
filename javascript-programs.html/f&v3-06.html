@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Email Validation</h1>
+
+    <input type="text" id="email" placeholder="Enter email">
+    <button onclick="validateEmail()">Validate</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+
+            if (email.includes("@") && email.includes(".")) {
+                document.getElementById("message").textContent =
+                    "Valid email address.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Invalid email address.";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complete Analytics Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f7fb;color:#172033}
+.wrap{max-width:1200px;margin:auto;padding:25px}
+header{display:flex;justify-content:space-between;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:25px 0}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 14px #0001}
+.num{font-size:28px;font-weight:bold;margin-top:8px}
+.dashboard{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.chart{height:300px;display:flex;align-items:end;gap:10px}
+.bar{flex:1;background:#4f46e5;border-radius:5px 5px 0 0}
+.progress{height:10px;background:#e5e7eb;border-radius:10px;margin:10px 0}
+.fill{height:100%;background:#4f46e5;border-radius:10px}
+@media(max-width:750px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.dashboard{grid-template-columns:1fr}
+}
+@media(max-width:450px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div><h1>Analytics Overview</h1><p>Monitor your business performance.</p></div>
+<select><option>Last 30 Days</option><option>Last 7 Days</option></select>
+</header>
+<div class="stats">
+<div class="card">Visitors<div class="num">84.2K</div></div>
+<div class="card">Conversions<div class="num">6.8K</div></div>
+<div class="card">Revenue<div class="num">$92K</div></div>
+<div class="card">Conversion Rate<div class="num">8.1%</div></div>
+</div>
+<div class="dashboard">
+<div class="card">
+<h2>Traffic Analytics</h2>
+<div class="chart">
+<div class="bar" style="height:40%"></div>
+<div class="bar" style="height:60%"></div>
+<div class="bar" style="height:48%"></div>
+<div class="bar" style="height:75%"></div>
+<div class="bar" style="height:65%"></div>
+<div class="bar" style="height:88%"></div>
+<div class="bar" style="height:78%"></div>
+</div>
+</div>
+<div class="card">
+<h2>Channels</h2>
+<p>Organic</p><div class="progress"><div class="fill" style="width:78%"></div></div>
+<p>Social</p><div class="progress"><div class="fill" style="width:55%"></div></div>
+<p>Direct</p><div class="progress"><div class="fill" style="width:64%"></div></div>
+</div>
+</div>
+</div>
+</body>
+</html>

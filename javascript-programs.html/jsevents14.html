@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset Event</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Reset Event</h1>
+
+    <form onreset="resetForm()">
+        <input type="text" placeholder="Enter name">
+        <br>
+        <input type="email" placeholder="Enter email">
+        <br>
+        <button type="reset">Reset</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        function resetForm() {
+            document.getElementById("message").textContent =
+                "Form has been reset.";
+        }
+    </script>
+
+</body>
+</html>

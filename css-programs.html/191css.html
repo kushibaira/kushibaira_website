@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrations Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 8px;
+        }
+
+        .menu a {
+            display: block;
+            text-decoration: none;
+            color: #d1d5db;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .menu .active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            font-size: 28px;
+        }
+
+        .add-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .add-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Search */
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Integration Cards */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: #e5edff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .connected {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .disconnected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .card button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+        }
+
+        .card button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 190px;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .menu li {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            SaaS Admin
+        </div>
+
+        <ul class="menu">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="#" class="active">Integrations</a>
+            </li>
+
+            <li>
+                <a href="#">Webhooks</a>
+            </li>
+
+            <li>
+                <a href="#">Developers</a>
+            </li>
+
+            <li>
+                <a href="#">Security</a>
+            </li>
+
+            <li>
+                <a href="#">Billing</a>
+            </li>
+
+            <li>
+                <a href="#">Settings</a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <div class="topbar">
+            <h1>Integrations</h1>
+
+            <button class="add-btn" onclick="addIntegration()">
+                + Add Integration
+            </button>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search integrations..."
+                onkeyup="searchIntegrations()"
+            >
+        </div>
+
+        <!-- Integration Cards -->
+        <div class="integration-grid" id="integrationGrid">
+
+            <!-- Slack -->
+            <div class="card integration-card">
+
+                <div class="card-header">
+                    <div class="icon">💬</div>
+
+                    <div>
+                        <h3>Slack</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Connect your workspace with Slack to receive
+                    notifications and alerts.
+                </p>
+
+                <span class="status connected">
+                    Connected
+                </span>
+
+                <button onclick="toggleConnection(this)">
+                    Manage
+                </button>
+
+            </div>
+
+            <!-- Google Drive -->
+            <div class="card integration-card">
+
+                <div class="card-header">
+                    <div class="icon">📁</div>
+
+                    <div>
+                        <h3>Google Drive</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Store and manage your application files
+                    using Google Drive.
+                </p>
+
+                <span class="status disconnected">
+                    Not Connected
+                </span>
+
+                <button onclick="toggleConnection(this)">
+                    Connect
+                </button>
+
+            </div>
+
+            <!-- GitHub -->
+            <div class="card integration-card">
+
+                <div class="card-header">
+                    <div class="icon">🐙</div>
+
+                    <div>
+                        <h3>GitHub</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Connect GitHub repositories to manage
+                    development workflows.
+                </p>
+
+                <span class="status connected">
+                    Connected
+                </span>
+
+                <button onclick="toggleConnection(this)">
+                    Manage
+                </button>
+
+            </div>
+
+            <!-- Google Analytics -->
+            <div class="card integration-card">
+
+                <div class="card-header">
+                    <div class="icon">📊</div>
+
+                    <div>
+                        <h3>Google Analytics</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Track website traffic and application
+                    analytics.
+                </p>
+
+                <span class="status disconnected">
+                    Not Connected
+                </span>
+
+                <button onclick="toggleConnection(this)">
+                    Connect
+                </button>
+
+            </div>
+
+            <!-- Stripe -->
+            <div class="card integration-card">
+
+                <div class="card-header">
+                    <div class="icon">💳</div>
+
+                    <div>
+                        <h3>Stripe</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Connect Stripe to manage payments,
+                    subscriptions and billing.
+                </p>
+
+                <span class="status connected">
+                    Connected
+                </span>
+
+                <button onclick="toggleConnection(this)">
+                    Manage
+                </button>
+
+            </div>
+
+            <!-- Microsoft Teams -->
+            <div class="card integration-card">
+
+                <div class="card-header">
+                    <div class="icon">👥</div>
+
+                    <div>
+                        <h3>Microsoft Teams</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Send application notifications and updates
+                    to Microsoft Teams.
+                </p>
+
+                <span class="status disconnected">
+                    Not Connected
+                </span>
+
+                <button onclick="toggleConnection(this)">
+                    Connect
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* Search integrations */
+    function searchIntegrations() {
+
+        const input =
+            document.getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+        const cards =
+            document.querySelectorAll(".integration-card");
+
+        cards.forEach(function(card) {
+
+            const text =
+                card.innerText.toLowerCase();
+
+            if (text.includes(input)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+    }
+
+
+    /* Connect / Manage button */
+    function toggleConnection(button) {
+
+        const card = button.closest(".card");
+
+        const status =
+            card.querySelector(".status");
+
+        if (status.classList.contains("connected")) {
+
+            status.classList.remove("connected");
+            status.classList.add("disconnected");
+
+            status.innerText = "Not Connected";
+
+            button.innerText = "Connect";
+
+            alert("Integration disconnected.");
+
+        } else {
+
+            status.classList.remove("disconnected");
+            status.classList.add("connected");
+
+            status.innerText = "Connected";
+
+            button.innerText = "Manage";
+
+            alert("Integration connected successfully.");
+
+        }
+    }
+
+
+    /* Add integration */
+    function addIntegration() {
+
+        alert(
+            "Add Integration window would open here."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: lightgray;
+        }
+
+        form {
+            width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 9px;
+            margin: 7px 0;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <form onsubmit="return validateJob()">
+
+        <h2>Job Application</h2>
+
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="phone" placeholder="Phone">
+
+        <select id="position">
+            <option value="">Select Position</option>
+            <option value="Developer">Developer</option>
+            <option value="Designer">Designer</option>
+            <option value="Tester">Tester</option>
+        </select>
+
+        <textarea id="experience"
+                  placeholder="Experience"></textarea>
+
+        <button type="submit">Apply</button>
+
+        <p id="message"></p>
+
+    </form>
+
+    <script>
+        function validateJob() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let position = document.getElementById("position").value;
+            let experience =
+                document.getElementById("experience").value;
+
+            if (name === "" || email === "" || phone === "" ||
+                position === "" || experience === "") {
+
+                document.getElementById("message").textContent =
+                    "Please fill all fields.";
+
+                return false;
+            }
+
+            document.getElementById("message").textContent =
+                "Job application submitted successfully.";
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

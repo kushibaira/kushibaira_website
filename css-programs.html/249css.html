@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Login</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{
+ margin:0;min-height:100vh;background:#eff6ff;
+ display:flex;align-items:center;justify-content:center;padding:20px
+}
+.login{
+ width:min(420px,100%);background:white;
+ padding:40px;border-radius:15px;
+ box-shadow:0 15px 40px #0001
+}
+.logo{text-align:center;color:#2563eb;font-size:25px;font-weight:bold}
+h1{text-align:center;margin:25px 0 8px}
+.subtitle{text-align:center;color:#64748b;font-size:13px}
+label{display:block;margin-top:20px;font-size:13px;font-weight:bold}
+input{
+ width:100%;padding:12px;margin-top:7px;
+ border:1px solid #d1d5db;border-radius:7px
+}
+.options{
+ display:flex;justify-content:space-between;
+ margin:15px 0;font-size:12px
+}
+a{color:#2563eb;text-decoration:none}
+button{
+ width:100%;padding:12px;border:0;border-radius:7px;
+ background:#2563eb;color:white;font-weight:bold;cursor:pointer
+}
+.divider{
+ display:flex;align-items:center;gap:10px;
+ color:#94a3b8;font-size:11px;margin:25px 0
+}
+.divider:before,.divider:after{
+ content:"";height:1px;background:#e5e7eb;flex:1
+}
+.social{
+ display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+.social button{background:white;color:#374151;border:1px solid #d1d5db}
+.signup{text-align:center;color:#64748b;font-size:13px;margin-top:25px}
+</style>
+</head>
+
+<body>
+
+<div class="login">
+
+<div class="logo">CloudFlow</div>
+
+<h1>Welcome Back</h1>
+<p class="subtitle">Sign in to access your workspace.</p>
+
+<form id="loginForm">
+
+<label>Email Address</label>
+<input type="email" id="email" placeholder="you@example.com" required>
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Password" required>
+
+<div class="options">
+<label style="margin:0;font-weight:normal">
+<input type="checkbox" style="width:auto">
+ Remember me
+</label>
+
+<a href="#" onclick="forgot(event)">Forgot password?</a>
+</div>
+
+<button type="submit">Sign In</button>
+
+</form>
+
+<div class="divider">OR</div>
+
+<div class="social">
+<button onclick="social('Google')">Google</button>
+<button onclick="social('Microsoft')">Microsoft</button>
+</div>
+
+<p class="signup">
+Don't have an account?
+<a href="#">Create one</a>
+</p>
+
+</div>
+
+<script>
+document.getElementById("loginForm").onsubmit=e=>{
+ e.preventDefault();
+ alert("Login submitted successfully.");
+};
+
+function forgot(e){
+ e.preventDefault();
+ alert("Password recovery selected.");
+}
+
+function social(name){
+ alert("Continue with "+name);
+}
+</script>
+
+</body>
+</html>

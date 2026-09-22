@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Filters</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 200px;
+        }
+
+        img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid black;
+        }
+
+        .blur {
+            filter: blur(4px);
+        }
+
+        .grayscale {
+            filter: grayscale(100%);
+        }
+
+        .brightness {
+            filter: brightness(150%);
+        }
+
+        .contrast {
+            filter: contrast(200%);
+        }
+
+        .sepia {
+            filter: sepia(100%);
+        }
+
+        .shadow {
+            filter: drop-shadow(8px 8px 5px gray);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Filters</h1>
+
+    <div class="container">
+
+        <div class="box">
+            <h3>Blur</h3>
+            <img src="https://picsum.photos/id/1015/400/300"
+                 class="blur" alt="Blur Image">
+        </div>
+
+        <div class="box">
+            <h3>Grayscale</h3>
+            <img src="https://picsum.photos/id/1015/400/300"
+                 class="grayscale" alt="Grayscale Image">
+        </div>
+
+        <div class="box">
+            <h3>Brightness</h3>
+            <img src="https://picsum.photos/id/1015/400/300"
+                 class="brightness" alt="Bright Image">
+        </div>
+
+        <div class="box">
+            <h3>Contrast</h3>
+            <img src="https://picsum.photos/id/1015/400/300"
+                 class="contrast" alt="Contrast Image">
+        </div>
+
+        <div class="box">
+            <h3>Sepia</h3>
+            <img src="https://picsum.photos/id/1015/400/300"
+                 class="sepia" alt="Sepia Image">
+        </div>
+
+        <div class="box">
+            <h3>Drop Shadow</h3>
+            <img src="https://picsum.photos/id/1015/400/300"
+                 class="shadow" alt="Shadow Image">
+        </div>
+
+    </div>
+
+</body>
+</html>

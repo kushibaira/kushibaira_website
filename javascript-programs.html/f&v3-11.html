@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gender Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gender Selection</h1>
+
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <button onclick="validateGender()">Validate</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validateGender() {
+            let gender = document.getElementById("gender").value;
+
+            if (gender === "") {
+                document.getElementById("message").textContent =
+                    "Please select a gender.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Gender selected: " + gender;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Event Handlers</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+        }
+
+        #message {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Multiple Buttons</h1>
+
+    <button onclick="sayHello()">Hello</button>
+    <button onclick="showDate()">Show Date</button>
+    <button onclick="changeColor()">Change Color</button>
+
+    <p id="message"></p>
+
+    <script>
+        function sayHello() {
+            document.getElementById("message").textContent =
+                "Hello!";
+        }
+
+        function showDate() {
+            document.getElementById("message").textContent =
+                new Date().toLocaleDateString();
+        }
+
+        function changeColor() {
+            document.body.style.backgroundColor = "lightgreen";
+        }
+    </script>
+
+</body>
+</html>

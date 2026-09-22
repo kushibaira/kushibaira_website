@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Object</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Window Object</h1>
+
+    <button onclick="showMessage()">Show Message</button>
+    <button onclick="showSize()">Show Window Size</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        function showMessage() {
+            window.alert("Welcome to the Window Object!");
+        }
+
+        function showSize() {
+
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+
+            document.getElementById("output").innerHTML =
+                "Window Width: " + width + " px<br>" +
+                "Window Height: " + height + " px";
+        }
+
+    </script>
+
+</body>
+</html>

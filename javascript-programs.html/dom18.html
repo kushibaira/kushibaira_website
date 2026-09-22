@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort Table Records</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 25px auto;
+            width: 600px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Sort Student Records</h1>
+
+    <button onclick="sortTable(0)">Sort by Name</button>
+    <button onclick="sortTable(1)">Sort by Age</button>
+    <button onclick="sortTable(2)">Sort by Course</button>
+
+    <table id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+        </tr>
+
+        <tr>
+            <td>Rahul</td>
+            <td>20</td>
+            <td>BCom</td>
+        </tr>
+
+        <tr>
+            <td>Arun</td>
+            <td>22</td>
+            <td>BCA</td>
+        </tr>
+
+        <tr>
+            <td>Priya</td>
+            <td>19</td>
+            <td>BSc</td>
+        </tr>
+
+        <tr>
+            <td>Divya</td>
+            <td>21</td>
+            <td>BCA</td>
+        </tr>
+    </table>
+
+    <script>
+
+        function sortTable(column) {
+
+            let table = document.getElementById("studentTable");
+            let rows = Array.from(table.rows).slice(1);
+
+            rows.sort(function(a, b) {
+
+                let valueA = a.cells[column].innerText;
+                let valueB = b.cells[column].innerText;
+
+                if (column == 1) {
+                    return Number(valueA) - Number(valueB);
+                }
+
+                return valueA.localeCompare(valueB);
+            });
+
+            for (let row of rows) {
+                table.appendChild(row);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

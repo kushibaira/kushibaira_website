@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 17 - String Methods</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>String Methods</h1>
+
+    <input type="text" id="text" placeholder="Enter text">
+    <button onclick="stringMethods()">Show Methods</button>
+
+    <div id="result"></div>
+
+    <script>
+        function stringMethods() {
+            let text = document.getElementById("text").value;
+
+            document.getElementById("result").innerHTML =
+                "Uppercase: " + text.toUpperCase() + "<br>" +
+                "Lowercase: " + text.toLowerCase() + "<br>" +
+                "Length: " + text.length + "<br>" +
+                "Trim: " + text.trim() + "<br>" +
+                "Reverse: " + text.split("").reverse().join("");
+        }
+    </script>
+
+</body>
+</html>

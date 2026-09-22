@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Method Management</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .navbar {
+      background: #111827;
+      color: white;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      font-size: 21px;
+    }
+
+    .navbar a {
+      color: #d1d5db;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .page-header {
+      margin-bottom: 30px;
+    }
+
+    .page-header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      color: #6b7280;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+      margin-bottom: 25px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .payment-card {
+      border: 2px solid #2563eb;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .payment-card.default {
+      background: #eff6ff;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .default-badge {
+      background: #2563eb;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .card-number {
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin: 22px 0;
+    }
+
+    .card-details {
+      display: flex;
+      justify-content: space-between;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    .card-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 7px;
+      padding: 10px 16px;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #1d4ed8;
+    }
+
+    .secondary {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .danger {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 13px;
+      border: 2px dashed #9ca3af;
+      background: #f9fafb;
+      color: #2563eb;
+      font-size: 14px;
+    }
+
+    .add-btn:hover {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #374151;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #2563eb;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 15px 0;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .checkbox input {
+      width: auto;
+    }
+
+    .security {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 15px;
+      border-radius: 8px;
+      color: #166534;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .billing-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+
+    .billing-row:last-child {
+      border-bottom: none;
+    }
+
+    .billing-row span {
+      color: #6b7280;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .toast {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: #111827;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .navbar a {
+        margin: 0 7px;
+      }
+
+      .container {
+        margin-top: 25px;
+      }
+
+      .page-header h1 {
+        font-size: 27px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .card-actions {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <h2>CloudSuite</h2>
+
+    <div>
+      <a href="#">Dashboard</a>
+      <a href="#">Billing</a>
+      <a href="#">Account</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="page-header">
+      <h1>Payment Methods</h1>
+      <p>Manage the payment methods used for your subscription and invoices.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <div class="card">
+
+          <h2>Saved Payment Methods</h2>
+
+          <!-- CARD 1 -->
+          <div class="payment-card default">
+
+            <div class="card-top">
+
+              <div class="card-brand">
+                💳 Visa
+              </div>
+
+              <span class="default-badge">
+                DEFAULT
+              </span>
+
+            </div>
+
+            <div class="card-number">
+              •••• •••• •••• 4242
+            </div>
+
+            <div class="card-details">
+              <span>Alex Johnson</span>
+              <span>Expires 12/28</span>
+            </div>
+
+            <div class="card-actions">
+
+              <button
+                class="secondary"
+                onclick="editCard('Visa ending in 4242')">
+                Edit
+              </button>
+
+              <button
+                class="danger"
+                onclick="removeCard('Visa ending in 4242')">
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="payment-card">
+
+            <div class="card-top">
+
+              <div class="card-brand">
+                💳 Mastercard
+              </div>
+
+            </div>
+
+            <div class="card-number">
+              •••• •••• •••• 8888
+            </div>
+
+            <div class="card-details">
+              <span>Alex Johnson</span>
+              <span>Expires 08/29</span>
+            </div>
+
+            <div class="card-actions">
+
+              <button
+                class="primary"
+                onclick="setDefault('Mastercard ending in 8888')">
+                Set as Default
+              </button>
+
+              <button
+                class="secondary"
+                onclick="editCard('Mastercard ending in 8888')">
+                Edit
+              </button>
+
+              <button
+                class="danger"
+                onclick="removeCard('Mastercard ending in 8888')">
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="showAddForm()">
+            + Add New Payment Method
+          </button>
+
+        </div>
+
+        <!-- ADD PAYMENT METHOD -->
+        <div class="card hidden" id="addForm">
+
+          <h2>Add Payment Method</h2>
+
+          <div class="security">
+            🔒 Your payment information is securely processed.
+          </div>
+
+          <form onsubmit="addPayment(event)">
+
+            <div class="form-group">
+              <label>Cardholder Name</label>
+              <input
+                type="text"
+                id="cardName"
+                placeholder="Enter cardholder name"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label>Card Number</label>
+              <input
+                type="text"
+                id="cardNumber"
+                placeholder="1234 5678 9012 3456"
+                maxlength="19"
+                required>
+            </div>
+
+            <div class="row">
+
+              <div class="form-group">
+                <label>Expiry Date</label>
+                <input
+                  type="text"
+                  placeholder="MM/YY"
+                  maxlength="5"
+                  required>
+              </div>
+
+              <div class="form-group">
+                <label>CVV</label>
+                <input
+                  type="password"
+                  placeholder="•••"
+                  maxlength="4"
+                  required>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Country</label>
+
+              <select required>
+                <option value="">Select country</option>
+                <option>India</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+                <option>Australia</option>
+              </select>
+
+            </div>
+
+            <label class="checkbox">
+
+              <input type="checkbox">
+
+              Make this my default payment method
+
+            </label>
+
+            <button class="primary" type="submit">
+              Add Payment Method
+            </button>
+
+            <button
+              class="secondary"
+              type="button"
+              onclick="hideAddForm()"
+              style="margin-left:8px;">
+              Cancel
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+
+        <div class="card">
+
+          <h2>Billing Details</h2>
+
+          <div class="billing-row">
+            <span>Current Plan</span>
+            <strong>Professional</strong>
+          </div>
+
+          <div class="billing-row">
+            <span>Monthly Charge</span>
+            <strong>$29.00</strong>
+          </div>
+
+          <div class="billing-row">
+            <span>Tax</span>
+            <strong>$2.90</strong>
+          </div>
+
+          <div class="billing-row">
+            <span>Next Payment</span>
+            <strong>$31.90</strong>
+          </div>
+
+          <div class="billing-row">
+            <span>Payment Date</span>
+            <strong>Oct 17, 2026</strong>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Payment Preferences</h2>
+
+          <label class="checkbox">
+            <input type="checkbox" checked>
+            Automatically pay invoices
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" checked>
+            Email me payment receipts
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox">
+            Email me before payment
+          </label>
+
+          <button
+            class="primary"
+            onclick="showToast('Payment preferences saved.')">
+            Save Preferences
+          </button>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Security</h2>
+
+          <div class="security">
+            <strong>Payment security enabled</strong>
+            <br>
+            Your saved payment methods are protected using secure
+            payment processing.
+          </div>
+
+          <button
+            class="secondary"
+            onclick="showToast('Security information opened.')">
+            View Security Information
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+
+    function showAddForm() {
+
+      document
+        .getElementById("addForm")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("addForm")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    function hideAddForm() {
+
+      document
+        .getElementById("addForm")
+        .classList.add("hidden");
+
+    }
+
+
+    function addPayment(event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("cardName").value;
+
+      const number =
+        document.getElementById("cardNumber").value;
+
+      const lastFour =
+        number.replace(/\s/g, "").slice(-4);
+
+      showToast(
+        "Payment method ending in " +
+        lastFour +
+        " added successfully."
+      );
+
+      event.target.reset();
+
+      hideAddForm();
+
+    }
+
+
+    function setDefault(card) {
+
+      const confirmed = confirm(
+        "Set " + card + " as your default payment method?"
+      );
+
+      if (confirmed) {
+        showToast(card + " is now the default payment method.");
+      }
+
+    }
+
+
+    function editCard(card) {
+
+      showToast(
+        "Editing " + card + "."
+      );
+
+    }
+
+
+    function removeCard(card) {
+
+      const confirmed = confirm(
+        "Remove " + card + "?"
+      );
+
+      if (confirmed) {
+        showToast(
+          card + " has been removed."
+        );
+      }
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.style.display = "block";
+
+      setTimeout(function () {
+        toast.style.display = "none";
+      }, 3000);
+
+    }
+
+
+    // Basic card-number formatting
+    document
+      .getElementById("cardNumber")
+      .addEventListener("input", function () {
+
+        let value =
+          this.value.replace(/\D/g, "");
+
+        value =
+          value.substring(0, 16);
+
+        value =
+          value.match(/.{1,4}/g)?.join(" ") || "";
+
+        this.value = value;
+
+      });
+
+  </script>
+
+</body>
+</html>

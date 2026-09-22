@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed SaaS Sidebar</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 230px;
+            height: 100vh;
+            background: #1e293b;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            margin-bottom: 5px;
+            border-radius: 7px;
+        }
+
+        .sidebar a:hover {
+            background: #334155;
+        }
+
+        main {
+            margin-left: 230px;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 70px;
+                padding: 20px 8px;
+            }
+
+            .sidebar h2 {
+                font-size: 0;
+            }
+
+            .sidebar h2::after {
+                content: "S";
+                font-size: 25px;
+            }
+
+            .sidebar a {
+                text-align: center;
+                font-size: 0;
+            }
+
+            .sidebar a::first-letter {
+                font-size: 20px;
+            }
+
+            main {
+                margin-left: 70px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <h2>SaaS</h2>
+
+        <a href="#">🏠 Dashboard</a>
+        <a href="#">📊 Analytics</a>
+        <a href="#">👥 Users</a>
+        <a href="#">💳 Billing</a>
+        <a href="#">⚙ Settings</a>
+    </aside>
+
+    <main>
+        <h1>Dashboard</h1>
+        <br>
+
+        <div class="card">
+            <h2>Total Users</h2>
+            <p>15,250 active users</p>
+        </div>
+
+        <div class="card">
+            <h2>Revenue</h2>
+            <p>$45,800 this month</p>
+        </div>
+
+        <div class="card">
+            <h2>Performance</h2>
+            <p>Business performance is improving.</p>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Font Size</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #text {
+            font-size: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dynamic Font Size</h1>
+
+    <p id="text">This text changes size.</p>
+
+    <button onclick="increaseSize()">Increase Font Size</button>
+
+    <script>
+        function increaseSize() {
+            document.getElementById("text").style.fontSize = "30px";
+        }
+    </script>
+
+</body>
+</html>

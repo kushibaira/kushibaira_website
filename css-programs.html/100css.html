@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Analytics</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 230px;
+            background-color: #0f172a;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .nav a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .main {
+            flex: 1;
+            padding: 25px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+        }
+
+        .live {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .value {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .positive {
+            color: #16a34a;
+            font-size: 13px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .panel h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart {
+            height: 280px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            padding: 20px;
+            border-left: 1px solid #cbd5e1;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .bar {
+            flex: 1;
+            background-color: #2563eb;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .activity {
+            padding: 15px;
+            border-left: 4px solid #2563eb;
+            background-color: #f8fafc;
+            border-radius: 6px;
+        }
+
+        .activity strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .activity span {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .table-panel {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 14px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            color: #475569;
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .online {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .processing {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        @media (max-width: 950px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .nav {
+                display: flex;
+                gap: 5px;
+                overflow-x: auto;
+            }
+
+            .nav a {
+                white-space: nowrap;
+            }
+
+            .main {
+                padding: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <div class="logo">LiveStats</div>
+
+            <nav class="nav">
+                <a href="#" class="active">Live Overview</a>
+                <a href="#">Traffic</a>
+                <a href="#">Users</a>
+                <a href="#">Events</a>
+                <a href="#">Alerts</a>
+            </nav>
+
+        </aside>
+
+        <main class="main">
+
+            <div class="header">
+
+                <h1>Real-Time Analytics</h1>
+
+                <div class="live">
+                    ● LIVE
+                </div>
+
+            </div>
+
+            <section class="stats">
+
+                <div class="card">
+                    <h3>Active Users</h3>
+                    <div class="value">8,642</div>
+                    <div class="positive">↑ 12.4% now</div>
+                </div>
+
+                <div class="card">
+                    <h3>Requests / Minute</h3>
+                    <div class="value">24.8K</div>
+                    <div class="positive">↑ 8.7% now</div>
+                </div>
+
+                <div class="card">
+                    <h3>Events Today</h3>
+                    <div class="value">186K</div>
+                    <div class="positive">↑ 15.2% today</div>
+                </div>
+
+                <div class="card">
+                    <h3>Server Response</h3>
+                    <div class="value">128ms</div>
+                    <div class="positive">↓ 6.8% faster</div>
+                </div>
+
+            </section>
+
+            <section class="content">
+
+                <div class="panel">
+
+                    <h2>Live Traffic</h2>
+
+                    <div class="chart">
+                        <div class="bar" style="height: 45%;"></div>
+                        <div class="bar" style="height: 62%;"></div>
+                        <div class="bar" style="height: 50%;"></div>
+                        <div class="bar" style="height: 74%;"></div>
+                        <div class="bar" style="height: 66%;"></div>
+                        <div class="bar" style="height: 85%;"></div>
+                        <div class="bar" style="height: 78%;"></div>
+                        <div class="bar" style="height: 95%;"></div>
+                        <div class="bar" style="height: 88%;"></div>
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <h2>Live Activity</h2>
+
+                    <div class="activity-list">
+
+                        <div class="activity">
+                            <strong>New user registered</strong>
+                            <span>2 seconds ago</span>
+                        </div>
+
+                        <div class="activity">
+                            <strong>Order completed</strong>
+                            <span>18 seconds ago</span>
+                        </div>
+
+                        <div class="activity">
+                            <strong>Payment received</strong>
+                            <span>32 seconds ago</span>
+                        </div>
+
+                        <div class="activity">
+                            <strong>New page visit</strong>
+                            <span>45 seconds ago</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <div class="panel table-panel">
+
+                <h2>Live Events</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>User</th>
+                            <th>Location</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Page View</td>
+                            <td>John Smith</td>
+                            <td>New York</td>
+                            <td>10 sec ago</td>
+                            <td class="online">Live</td>
+                        </tr>
+
+                        <tr>
+                            <td>Purchase</td>
+                            <td>Sarah Lee</td>
+                            <td>London</td>
+                            <td>25 sec ago</td>
+                            <td class="online">Completed</td>
+                        </tr>
+
+                        <tr>
+                            <td>Login</td>
+                            <td>David Kumar</td>
+                            <td>Chennai</td>
+                            <td>41 sec ago</td>
+                            <td class="online">Active</td>
+                        </tr>
+
+                        <tr>
+                            <td>File Upload</td>
+                            <td>Emma Wilson</td>
+                            <td>Toronto</td>
+                            <td>1 min ago</td>
+                            <td class="processing">Processing</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

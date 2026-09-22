@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SaaS Checkout Page</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f5f7fb;color:#1f2937}
+.wrap{max-width:950px;margin:40px auto;padding:20px}
+.checkout{display:grid;grid-template-columns:1.5fr 1fr;gap:25px}
+.card{background:white;padding:25px;border-radius:13px;box-shadow:0 4px 15px #0001}
+label{display:block;margin:14px 0 6px;font-weight:bold}
+input{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:7px}
+.pay{width:100%;margin-top:20px;padding:13px;background:#2563eb;color:white;border:0;border-radius:8px}
+.summary{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}
+@media(max-width:700px){.checkout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Checkout</h1>
+<div class="checkout">
+<div class="card">
+<h2>Payment Details</h2>
+<label>Name on Card</label><input placeholder="John Doe">
+<label>Card Number</label><input placeholder="1234 5678 9012 3456">
+<label>Expiry Date</label><input placeholder="MM/YY">
+<label>CVV</label><input placeholder="123">
+<button class="pay">Pay $49.00</button>
+</div>
+<div class="card">
+<h2>Order Summary</h2>
+<div class="summary"><span>Professional Plan</span><b>$49</b></div>
+<div class="summary"><span>Tax</span><b>$0</b></div>
+<div class="summary"><span>Total</span><b>$49</b></div>
+</div>
+</div>
+</div>
+</body>
+</html>

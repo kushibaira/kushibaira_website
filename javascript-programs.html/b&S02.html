@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigator Object</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Navigator Object</h1>
+
+    <button onclick="showNavigator()">Show Browser Information</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        function showNavigator() {
+
+            let output = document.getElementById("output");
+
+            output.innerHTML =
+                "User Agent: " + navigator.userAgent + "<br>" +
+                "Language: " + navigator.language + "<br>" +
+                "Platform: " + navigator.platform + "<br>" +
+                "Online Status: " + navigator.onLine;
+        }
+
+    </script>
+
+</body>
+</html>

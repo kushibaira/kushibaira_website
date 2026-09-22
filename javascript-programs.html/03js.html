@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Largest Number</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Largest of Three Numbers</h1>
+
+    <input type="number" id="a" placeholder="Number 1">
+    <input type="number" id="b" placeholder="Number 2">
+    <input type="number" id="c" placeholder="Number 3">
+    <br>
+
+    <button onclick="findLargest()">Find Largest</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function findLargest() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let c = Number(document.getElementById("c").value);
+
+            let largest = Math.max(a, b, c);
+
+            document.getElementById("result").innerHTML =
+                "Largest Number: " + largest;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popover Components</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .popover-area {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .popover {
+            position: relative;
+            display: inline-block;
+        }
+
+        .popover-button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .popover-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .popover-content {
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 240px;
+            padding: 18px;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            text-align: left;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .popover:hover .popover-content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popover-content::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+
+        .popover-content h3 {
+            color: #172554;
+            margin-bottom: 8px;
+        }
+
+        .popover-content p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #7c3aed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .profile strong {
+            color: #334155;
+        }
+
+        .profile span {
+            display: block;
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .popover-info {
+            margin-top: 70px;
+            padding: 20px;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .popover-info h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .popover-info p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .popover-area {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Popover Components</h1>
+
+        <p class="description">
+            Popovers display additional information or actions
+            when the user interacts with an element.
+        </p>
+
+        <div class="popover-area">
+
+            <div class="popover">
+
+                <button class="popover-button">
+                    Hover for Details
+                </button>
+
+                <div class="popover-content">
+                    <h3>More Information</h3>
+
+                    <p>
+                        This popover contains additional information
+                        about the selected item.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="popover">
+
+                <button class="popover-button">
+                    User Profile
+                </button>
+
+                <div class="popover-content">
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            JD
+                        </div>
+
+                        <div>
+                            <strong>John Doe</strong>
+                            <span>Product Designer</span>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        View profile information and account details.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="popover">
+
+                <button class="popover-button">
+                    Actions
+                </button>
+
+                <div class="popover-content">
+
+                    <h3>Quick Actions</h3>
+
+                    <p>
+                        Edit, share, duplicate, or delete the
+                        selected item.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="popover-info">
+
+            <h2>Popover Example</h2>
+
+            <p>
+                Move the mouse over the buttons to display
+                different popover components.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

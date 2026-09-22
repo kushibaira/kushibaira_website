@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Command Palette Interface</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .command-button {
+            padding: 13px 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .command-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .hint {
+            margin-top: 20px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .command-palette {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 550px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .command-palette:target {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 5;
+        }
+
+        .command-palette:target + .overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-box {
+            padding: 18px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-box input:focus {
+            border-color: #2563eb;
+        }
+
+        .command-list {
+            padding: 10px;
+        }
+
+        .command-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 13px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #334155;
+        }
+
+        .command-item:hover {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .command-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 7px;
+            background-color: #e0e7ff;
+            color: #4338ca;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .command-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .command-content strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .command-content span {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .shortcut {
+            padding: 4px 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .palette-footer {
+            padding: 12px 18px;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .shortcut {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Command Palette Interface</h1>
+
+        <p class="description">
+            A command palette provides quick access to common
+            actions and navigation options.
+        </p>
+
+        <a href="#palette" class="command-button">
+            Open Command Palette
+        </a>
+
+        <p class="hint">
+            Use the command palette to quickly find actions.
+        </p>
+
+    </div>
+
+
+    <div id="palette" class="command-palette">
+
+        <div class="search-box">
+            <input
+                type="text"
+                placeholder="Search commands...">
+        </div>
+
+        <div class="command-list">
+
+            <a href="#" class="command-item">
+
+                <div class="command-icon">
+                    D
+                </div>
+
+                <div class="command-content">
+                    <strong>Open Dashboard</strong>
+                    <span>Go to the main dashboard</span>
+                </div>
+
+                <span class="shortcut">
+                    Ctrl D
+                </span>
+
+            </a>
+
+            <a href="#" class="command-item">
+
+                <div class="command-icon">
+                    P
+                </div>
+
+                <div class="command-content">
+                    <strong>Open Profile</strong>
+                    <span>View your profile</span>
+                </div>
+
+                <span class="shortcut">
+                    Ctrl P
+                </span>
+
+            </a>
+
+            <a href="#" class="command-item">
+
+                <div class="command-icon">
+                    S
+                </div>
+
+                <div class="command-content">
+                    <strong>Settings</strong>
+                    <span>Manage application settings</span>
+                </div>
+
+                <span class="shortcut">
+                    Ctrl S
+                </span>
+
+            </a>
+
+            <a href="#" class="command-item">
+
+                <div class="command-icon">
+                    ?
+                </div>
+
+                <div class="command-content">
+                    <strong>Help</strong>
+                    <span>Get help and support</span>
+                </div>
+
+                <span class="shortcut">
+                    Ctrl H
+                </span>
+
+            </a>
+
+        </div>
+
+        <div class="palette-footer">
+            Select a command to continue
+        </div>
+
+    </div>
+
+
+    <a href="#" class="overlay"></a>
+
+</body>
+</html>

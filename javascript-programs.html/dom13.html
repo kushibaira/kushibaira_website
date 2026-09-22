@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Student Table</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 25px auto;
+            width: 500px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dynamic Student Table</h1>
+
+    <table id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+        </tr>
+    </table>
+
+    <script>
+
+        let students = [
+            ["Arun", 20, "BCA"],
+            ["Priya", 21, "BSc"],
+            ["Rahul", 20, "BCom"]
+        ];
+
+        let table = document.getElementById("studentTable");
+
+        students.forEach(function(student) {
+
+            let row = document.createElement("tr");
+
+            student.forEach(function(data) {
+
+                let cell = document.createElement("td");
+
+                cell.textContent = data;
+
+                row.appendChild(cell);
+            });
+
+            table.appendChild(row);
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SaaS Usage Analytics</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 230px;
+            background-color: #0f172a;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .nav a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .main {
+            flex: 1;
+            padding: 25px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+        }
+
+        .period {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #475569;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .value {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .positive {
+            color: #16a34a;
+            font-size: 13px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .panel h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart {
+            height: 280px;
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            padding: 20px;
+            border-left: 1px solid #cbd5e1;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .bar {
+            flex: 1;
+            background-color: #2563eb;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .usage-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .usage {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .usage:last-child {
+            border-bottom: none;
+        }
+
+        .usage-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .usage-header span {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .progress {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #2563eb;
+            border-radius: 10px;
+        }
+
+        .table-panel {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 14px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            color: #475569;
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .high {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .medium {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        @media (max-width: 950px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .nav {
+                display: flex;
+                gap: 5px;
+                overflow-x: auto;
+            }
+
+            .nav a {
+                white-space: nowrap;
+            }
+
+            .main {
+                padding: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <div class="logo">UsageHub</div>
+
+            <nav class="nav">
+                <a href="#" class="active">Overview</a>
+                <a href="#">Users</a>
+                <a href="#">Features</a>
+                <a href="#">Plans</a>
+                <a href="#">Reports</a>
+            </nav>
+
+        </aside>
+
+        <main class="main">
+
+            <div class="header">
+
+                <h1>SaaS Usage Analytics</h1>
+
+                <div class="period">
+                    Last 30 Days
+                </div>
+
+            </div>
+
+            <section class="stats">
+
+                <div class="card">
+                    <h3>Active Accounts</h3>
+                    <div class="value">12,840</div>
+                    <div class="positive">↑ 13.5% from last month</div>
+                </div>
+
+                <div class="card">
+                    <h3>Monthly Active Users</h3>
+                    <div class="value">48,620</div>
+                    <div class="positive">↑ 10.8% from last month</div>
+                </div>
+
+                <div class="card">
+                    <h3>Feature Usage</h3>
+                    <div class="value">76.4%</div>
+                    <div class="positive">↑ 8.2% from last month</div>
+                </div>
+
+                <div class="card">
+                    <h3>Average Session</h3>
+                    <div class="value">24m</div>
+                    <div class="positive">↑ 5.6% from last month</div>
+                </div>
+
+            </section>
+
+            <section class="content">
+
+                <div class="panel">
+
+                    <h2>Platform Usage</h2>
+
+                    <div class="chart">
+                        <div class="bar" style="height: 44%;"></div>
+                        <div class="bar" style="height: 58%;"></div>
+                        <div class="bar" style="height: 51%;"></div>
+                        <div class="bar" style="height: 69%;"></div>
+                        <div class="bar" style="height: 64%;"></div>
+                        <div class="bar" style="height: 81%;"></div>
+                        <div class="bar" style="height: 92%;"></div>
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <h2>Feature Usage</h2>
+
+                    <div class="usage-list">
+
+                        <div class="usage">
+
+                            <div class="usage-header">
+                                <strong>Dashboard</strong>
+                                <span>92%</span>
+                            </div>
+
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 92%;"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="usage">
+
+                            <div class="usage-header">
+                                <strong>Reports</strong>
+                                <span>74%</span>
+                            </div>
+
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 74%;"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="usage">
+
+                            <div class="usage-header">
+                                <strong>Automation</strong>
+                                <span>61%</span>
+                            </div>
+
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 61%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <div class="panel table-panel">
+
+                <h2>Usage by Account</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Users</th>
+                            <th>Sessions</th>
+                            <th>Feature Usage</th>
+                            <th>Plan</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Acme Corporation</td>
+                            <td>420</td>
+                            <td>8,240</td>
+                            <td>94%</td>
+                            <td class="high">Enterprise</td>
+                        </tr>
+
+                        <tr>
+                            <td>Tech Solutions</td>
+                            <td>285</td>
+                            <td>5,620</td>
+                            <td>86%</td>
+                            <td class="high">Business</td>
+                        </tr>
+
+                        <tr>
+                            <td>Global Systems</td>
+                            <td>164</td>
+                            <td>3,480</td>
+                            <td>72%</td>
+                            <td class="medium">Professional</td>
+                        </tr>
+
+                        <tr>
+                            <td>Startup Labs</td>
+                            <td>82</td>
+                            <td>1,920</td>
+                            <td>64%</td>
+                            <td class="medium">Starter</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>File Management</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f5f7fb;color:#111827}
+header{
+ background:white;padding:18px 5%;display:flex;
+ justify-content:space-between;border-bottom:1px solid #e5e7eb
+}
+.container{width:90%;max-width:1100px;margin:35px auto}
+.toolbar{
+ display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap
+}
+button{
+ background:#2563eb;color:white;border:0;
+ padding:10px 15px;border-radius:7px;cursor:pointer
+}
+.files{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+}
+.file{
+ background:white;padding:22px;border-radius:10px;
+ border:1px solid #e5e7eb
+}
+.file-icon{
+ font-size:35px;margin-bottom:15px
+}
+.file p{font-size:12px;color:#64748b}
+@media(max-width:800px){
+ .files{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:500px){
+ .files{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>CloudDrive</h2>
+<button onclick="upload()">Upload File</button>
+</header>
+
+<main class="container">
+
+<h1>My Files</h1><br>
+
+<div class="toolbar">
+<button>All Files</button>
+<button>Documents</button>
+<button>Images</button>
+<button>Spreadsheets</button>
+</div>
+
+<div class="files">
+
+<div class="file">
+<div class="file-icon">📄</div>
+<h3>Project Report.pdf</h3>
+<p>PDF • 2.4 MB</p>
+</div>
+
+<div class="file">
+<div class="file-icon">📊</div>
+<h3>Sales Data.xlsx</h3>
+<p>Spreadsheet • 1.8 MB</p>
+</div>
+
+<div class="file">
+<div class="file-icon">🖼️</div>
+<h3>Dashboard.png</h3>
+<p>Image • 850 KB</p>
+</div>
+
+<div class="file">
+<div class="file-icon">📄</div>
+<h3>Documentation.docx</h3>
+<p>Document • 3.1 MB</p>
+</div>
+
+</div>
+
+</main>
+
+<script>
+function upload(){
+ alert("File upload dialog would open here.");
+}
+</script>
+
+</body>
+</html>

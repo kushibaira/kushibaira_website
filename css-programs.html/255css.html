@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Agent Management Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f6f8fb;color:#172033}
+.wrap{max-width:1200px;margin:auto;padding:25px}
+header{display:flex;justify-content:space-between;align-items:center}
+.btn{background:#2563eb;color:white;border:0;padding:11px 18px;border-radius:8px}
+.agents{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.agent{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 15px #0001}
+.avatar{width:50px;height:50px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-size:24px}
+.status{color:#16a34a;font-size:14px}
+.stats{display:flex;gap:20px;margin-top:15px;color:#64748b}
+@media(max-width:800px){.agents{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.agents{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div><h1>AI Agent Management</h1><p>Monitor and manage your intelligent agents.</p></div>
+<button class="btn">+ New Agent</button>
+</header>
+<div class="agents">
+<div class="agent"><div class="avatar">🤖</div><h2>Support Agent</h2><p class="status">● Online</p><p>Handles customer support requests.</p><div class="stats"><span>Tasks 842</span><span>98% Success</span></div></div>
+<div class="agent"><div class="avatar">📈</div><h2>Sales Agent</h2><p class="status">● Online</p><p>Analyzes leads and sales opportunities.</p><div class="stats"><span>Tasks 624</span><span>95% Success</span></div></div>
+<div class="agent"><div class="avatar">🧠</div><h2>Research Agent</h2><p class="status">● Running</p><p>Collects and summarizes information.</p><div class="stats"><span>Tasks 421</span><span>97% Success</span></div></div>
+</div>
+</div>
+</body>
+</html>

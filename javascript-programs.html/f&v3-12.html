@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Radio Button Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Radio Button Validation</h1>
+
+    <p>Select your course:</p>
+
+    <input type="radio" name="course" value="BCA"> BCA
+    <input type="radio" name="course" value="B.Sc"> B.Sc
+    <input type="radio" name="course" value="B.Com"> B.Com
+
+    <br>
+
+    <button onclick="validateRadio()">Submit</button>
+
+    <p id="message"></p>
+
+    <script>
+        function validateRadio() {
+            let courses = document.getElementsByName("course");
+            let selected = false;
+
+            for (let course of courses) {
+                if (course.checked) {
+                    selected = true;
+                    break;
+                }
+            }
+
+            if (selected) {
+                document.getElementById("message").textContent =
+                    "Course selected.";
+            } else {
+                document.getElementById("message").textContent =
+                    "Please select a course.";
+            }
+        }
+    </script>
+
+</body>
+</html>

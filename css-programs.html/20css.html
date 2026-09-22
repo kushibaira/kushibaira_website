@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Functions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        /* calc() Function */
+        .calc-box {
+            width: calc(100% - 40px);
+            background-color: lightblue;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        /* min() Function */
+        .min-box {
+            width: min(500px, 90%);
+            background-color: lightgreen;
+            padding: 20px;
+            margin: 20px auto;
+        }
+
+        /* max() Function */
+        .max-box {
+            width: max(300px, 50%);
+            background-color: lightyellow;
+            padding: 20px;
+            margin: 20px auto;
+        }
+
+        /* clamp() Function */
+        .clamp-text {
+            font-size: clamp(18px, 4vw, 40px);
+            color: purple;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Functions</h1>
+
+    <div class="calc-box">
+        <h2>calc() Function</h2>
+        <p>
+            Width is calculated using 100% minus 40 pixels.
+        </p>
+    </div>
+
+    <div class="min-box">
+        <h2>min() Function</h2>
+        <p>
+            Width will be the smaller value between 500px and 90%.
+        </p>
+    </div>
+
+    <div class="max-box">
+        <h2>max() Function</h2>
+        <p>
+            Width will be the larger value between 300px and 50%.
+        </p>
+    </div>
+
+    <p class="clamp-text">
+        This text uses the clamp() function.
+    </p>
+
+</body>
+</html>

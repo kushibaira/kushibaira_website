@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Word Counter</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        textarea {
+            width: 400px;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #counter {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Live Word Counter</h1>
+
+    <textarea id="text"
+              oninput="countWords()"
+              placeholder="Type something..."></textarea>
+
+    <p id="counter">Words: 0</p>
+
+    <script>
+        function countWords() {
+
+            let text = document.getElementById("text").value.trim();
+
+            if (text === "") {
+                document.getElementById("counter").textContent = "Words: 0";
+            } else {
+                let words = text.split(/\s+/);
+
+                document.getElementById("counter").textContent =
+                    "Words: " + words.length;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usage-Based Billing</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .navbar {
+      background: #111827;
+      color: white;
+      padding: 18px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      font-size: 21px;
+    }
+
+    .navbar a {
+      color: #d1d5db;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      margin-bottom: 28px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .period {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 18px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin-bottom: 22px;
+    }
+
+    .period strong {
+      font-size: 15px;
+    }
+
+    select {
+      padding: 9px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      background: white;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 21px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .metric-label {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .metric {
+      font-size: 27px;
+      font-weight: bold;
+      color: #111827;
+    }
+
+    .metric-sub {
+      color: #16a34a;
+      font-size: 12px;
+      margin-top: 7px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 22px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 23px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin-bottom: 22px;
+    }
+
+    .section h2 {
+      font-size: 19px;
+      margin-bottom: 20px;
+    }
+
+    .usage-item {
+      padding: 17px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .usage-item:last-child {
+      border-bottom: none;
+    }
+
+    .usage-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .usage-name {
+      font-weight: bold;
+    }
+
+    .usage-value {
+      color: #6b7280;
+    }
+
+    .bar {
+      height: 9px;
+      background: #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #2563eb;
+      border-radius: 20px;
+    }
+
+    .bar-green {
+      background: #16a34a;
+    }
+
+    .bar-orange {
+      background: #f59e0b;
+    }
+
+    .bar-red {
+      background: #dc2626;
+    }
+
+    .cost {
+      text-align: right;
+      margin-top: 7px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 14px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      color: #6b7280;
+      background: #f9fafb;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    td:nth-child(2),
+    td:nth-child(3) {
+      text-align: right;
+    }
+
+    .estimate {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      border-radius: 8px;
+      padding: 17px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .total-box {
+      background: #111827;
+      color: white;
+      padding: 22px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .total-box p {
+      color: #d1d5db;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .total-box h2 {
+      font-size: 31px;
+      margin: 0;
+    }
+
+    .total-box small {
+      color: #9ca3af;
+    }
+
+    .limit-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .alert {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 18px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 7px;
+      padding: 11px 17px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #1d4ed8;
+    }
+
+    .secondary {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .toast {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: #111827;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 950px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+      }
+
+      .navbar a {
+        margin: 0 7px;
+      }
+
+      .header h1 {
+        font-size: 27px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .period {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <h2>CloudSuite</h2>
+
+    <div>
+      <a href="#">Dashboard</a>
+      <a href="#">Billing</a>
+      <a href="#">Usage</a>
+      <a href="#">Account</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="header">
+      <h1>Usage-Based Billing</h1>
+      <p>
+        Monitor usage and estimated charges for your current billing period.
+      </p>
+    </div>
+
+    <!-- BILLING PERIOD -->
+    <div class="period">
+
+      <div>
+        <strong>Current Billing Period</strong>
+        <p style="color:#6b7280;font-size:13px;margin-top:5px;">
+          September 17 – October 17, 2026
+        </p>
+      </div>
+
+      <select onchange="changePeriod(this.value)">
+        <option>Current Period</option>
+        <option>Previous Period</option>
+        <option>Last 3 Months</option>
+      </select>
+
+    </div>
+
+    <!-- SUMMARY -->
+    <section class="cards">
+
+      <div class="card">
+        <div class="metric-label">Base Subscription</div>
+        <div class="metric">$29.00</div>
+        <div class="metric-sub">Professional Plan</div>
+      </div>
+
+      <div class="card">
+        <div class="metric-label">Usage Charges</div>
+        <div class="metric">$8.40</div>
+        <div class="metric-sub">+12% from last period</div>
+      </div>
+
+      <div class="card">
+        <div class="metric-label">Total Usage</div>
+        <div class="metric">68%</div>
+        <div class="metric-sub">Within limits</div>
+      </div>
+
+      <div class="card">
+        <div class="metric-label">Estimated Bill</div>
+        <div class="metric">$40.30</div>
+        <div class="metric-sub">Estimated total</div>
+      </div>
+
+    </section>
+
+    <div class="content">
+
+      <!-- LEFT -->
+      <div>
+
+        <!-- USAGE BREAKDOWN -->
+        <section class="section">
+
+          <h2>Usage Breakdown</h2>
+
+          <div class="usage-item">
+
+            <div class="usage-top">
+              <span class="usage-name">API Requests</span>
+              <span class="usage-value">
+                72,000 / 100,000
+              </span>
+            </div>
+
+            <div class="bar">
+              <div
+                class="bar-fill"
+                style="width:72%;">
+              </div>
+            </div>
+
+            <div class="cost">
+              $3.60
+            </div>
+
+          </div>
+
+          <div class="usage-item">
+
+            <div class="usage-top">
+              <span class="usage-name">Storage</span>
+              <span class="usage-value">
+                68 GB / 100 GB
+              </span>
+            </div>
+
+            <div class="bar">
+              <div
+                class="bar-fill bar-green"
+                style="width:68%;">
+              </div>
+            </div>
+
+            <div class="cost">
+              $2.80
+            </div>
+
+          </div>
+
+          <div class="usage-item">
+
+            <div class="usage-top">
+              <span class="usage-name">Data Transfer</span>
+              <span class="usage-value">
+                320 GB / 500 GB
+              </span>
+            </div>
+
+            <div class="bar">
+              <div
+                class="bar-fill bar-orange"
+                style="width:64%;">
+              </div>
+            </div>
+
+            <div class="cost">
+              $1.60
+            </div>
+
+          </div>
+
+          <div class="usage-item">
+
+            <div class="usage-top">
+              <span class="usage-name">Automation Runs</span>
+              <span class="usage-value">
+                400 / 1,000
+              </span>
+            </div>
+
+            <div class="bar">
+              <div
+                class="bar-fill"
+                style="width:40%;">
+              </div>
+            </div>
+
+            <div class="cost">
+              $0.40
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- USAGE HISTORY -->
+        <section class="section">
+
+          <h2>Usage History</h2>
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Usage</th>
+                  <th>Charge</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Sep 17, 2026</td>
+                  <td>2,400 units</td>
+                  <td>$1.20</td>
+                </tr>
+
+                <tr>
+                  <td>Sep 16, 2026</td>
+                  <td>2,850 units</td>
+                  <td>$1.43</td>
+                </tr>
+
+                <tr>
+                  <td>Sep 15, 2026</td>
+                  <td>2,100 units</td>
+                  <td>$1.05</td>
+                </tr>
+
+                <tr>
+                  <td>Sep 14, 2026</td>
+                  <td>1,950 units</td>
+                  <td>$0.98</td>
+                </tr>
+
+                <tr>
+                  <td>Sep 13, 2026</td>
+                  <td>1,780 units</td>
+                  <td>$0.89</td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div>
+
+        <div class="total-box">
+
+          <p>Estimated Current Bill</p>
+
+          <h2>$40.30</h2>
+
+          <small>
+            Includes subscription and usage charges
+          </small>
+
+        </div>
+
+        <section class="section">
+
+          <h2>Usage Limits</h2>
+
+          <div class="limit-row">
+            <span>API Requests</span>
+            <strong>72%</strong>
+          </div>
+
+          <div class="bar">
+            <div
+              class="bar-fill"
+              style="width:72%;">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="limit-row">
+            <span>Storage</span>
+            <strong>68%</strong>
+          </div>
+
+          <div class="bar">
+            <div
+              class="bar-fill bar-green"
+              style="width:68%;">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="limit-row">
+            <span>Data Transfer</span>
+            <strong>64%</strong>
+          </div>
+
+          <div class="bar">
+            <div
+              class="bar-fill bar-orange"
+              style="width:64%;">
+            </div>
+          </div>
+
+          <div class="alert">
+            <strong>Usage Alert</strong><br>
+            You have used more than 70% of your API request
+            allowance. Consider monitoring usage to avoid
+            additional charges.
+          </div>
+
+        </section>
+
+        <section class="section">
+
+          <h2>Billing Controls</h2>
+
+          <button
+            class="btn primary"
+            style="width:100%;"
+            onclick="showToast('Usage limits settings opened.')">
+            Manage Usage Limits
+          </button>
+
+          <button
+            class="btn secondary"
+            style="width:100%;margin-top:10px;"
+            onclick="showToast('Billing alerts settings opened.')">
+            Configure Alerts
+          </button>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+
+    function changePeriod(period) {
+
+      showToast(
+        period + " selected."
+      );
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.style.display = "block";
+
+      setTimeout(function() {
+        toast.style.display = "none";
+      }, 3000);
+
+    }
+
+  </script>
+
+</body>
+</html>

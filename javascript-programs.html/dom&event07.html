@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create and Remove CSS Classes Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #box {
+            padding: 30px;
+            margin: 20px auto;
+            width: 250px;
+            font-size: 20px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            color: red;
+            border: 3px solid black;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>Create and Remove CSS Classes Dynamically</h2>
+
+    <div id="box">
+        This is a box
+    </div>
+
+    <button onclick="addClass()">
+        Add CSS Class
+    </button>
+
+    <button onclick="removeClass()">
+        Remove CSS Class
+    </button>
+
+    <script>
+        function addClass() {
+
+            // Add CSS class dynamically
+            let box = document.getElementById("box");
+            box.classList.add("highlight");
+        }
+
+        function removeClass() {
+
+            // Remove CSS class dynamically
+            let box = document.getElementById("box");
+            box.classList.remove("highlight");
+        }
+    </script>
+
+</body>
+</html>

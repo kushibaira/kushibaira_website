@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabs Interface</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .tabs {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .content {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tabs Interface</h1>
+
+    <div class="tabs">
+        <button onclick="showTab('home')">Home</button>
+        <button onclick="showTab('about')">About</button>
+        <button onclick="showTab('contact')">Contact</button>
+    </div>
+
+    <div class="content">
+
+        <div id="home" class="tab-content active">
+            <h2>Home</h2>
+            <p>Welcome to the Home page.</p>
+        </div>
+
+        <div id="about" class="tab-content">
+            <h2>About</h2>
+            <p>This is the About page.</p>
+        </div>
+
+        <div id="contact" class="tab-content">
+            <h2>Contact</h2>
+            <p>This is the Contact page.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function showTab(tabName) {
+
+            let tabs = document.getElementsByClassName("tab-content");
+
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+        }
+    </script>
+
+</body>
+</html>

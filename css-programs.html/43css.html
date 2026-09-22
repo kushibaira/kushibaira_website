@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 43 - Tab Navigation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: white;
+            border-bottom: 2px solid #ddd;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background-color: #e5e7eb;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            flex: 1;
+        }
+
+        .tab:hover {
+            background-color: #dbeafe;
+        }
+
+        .tab.active {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .content {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .content h2 {
+            color: #2563eb;
+            margin-top: 0;
+        }
+
+        .content p {
+            line-height: 1.7;
+            color: #64748b;
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                width: 100%;
+                text-align: left;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            CloudFlow
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>Tab Navigation Component</h1>
+
+        <div class="tabs">
+
+            <button class="tab active" onclick="showTab('home', this)">
+                Home
+            </button>
+
+            <button class="tab" onclick="showTab('features', this)">
+                Features
+            </button>
+
+            <button class="tab" onclick="showTab('pricing', this)">
+                Pricing
+            </button>
+
+            <button class="tab" onclick="showTab('about', this)">
+                About
+            </button>
+
+        </div>
+
+        <div id="home" class="content active">
+
+            <h2>Home</h2>
+
+            <p>
+                Welcome to CloudFlow. This tab demonstrates
+                a simple tab navigation component using HTML,
+                CSS, and JavaScript.
+            </p>
+
+        </div>
+
+        <div id="features" class="content">
+
+            <h2>Features</h2>
+
+            <p>
+                CloudFlow provides useful features such as
+                cloud storage, team collaboration, analytics,
+                and project management.
+            </p>
+
+        </div>
+
+        <div id="pricing" class="content">
+
+            <h2>Pricing</h2>
+
+            <p>
+                Choose a suitable plan according to your
+                requirements. Different plans provide different
+                features and storage options.
+            </p>
+
+        </div>
+
+        <div id="about" class="content">
+
+            <h2>About</h2>
+
+            <p>
+                CloudFlow is a sample SaaS website created
+                to demonstrate a tab navigation component.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function showTab(tabId, selectedTab) {
+
+            const contents = document.querySelectorAll(".content");
+            const tabs = document.querySelectorAll(".tab");
+
+            contents.forEach(function(content) {
+                content.classList.remove("active");
+            });
+
+            tabs.forEach(function(tab) {
+                tab.classList.remove("active");
+            });
+
+            document.getElementById(tabId).classList.add("active");
+
+            selectedTab.classList.add("active");
+        }
+
+    </script>
+
+</body>
+
+</html>

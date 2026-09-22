@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q52 - Perfect Number</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 80px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Perfect Number</h1>
+
+<input type="number" id="number" placeholder="Enter number">
+
+<button onclick="checkPerfect()">Check</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+    function checkPerfect() {
+
+        let n =
+            Number(document.getElementById("number").value);
+
+        let sum = 0;
+
+        for (let i = 1; i <= n / 2; i++) {
+
+            if (n % i === 0) {
+                sum += i;
+            }
+        }
+
+        document.getElementById("result").innerHTML =
+            sum === n
+                ? n + " is a Perfect Number."
+                : n + " is not a Perfect Number.";
+    }
+
+</script>
+
+</body>
+</html>

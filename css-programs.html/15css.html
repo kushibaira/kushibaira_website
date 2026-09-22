@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Overflow Property</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        .box {
+            width: 250px;
+            height: 100px;
+            border: 3px solid black;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        /* Visible Overflow */
+        .visible {
+            overflow: visible;
+            background-color: lightyellow;
+        }
+
+        /* Hidden Overflow */
+        .hidden {
+            overflow: hidden;
+            background-color: lightgreen;
+        }
+
+        /* Scroll Overflow */
+        .scroll {
+            overflow: scroll;
+            background-color: lightblue;
+        }
+
+        /* Auto Overflow */
+        .auto {
+            overflow: auto;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Overflow Property</h1>
+
+    <h2>Visible</h2>
+
+    <div class="box visible">
+        This is a long paragraph. The visible property
+        allows content to appear outside the box when
+        it exceeds the given height and width.
+    </div>
+
+    <h2>Hidden</h2>
+
+    <div class="box hidden">
+        This is a long paragraph. The hidden property
+        hides the content that overflows the box.
+    </div>
+
+    <h2>Scroll</h2>
+
+    <div class="box scroll">
+        This is a long paragraph. The scroll property
+        adds scrollbars to the box.
+    </div>
+
+    <h2>Auto</h2>
+
+    <div class="box auto">
+        This is a long paragraph. The auto property
+        adds scrollbars only when necessary.
+    </div>
+
+</body>
+</html>

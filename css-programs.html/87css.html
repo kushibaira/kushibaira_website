@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Step Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .steps::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            right: 40px;
+            height: 3px;
+            background-color: #e2e8f0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background-color: white;
+            padding: 0 10px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 8px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 3px solid white;
+        }
+
+        .step.active .step-number {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .step-title {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .step.active .step-title,
+        .step.completed .step-title {
+            color: #334155;
+            font-weight: bold;
+        }
+
+        .form-section {
+            padding: 30px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+
+        .form-section h2 {
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .section-description {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #334155;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px #dbeafe;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .previous {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+
+        .next {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .previous:hover {
+            background-color: #cbd5e1;
+        }
+
+        .next:hover {
+            background-color: #1d4ed8;
+        }
+
+        .summary {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            color: #1e40af;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .form-section {
+                padding: 22px;
+            }
+
+            .step-title {
+                font-size: 11px;
+            }
+
+            .step-number {
+                width: 35px;
+                height: 35px;
+            }
+
+            .steps::before {
+                top: 17px;
+                left: 30px;
+                right: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Multi-Step Form</h1>
+
+        <p class="description">
+            A multi-step form divides a long form into smaller
+            and easier steps.
+        </p>
+
+        <div class="steps">
+
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-title">Personal</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Details</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Preferences</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">Finish</div>
+            </div>
+
+        </div>
+
+        <div class="form-section">
+
+            <h2>Personal Information</h2>
+
+            <p class="section-description">
+                Enter your basic personal information.
+            </p>
+
+            <form>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+
+                    <select id="country" required>
+                        <option value="">Select your country</option>
+                        <option value="india">India</option>
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="canada">Canada</option>
+                    </select>
+                </div>
+
+                <div class="buttons">
+
+                    <a href="#" class="button previous">
+                        Previous
+                    </a>
+
+                    <button type="submit" class="button next">
+                        Next Step
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div class="summary">
+                <strong>Step 1 of 4:</strong>
+                Complete your personal information to continue.
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

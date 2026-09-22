@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success Message</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #success {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Form Submission</h1>
+
+    <form onsubmit="return submitForm()">
+
+        <input type="text" id="name" placeholder="Enter name" required>
+        <br>
+
+        <input type="email" id="email" placeholder="Enter email" required>
+        <br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <p id="success"></p>
+
+    <script>
+        function submitForm() {
+            document.getElementById("success").textContent =
+                "Form submitted successfully!";
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

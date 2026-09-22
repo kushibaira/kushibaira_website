@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Float and Clear</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        /* Float Image to Left */
+        .image {
+            float: left;
+            width: 180px;
+            height: 120px;
+            margin-right: 20px;
+        }
+
+        .text {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Clear Float */
+        .clear {
+            clear: both;
+            background-color: lightgreen;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Float and Clear</h1>
+
+    <img
+        class="image"
+        src="https://picsum.photos/180/120"
+        alt="Sample Image"
+    >
+
+    <p class="text">
+        This paragraph contains text beside the image.
+        The image is floated to the left, allowing the
+        text to flow around it. Float is used to position
+        elements to the left or right.
+    </p>
+
+    <div class="clear">
+        This section uses clear: both.
+        It appears below the floated image.
+    </div>
+
+</body>
+</html>

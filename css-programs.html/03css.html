@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Combinator Selectors</title>
+
+    <style>
+
+        /* 1. Descendant Selector
+           Selects all paragraphs inside a div */
+        div p {
+            color: blue;
+        }
+
+        /* 2. Child Selector
+           Selects only direct child paragraphs */
+        div > p {
+            background-color: lightyellow;
+            padding: 10px;
+        }
+
+        /* 3. Adjacent Sibling Selector
+           Selects the paragraph immediately after h2 */
+        h2 + p {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* 4. General Sibling Selector
+           Selects all paragraphs after h3
+           with the same parent */
+        h3 ~ p {
+            background-color: lightgreen;
+            padding: 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Combinator Selectors</h1>
+
+    <div>
+
+        <h2>Descendant and Child Selectors</h2>
+
+        <!-- Direct child of div -->
+        <p>This is a direct child paragraph.</p>
+
+        <!-- Nested inside section -->
+        <section>
+            <p>This paragraph is a descendant.</p>
+        </section>
+
+    </div>
+
+    <h2>Adjacent Sibling Example</h2>
+
+    <p>
+        This paragraph is immediately after h2.
+    </p>
+
+    <p>
+        This paragraph is not immediately after h2.
+    </p>
+
+    <h3>General Sibling Example</h3>
+
+    <p>This paragraph is a general sibling of h3.</p>
+
+    <p>Another paragraph after h3.</p>
+
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Settings</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 7px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px 15px;
+            color: #d1d5db;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 30px;
+            max-width: 1200px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #6b7280;
+        }
+
+        .settings-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .settings-card h2 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .toggle-row:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-info h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .toggle-info p {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .switch {
+            position: relative;
+            width: 48px;
+            height: 26px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #d1d5db;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .switch input:checked + .slider {
+            background: #2563eb;
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        .save-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .save-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .danger-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .danger-btn:hover {
+            background: #b91c1c;
+        }
+
+        @media (max-width: 700px) {
+
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .menu li {
+                margin-bottom: 0;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .toggle-row {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            Developer Panel
+        </div>
+
+        <ul class="menu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">API Keys</a></li>
+            <li><a href="#">Webhooks</a></li>
+            <li><a href="#" class="active">Developer Settings</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Security</a></li>
+        </ul>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <div class="page-header">
+            <h1>Developer Settings</h1>
+            <p>
+                Manage your application and developer configuration.
+            </p>
+        </div>
+
+
+        <!-- Application Settings -->
+        <section class="settings-card">
+
+            <h2>Application Settings</h2>
+
+            <p class="description">
+                Configure the basic settings for your application.
+            </p>
+
+            <div class="form-group">
+                <label for="appName">
+                    Application Name
+                </label>
+
+                <input
+                    type="text"
+                    id="appName"
+                    value="My SaaS Application"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="environment">
+                    Environment
+                </label>
+
+                <select id="environment">
+                    <option>Development</option>
+                    <option selected>Production</option>
+                    <option>Testing</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="callback">
+                    Callback URL
+                </label>
+
+                <input
+                    type="url"
+                    id="callback"
+                    value="https://example.com/callback"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- API Configuration -->
+        <section class="settings-card">
+
+            <h2>API Configuration</h2>
+
+            <p class="description">
+                Configure API behavior and access settings.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="apiVersion">
+                    API Version
+                </label>
+
+                <select id="apiVersion">
+                    <option>v1</option>
+                    <option selected>v2</option>
+                    <option>v3</option>
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="rateLimit">
+                    Rate Limit (requests/minute)
+                </label>
+
+                <input
+                    type="number"
+                    id="rateLimit"
+                    value="1000"
+                    min="1"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="allowedOrigins">
+                    Allowed Origins
+                </label>
+
+                <textarea id="allowedOrigins">https://example.com
+https://app.example.com</textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- Developer Features -->
+        <section class="settings-card">
+
+            <h2>Developer Features</h2>
+
+            <p class="description">
+                Enable or disable developer features.
+            </p>
+
+
+            <div class="toggle-row">
+
+                <div class="toggle-info">
+
+                    <h3>Debug Mode</h3>
+
+                    <p>
+                        Enable additional debugging information.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="debugMode"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="toggle-row">
+
+                <div class="toggle-info">
+
+                    <h3>API Logging</h3>
+
+                    <p>
+                        Record API requests for troubleshooting.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="apiLogging"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="toggle-row">
+
+                <div class="toggle-info">
+
+                    <h3>Sandbox Mode</h3>
+
+                    <p>
+                        Use test data instead of production data.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="sandbox"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- Save -->
+        <section class="settings-card">
+
+            <button
+                class="save-btn"
+                onclick="saveSettings()"
+            >
+                Save Changes
+            </button>
+
+        </section>
+
+
+        <!-- Danger Zone -->
+        <section class="settings-card">
+
+            <h2>Danger Zone</h2>
+
+            <p class="description">
+                These actions can affect your developer configuration.
+            </p>
+
+            <button
+                class="danger-btn"
+                onclick="resetSettings()"
+            >
+                Reset Developer Settings
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    function saveSettings() {
+
+        const appName =
+            document.getElementById("appName").value;
+
+        if (appName.trim() === "") {
+
+            alert("Application name cannot be empty.");
+
+            return;
+        }
+
+        alert("Developer settings saved successfully.");
+
+    }
+
+
+    function resetSettings() {
+
+        const confirmation = confirm(
+            "Are you sure you want to reset the developer settings?"
+        );
+
+        if (confirmation) {
+
+            document.getElementById("appName").value =
+                "My SaaS Application";
+
+            document.getElementById("environment").value =
+                "Production";
+
+            document.getElementById("callback").value =
+                "https://example.com/callback";
+
+            document.getElementById("apiVersion").value =
+                "v2";
+
+            document.getElementById("rateLimit").value =
+                "1000";
+
+            document.getElementById("debugMode").checked =
+                false;
+
+            document.getElementById("apiLogging").checked =
+                true;
+
+            document.getElementById("sandbox").checked =
+                false;
+
+            alert("Developer settings have been reset.");
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

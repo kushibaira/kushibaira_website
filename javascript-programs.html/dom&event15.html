@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Slideshow</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #slideImage {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border: 2px solid black;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 15px 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Manipulation</h1>
+
+    <h2>Image Slideshow / Carousel</h2>
+
+    <img id="slideImage"
+         src="https://picsum.photos/id/1015/400/250"
+         alt="Slideshow Image">
+
+    <br>
+
+    <button onclick="previousImage()">
+        Previous
+    </button>
+
+    <button onclick="nextImage()">
+        Next
+    </button>
+
+    <script>
+        // Array of images
+        let images = [
+            "https://picsum.photos/id/1015/400/250",
+            "https://picsum.photos/id/1016/400/250",
+            "https://picsum.photos/id/1018/400/250",
+            "https://picsum.photos/id/1020/400/250"
+        ];
+
+        let currentImage = 0;
+
+        function showImage() {
+
+            // Change the image
+            document.getElementById("slideImage").src =
+                images[currentImage];
+        }
+
+        function nextImage() {
+
+            currentImage++;
+
+            if (currentImage >= images.length) {
+                currentImage = 0;
+            }
+
+            showImage();
+        }
+
+        function previousImage() {
+
+            currentImage--;
+
+            if (currentImage < 0) {
+                currentImage = images.length - 1;
+            }
+
+            showImage();
+        }
+    </script>
+
+</body>
+</html>

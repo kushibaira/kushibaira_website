@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Delegation</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        li {
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Event Delegation</h1>
+
+    <ul id="list">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+    </ul>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("list").addEventListener("click", function(event) {
+            if (event.target.tagName === "LI") {
+                document.getElementById("message").textContent =
+                    "You clicked: " + event.target.textContent;
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: lightgray;
+        }
+
+        form {
+            width: 350px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <form onsubmit="return register()">
+
+        <h2>Registration</h2>
+
+        <input type="text" id="name"
+               placeholder="Name">
+
+        <input type="email" id="email"
+               placeholder="Email">
+
+        <input type="password" id="password"
+               placeholder="Password">
+
+        <input type="password" id="confirmPassword"
+               placeholder="Confirm Password">
+
+        <button type="submit">Register</button>
+
+        <p id="message"></p>
+
+    </form>
+
+    <script>
+        function register() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            if (name === "" || email === "" ||
+                password === "" || confirmPassword === "") {
+
+                document.getElementById("message").textContent =
+                    "All fields are required.";
+
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById("message").textContent =
+                    "Passwords do not match.";
+
+                return false;
+            }
+
+            document.getElementById("message").textContent =
+                "Registration successful.";
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

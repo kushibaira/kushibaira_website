@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Billing Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 240px;
+      background: #111827;
+      color: white;
+      padding: 25px 15px;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      padding: 0 12px;
+      margin-bottom: 35px;
+    }
+
+    .nav-title {
+      color: #9ca3af;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 0 12px;
+      margin: 20px 0 8px;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 12px;
+      border-radius: 7px;
+      color: #d1d5db;
+      text-decoration: none;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* MAIN */
+    .main {
+      margin-left: 240px;
+      width: calc(100% - 240px);
+      padding: 30px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .topbar h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .topbar p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .profile {
+      background: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+      font-size: 14px;
+    }
+
+    /* SUMMARY CARDS */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .summary-card {
+      background: white;
+      padding: 22px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .summary-card .label {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .summary-card .amount {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .summary-card .change {
+      color: #16a34a;
+      font-size: 12px;
+      margin-top: 7px;
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      margin-bottom: 22px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .card-header h2 {
+      font-size: 19px;
+    }
+
+    .view-all {
+      color: #2563eb;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    /* USAGE */
+    .usage-item {
+      margin-bottom: 20px;
+    }
+
+    .usage-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+
+    .progress {
+      height: 9px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #2563eb;
+      border-radius: 10px;
+    }
+
+    .progress-green {
+      background: #16a34a;
+    }
+
+    .progress-orange {
+      background: #f59e0b;
+    }
+
+    /* INVOICE TABLE */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 550px;
+    }
+
+    th,
+    td {
+      padding: 14px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      color: #6b7280;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .paid {
+      color: #166534;
+      background: #dcfce7;
+      padding: 5px 9px;
+      border-radius: 15px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .pending {
+      color: #92400e;
+      background: #fef3c7;
+      padding: 5px 9px;
+      border-radius: 15px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* PLAN CARD */
+    .plan-card {
+      border: 2px solid #2563eb;
+    }
+
+    .plan-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .plan-price {
+      font-size: 30px;
+      color: #2563eb;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .plan-price span {
+      color: #6b7280;
+      font-size: 13px;
+      font-weight: normal;
+    }
+
+    .plan-details {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .plan-details li {
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .plan-details li::before {
+      content: "✓";
+      color: #16a34a;
+      margin-right: 8px;
+      font-weight: bold;
+    }
+
+    .btn {
+      border: none;
+      padding: 11px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+      width: 100%;
+    }
+
+    .primary:hover {
+      background: #1d4ed8;
+    }
+
+    /* PAYMENT */
+    .payment-method {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .payment-method strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .muted {
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    /* BILLING */
+    .billing-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+
+    .billing-row:last-child {
+      border-bottom: none;
+    }
+
+    .billing-row span:first-child {
+      color: #6b7280;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: #111827;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1050px) {
+      .summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 750px) {
+      .sidebar {
+        width: 70px;
+        padding: 20px 8px;
+      }
+
+      .logo {
+        font-size: 0;
+        text-align: center;
+      }
+
+      .logo::after {
+        content: "C";
+        font-size: 22px;
+      }
+
+      .nav-item {
+        text-align: center;
+        font-size: 0;
+      }
+
+      .nav-item::first-letter {
+        font-size: 18px;
+      }
+
+      .nav-title {
+        display: none;
+      }
+
+      .main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .topbar h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="logo">
+        CloudSuite
+      </div>
+
+      <div class="nav-title">Main</div>
+
+      <a href="#" class="nav-item">▣ Dashboard</a>
+      <a href="#" class="nav-item active">▤ Billing</a>
+      <a href="#" class="nav-item">▥ Analytics</a>
+      <a href="#" class="nav-item">♙ Customers</a>
+
+      <div class="nav-title">Account</div>
+
+      <a href="#" class="nav-item">⚙ Settings</a>
+      <a href="#" class="nav-item">? Support</a>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <div class="topbar">
+
+        <div>
+          <h1>Billing Dashboard</h1>
+          <p>Monitor your subscription, usage and billing activity.</p>
+        </div>
+
+        <div class="profile">
+          👤 Alex Johnson
+        </div>
+
+      </div>
+
+      <!-- SUMMARY -->
+      <section class="summary">
+
+        <div class="summary-card">
+          <div class="label">Current Plan</div>
+          <div class="amount">Professional</div>
+          <div class="change">Active</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Monthly Bill</div>
+          <div class="amount">$31.90</div>
+          <div class="change">Due Oct 17</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Total Usage</div>
+          <div class="amount">68%</div>
+          <div class="change">Within limits</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Next Invoice</div>
+          <div class="amount">$31.90</div>
+          <div class="change">In 30 days</div>
+        </div>
+
+      </section>
+
+      <div class="content-grid">
+
+        <!-- LEFT COLUMN -->
+        <div>
+
+          <!-- USAGE -->
+          <div class="card">
+
+            <div class="card-header">
+              <h2>Current Usage</h2>
+
+              <button
+                class="view-all"
+                onclick="showToast('Detailed usage opened.')">
+                View Details
+              </button>
+            </div>
+
+            <div class="usage-item">
+
+              <div class="usage-top">
+                <span>Storage</span>
+                <span>68 GB / 100 GB</span>
+              </div>
+
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 68%;">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="usage-item">
+
+              <div class="usage-top">
+                <span>Projects</span>
+                <span>35 / 50</span>
+              </div>
+
+              <div class="progress">
+                <div
+                  class="progress-bar progress-green"
+                  style="width: 70%;">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="usage-item">
+
+              <div class="usage-top">
+                <span>API Requests</span>
+                <span>72,000 / 100,000</span>
+              </div>
+
+              <div class="progress">
+                <div
+                  class="progress-bar progress-orange"
+                  style="width: 72%;">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="usage-item">
+
+              <div class="usage-top">
+                <span>Team Members</span>
+                <span>7 / 10</span>
+              </div>
+
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 70%;">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- INVOICES -->
+          <div class="card">
+
+            <div class="card-header">
+              <h2>Recent Invoices</h2>
+
+              <button
+                class="view-all"
+                onclick="showToast('All invoices opened.')">
+                View All
+              </button>
+            </div>
+
+            <div class="table-container">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>Invoice</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr>
+                    <td>#INV-1025</td>
+                    <td>Sep 17, 2026</td>
+                    <td>$31.90</td>
+                    <td>
+                      <span class="paid">PAID</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>#INV-1024</td>
+                    <td>Aug 17, 2026</td>
+                    <td>$31.90</td>
+                    <td>
+                      <span class="paid">PAID</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>#INV-1023</td>
+                    <td>Jul 17, 2026</td>
+                    <td>$29.00</td>
+                    <td>
+                      <span class="paid">PAID</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>#INV-1022</td>
+                    <td>Jun 17, 2026</td>
+                    <td>$29.00</td>
+                    <td>
+                      <span class="paid">PAID</span>
+                    </td>
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div>
+
+          <!-- CURRENT PLAN -->
+          <div class="card plan-card">
+
+            <h2>Current Subscription</h2>
+
+            <div class="plan-name">
+              Professional
+            </div>
+
+            <p class="muted">
+              For growing teams and businesses
+            </p>
+
+            <div class="plan-price">
+              $29
+              <span>/ month</span>
+            </div>
+
+            <ul class="plan-details">
+              <li>10 team members</li>
+              <li>50 projects</li>
+              <li>100 GB storage</li>
+              <li>Advanced analytics</li>
+              <li>API access</li>
+              <li>Priority support</li>
+            </ul>
+
+            <button
+              class="btn primary"
+              onclick="showToast('Subscription management opened.')">
+              Manage Subscription
+            </button>
+
+          </div>
+
+          <!-- PAYMENT METHOD -->
+          <div class="card">
+
+            <div class="card-header">
+              <h2>Payment Method</h2>
+
+              <button
+                class="view-all"
+                onclick="showToast('Payment method editor opened.')">
+                Edit
+              </button>
+            </div>
+
+            <div class="payment-method">
+
+              <strong>💳 Visa ending in 4242</strong>
+
+              <span class="muted">
+                Expires 12/28
+              </span>
+
+            </div>
+
+          </div>
+
+          <!-- BILLING SUMMARY -->
+          <div class="card">
+
+            <div class="card-header">
+              <h2>Billing Summary</h2>
+            </div>
+
+            <div class="billing-row">
+              <span>Plan</span>
+              <strong>$29.00</strong>
+            </div>
+
+            <div class="billing-row">
+              <span>Additional Usage</span>
+              <strong>$0.00</strong>
+            </div>
+
+            <div class="billing-row">
+              <span>Tax</span>
+              <strong>$2.90</strong>
+            </div>
+
+            <div class="billing-row">
+              <span>Total</span>
+              <strong>$31.90</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+
+    function showToast(message) {
+
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.style.display = "block";
+
+      setTimeout(function () {
+        toast.style.display = "none";
+      }, 3000);
+
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 45 - User Profile Dropdown</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile {
+            position: relative;
+        }
+
+        .profile-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .profile-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .arrow {
+            font-size: 12px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 55px;
+            width: 230px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .profile:hover .dropdown {
+            display: block;
+        }
+
+        .profile-info {
+            padding: 18px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .profile-info h3 {
+            margin: 0 0 5px;
+            color: #1e293b;
+            font-size: 16px;
+        }
+
+        .profile-info p {
+            margin: 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 13px 18px;
+            color: #334155;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background-color: #f1f5f9;
+            color: #2563eb;
+        }
+
+        .logout {
+            border-top: 1px solid #e5e7eb;
+            color: #dc2626 !important;
+        }
+
+        .logout:hover {
+            background-color: #fee2e2 !important;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #1e293b;
+        }
+
+        .container p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .instruction {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .dropdown {
+                right: -10px;
+            }
+
+            .container {
+                margin: 40px auto;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+        <div class="profile">
+
+            <button class="profile-button">
+
+                <div class="profile-image">
+                    S
+                </div>
+
+                <span>Sanjana</span>
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+            <div class="dropdown">
+
+                <div class="profile-info">
+
+                    <h3>Sanjana</h3>
+
+                    <p>sanjana@example.com</p>
+
+                </div>
+
+                <a href="#">
+                    👤 My Profile
+                </a>
+
+                <a href="#">
+                    ⚙ Settings
+                </a>
+
+                <a href="#">
+                    🔔 Notifications
+                </a>
+
+                <a href="#">
+                    ❓ Help
+                </a>
+
+                <a href="#" class="logout">
+                    🚪 Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h1>User Profile Dropdown</h1>
+
+        <p>
+            This webpage demonstrates a user profile dropdown
+            menu using HTML and CSS.
+        </p>
+
+        <div class="instruction">
+
+            <h2>How to use</h2>
+
+            <p>
+                Move your mouse over the profile name in the
+                top-right corner to display the dropdown menu.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

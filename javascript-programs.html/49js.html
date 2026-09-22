@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q49 - GCD</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 80px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Greatest Common Divisor</h1>
+
+<input type="number" id="a" placeholder="Number 1">
+
+<input type="number" id="b" placeholder="Number 2">
+
+<br>
+
+<button onclick="findGCD()">Find GCD</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+    function findGCD() {
+
+        let a = Math.abs(
+            Number(document.getElementById("a").value)
+        );
+
+        let b = Math.abs(
+            Number(document.getElementById("b").value)
+        );
+
+        while (b !== 0) {
+
+            let temp = b;
+            b = a % b;
+            a = temp;
+        }
+
+        document.getElementById("result").innerHTML =
+            "GCD = " + a;
+    }
+
+</script>
+
+</body>
+</html>

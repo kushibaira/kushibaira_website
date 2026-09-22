@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Database</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 30px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Marks Database</h1>
+
+    <input type="text" id="name" placeholder="Student Name">
+    <input type="number" id="marks" placeholder="Marks">
+
+    <button onclick="addStudent()">Add</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        let students =
+            JSON.parse(localStorage.getItem("marksDatabase")) || [];
+
+        function addStudent() {
+            let name =
+                document.getElementById("name").value;
+
+            let marks =
+                document.getElementById("marks").value;
+
+            students.push({
+                name: name,
+                marks: marks
+            });
+
+            localStorage.setItem(
+                "marksDatabase",
+                JSON.stringify(students)
+            );
+
+            displayStudents();
+        }
+
+        function displayStudents() {
+            let table =
+                document.getElementById("tableBody");
+
+            table.innerHTML = "";
+
+            students.forEach(function(student) {
+                table.innerHTML +=
+                    "<tr>" +
+                    "<td>" + student.name + "</td>" +
+                    "<td>" + student.marks + "</td>" +
+                    "</tr>";
+            });
+        }
+
+        displayStudents();
+    </script>
+
+</body>
+</html>

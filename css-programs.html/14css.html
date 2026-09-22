@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Visibility and Opacity</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        .visible {
+            background-color: lightgreen;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        /* Visibility Hidden */
+        .hidden {
+            visibility: hidden;
+            background-color: red;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        /* Opacity */
+        .transparent {
+            opacity: 0.3;
+            background-color: orange;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        /* Fully Transparent */
+        .invisible {
+            opacity: 0;
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Visibility and Opacity</h1>
+
+    <div class="visible">
+        This element is visible.
+    </div>
+
+    <div class="hidden">
+        This element is hidden using visibility: hidden.
+    </div>
+
+    <div class="transparent">
+        This element has 30% opacity.
+    </div>
+
+    <div class="invisible">
+        This element has 0 opacity.
+    </div>
+
+    <p>
+        The hidden elements still occupy space on the page.
+    </p>
+
+</body>
+</html>

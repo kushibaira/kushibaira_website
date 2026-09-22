@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 15 - Functions</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Function</h1>
+
+    <input type="number" id="number" placeholder="Enter number">
+    <button onclick="calculateSquare()">Find Square</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function square(num) {
+            return num * num;
+        }
+
+        function calculateSquare() {
+            let n = Number(document.getElementById("number").value);
+
+            document.getElementById("result").innerHTML =
+                "Square = " + square(n);
+        }
+    </script>
+
+</body>
+</html>

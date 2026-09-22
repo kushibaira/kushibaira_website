@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dividers and Section Separators</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .section {
+            padding: 25px 0;
+        }
+
+        .section h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        .thick-divider {
+            border: none;
+            border-top: 4px solid #2563eb;
+        }
+
+        .dashed-divider {
+            border: none;
+            border-top: 2px dashed #94a3b8;
+        }
+
+        .dotted-divider {
+            border: none;
+            border-top: 3px dotted #64748b;
+        }
+
+        .gradient-divider {
+            height: 3px;
+            border: none;
+            background: linear-gradient(
+                to right,
+                #2563eb,
+                #7c3aed,
+                #db2777
+            );
+        }
+
+        .text-separator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .text-separator::before,
+        .text-separator::after {
+            content: "";
+            height: 1px;
+            background-color: #cbd5e1;
+            flex: 1;
+        }
+
+        .text-separator span {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .section-box {
+            padding: 25px;
+            margin-top: 20px;
+            background-color: #f8fafc;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+        }
+
+        .section-box h3 {
+            color: #172554;
+            margin-bottom: 8px;
+        }
+
+        .section-box p {
+            color: #64748b;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .section {
+                padding: 18px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Dividers and Section Separators</h1>
+
+        <p class="description">
+            Different types of dividers and section separators
+            used to organize content on a webpage.
+        </p>
+
+        <div class="section">
+            <h2>Simple Divider</h2>
+            <p>
+                This section uses a simple horizontal divider.
+            </p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <h2>Thick Divider</h2>
+            <p>
+                A thicker divider provides stronger visual separation.
+            </p>
+        </div>
+
+        <hr class="thick-divider">
+
+        <div class="section">
+            <h2>Dashed Divider</h2>
+            <p>
+                A dashed line provides a different style of separation.
+            </p>
+        </div>
+
+        <hr class="dashed-divider">
+
+        <div class="section">
+            <h2>Dotted Divider</h2>
+            <p>
+                A dotted line provides a lightweight visual separator.
+            </p>
+        </div>
+
+        <hr class="dotted-divider">
+
+        <div class="section">
+            <h2>Gradient Divider</h2>
+            <p>
+                A gradient divider gives the webpage a modern appearance.
+            </p>
+        </div>
+
+        <hr class="gradient-divider">
+
+        <div class="text-separator">
+            <span>OR</span>
+        </div>
+
+        <div class="section-box">
+            <h3>Section Separator</h3>
+            <p>
+                This styled box demonstrates another way to
+                visually separate different content sections.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

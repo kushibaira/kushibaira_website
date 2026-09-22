@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q48 - Swap Numbers</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 80px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Swap Two Numbers</h1>
+
+<input type="number" id="a" placeholder="First number">
+
+<input type="number" id="b" placeholder="Second number">
+
+<br>
+
+<button onclick="swap()">Swap</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+    function swap() {
+
+        let a =
+            Number(document.getElementById("a").value);
+
+        let b =
+            Number(document.getElementById("b").value);
+
+        [a, b] = [b, a];
+
+        document.getElementById("result").innerHTML =
+            "After Swap: A = " + a +
+            ", B = " + b;
+    }
+
+</script>
+
+</body>
+</html>

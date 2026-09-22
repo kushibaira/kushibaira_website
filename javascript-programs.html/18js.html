@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 18 - Array Methods</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 80px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Array Methods</h1>
+
+    <button onclick="arrayMethods()">Run Array Methods</button>
+
+    <div id="result"></div>
+
+    <script>
+        function arrayMethods() {
+            let arr = [10, 20, 30];
+
+            arr.push(40);
+
+            let removed = arr.pop();
+
+            arr.unshift(5);
+
+            let first = arr.shift();
+
+            let doubled = arr.map(num => num * 2);
+
+            document.getElementById("result").innerHTML =
+                "Array: " + arr.join(", ") + "<br>" +
+                "Popped: " + removed + "<br>" +
+                "Shifted: " + first + "<br>" +
+                "Doubled: " + doubled.join(", ");
+        }
+    </script>
+
+</body>
+</html>

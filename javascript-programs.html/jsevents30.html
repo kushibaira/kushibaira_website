@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyboard Typing Test</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #sentence {
+            font-size: 20px;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 400px;
+            height: 100px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        #result {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Keyboard Typing Test</h1>
+
+    <p id="sentence">
+        JavaScript makes webpages interactive.
+    </p>
+
+    <textarea id="typingBox"
+              oninput="checkTyping()"
+              placeholder="Type the sentence above"></textarea>
+
+    <p id="result"></p>
+
+    <script>
+        let sentence =
+            "JavaScript makes webpages interactive.";
+
+        function checkTyping() {
+            let typedText =
+                document.getElementById("typingBox").value;
+
+            let correct = 0;
+
+            for (let i = 0; i < typedText.length; i++) {
+                if (typedText[i] === sentence[i]) {
+                    correct++;
+                }
+            }
+
+            document.getElementById("result").textContent =
+                "Correct characters: " + correct +
+                " / " + sentence.length;
+
+            if (typedText === sentence) {
+                document.getElementById("result").textContent =
+                    "Typing test completed!";
+            }
+        }
+    </script>
+
+</body>
+</html>

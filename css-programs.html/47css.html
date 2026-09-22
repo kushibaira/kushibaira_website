@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 47 - Profile Card Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #1e293b;
+            padding: 18px 40px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .container > p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        .profile-card {
+            max-width: 380px;
+            margin: auto;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .cover {
+            height: 120px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        }
+
+        .profile-image {
+            width: 110px;
+            height: 110px;
+            margin: -55px auto 15px;
+            border-radius: 50%;
+            background-color: #2563eb;
+            color: white;
+            border: 5px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .profile-card h2 {
+            margin: 5px 0;
+            color: #1e293b;
+        }
+
+        .role {
+            color: #2563eb;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            padding: 0 30px;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 15px 25px;
+        }
+
+        .skill {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 20px 25px 30px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        .secondary {
+            border: 1px solid #2563eb;
+            color: #2563eb;
+        }
+
+        .secondary:hover {
+            background-color: #eff6ff;
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .profile-card {
+                width: 100%;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <h1>Profile Card Component</h1>
+
+        <p>
+            A simple profile card designed for a SaaS website.
+        </p>
+
+        <div class="profile-card">
+
+            <div class="cover"></div>
+
+            <div class="profile-image">
+                S
+            </div>
+
+            <h2>Sanjana</h2>
+
+            <div class="role">
+                Web Developer
+            </div>
+
+            <p class="description">
+                Passionate about creating modern and responsive
+                websites using HTML, CSS, and JavaScript.
+            </p>
+
+            <div class="skills">
+
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">UI Design</span>
+
+            </div>
+
+            <div class="buttons">
+
+                <a href="#" class="button primary">
+                    View Profile
+                </a>
+
+                <a href="#" class="button secondary">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

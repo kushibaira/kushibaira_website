@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Program 36 - SaaS Navigation Bar</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .login-btn {
+            padding: 9px 18px;
+            border: 1px solid #2563eb;
+            border-radius: 6px;
+            color: #2563eb !important;
+        }
+
+        .signup-btn {
+            padding: 10px 18px;
+            background-color: #2563eb;
+            color: white !important;
+            border-radius: 6px;
+        }
+
+        .signup-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #64748b;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background-color: white;
+            width: 220px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card h3 {
+            color: #2563eb;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            CloudFlow
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">About</a>
+            <a href="#" class="login-btn">Login</a>
+            <a href="#" class="signup-btn">Sign Up</a>
+        </div>
+
+    </nav>
+
+
+    <section class="hero">
+
+        <h1>Manage Your Business Easily</h1>
+
+        <p>
+            CloudFlow is a simple SaaS platform that helps
+            teams manage projects, track tasks, and improve
+            productivity from one place.
+        </p>
+
+    </section>
+
+
+    <section class="features">
+
+        <div class="feature-card">
+            <h3>Projects</h3>
+            <p>
+                Organize and manage all your projects easily.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Analytics</h3>
+            <p>
+                View useful information about your business.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Team</h3>
+            <p>
+                Work together with your team efficiently.
+            </p>
+        </div>
+
+    </section>
+
+</body>
+</html>

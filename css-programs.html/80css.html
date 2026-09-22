@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timeline and Activity History Component</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: auto;
+            background-color: white;
+            padding: 45px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 17px;
+            top: 5px;
+            bottom: 5px;
+            width: 3px;
+            background-color: #dbeafe;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #2563eb;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #dbeafe;
+        }
+
+        .activity-card {
+            padding: 20px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .activity-title {
+            color: #334155;
+            font-weight: bold;
+        }
+
+        .activity-time {
+            color: #94a3b8;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .activity-description {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .activity-user {
+            margin-top: 12px;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .completed .timeline-icon {
+            background-color: #16a34a;
+            box-shadow: 0 0 0 2px #dcfce7;
+        }
+
+        .warning .timeline-icon {
+            background-color: #f59e0b;
+            box-shadow: 0 0 0 2px #fef3c7;
+        }
+
+        .activity-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+            transition: 0.2s;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 35px 20px;
+            }
+
+            .timeline {
+                padding-left: 45px;
+            }
+
+            .timeline-icon {
+                left: -45px;
+            }
+
+            .activity-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Timeline and Activity History</h1>
+
+        <p class="description">
+            A timeline displays activities and events in
+            chronological order.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item completed">
+
+                <div class="timeline-icon">
+                    ✓
+                </div>
+
+                <div class="activity-card">
+
+                    <div class="activity-header">
+                        <div class="activity-title">
+                            Project Created
+                        </div>
+
+                        <div class="activity-time">
+                            9:00 AM
+                        </div>
+                    </div>
+
+                    <div class="activity-description">
+                        A new project was created successfully
+                        and added to the workspace.
+                    </div>
+
+                    <div class="activity-user">
+                        By Admin
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item completed">
+
+                <div class="timeline-icon">
+                    ✓
+                </div>
+
+                <div class="activity-card">
+
+                    <div class="activity-header">
+                        <div class="activity-title">
+                            Design Updated
+                        </div>
+
+                        <div class="activity-time">
+                            10:30 AM
+                        </div>
+                    </div>
+
+                    <div class="activity-description">
+                        The dashboard design was updated with
+                        new components and layouts.
+                    </div>
+
+                    <div class="activity-user">
+                        By Sanjana
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item warning">
+
+                <div class="timeline-icon">
+                    !
+                </div>
+
+                <div class="activity-card">
+
+                    <div class="activity-header">
+                        <div class="activity-title">
+                            Review Required
+                        </div>
+
+                        <div class="activity-time">
+                            12:15 PM
+                        </div>
+                    </div>
+
+                    <div class="activity-description">
+                        The latest changes are waiting for
+                        approval from the project manager.
+                    </div>
+
+                    <div class="activity-user">
+                        Status: Pending
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <div class="timeline-icon">
+                    →
+                </div>
+
+                <div class="activity-card">
+
+                    <div class="activity-header">
+                        <div class="activity-title">
+                            Next Step
+                        </div>
+
+                        <div class="activity-time">
+                            Upcoming
+                        </div>
+                    </div>
+
+                    <div class="activity-description">
+                        After approval, the project will move
+                        to the development stage.
+                    </div>
+
+                    <div class="activity-user">
+                        Status: Upcoming
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

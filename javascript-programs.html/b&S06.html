@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sessionStorage</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>sessionStorage Example</h1>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <br>
+
+    <button onclick="saveName()">Save Name</button>
+    <button onclick="showName()">Show Name</button>
+    <button onclick="clearName()">Clear Name</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        function saveName() {
+
+            let name = document.getElementById("name").value;
+
+            sessionStorage.setItem("username", name);
+
+            document.getElementById("output").innerHTML =
+                "Name saved successfully!";
+        }
+
+        function showName() {
+
+            let name = sessionStorage.getItem("username");
+
+            document.getElementById("output").innerHTML =
+                "Saved Name: " + name;
+        }
+
+        function clearName() {
+
+            sessionStorage.removeItem("username");
+
+            document.getElementById("output").innerHTML =
+                "Name removed from sessionStorage.";
+        }
+
+    </script>
+
+</body>
+</html>

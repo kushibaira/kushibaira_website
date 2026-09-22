@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Hide Content</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #content {
+            margin: 20px auto;
+            padding: 20px;
+            width: 400px;
+            border: 1px solid black;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Show / Hide Content</h1>
+
+    <button onclick="showHide()">Hide Content</button>
+
+    <div id="content">
+        <p>This is the content of the webpage.</p>
+        <p>JavaScript can show or hide this content.</p>
+    </div>
+
+    <script>
+        function showHide() {
+
+            let content = document.getElementById("content");
+            let button = event.target;
+
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                button.textContent = "Hide Content";
+            } else {
+                content.style.display = "none";
+                button.textContent = "Show Content";
+            }
+        }
+    </script>
+
+</body>
+</html>

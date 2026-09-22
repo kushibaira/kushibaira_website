@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Update localStorage Data</h1>
+
+    <input type="text" id="username" placeholder="Enter new username">
+    <button onclick="updateUsername()">Update</button>
+
+    <div id="output"></div>
+
+    <script>
+        localStorage.setItem("username", "John");
+
+        function updateUsername() {
+            let username = document.getElementById("username").value;
+
+            localStorage.setItem("username", username);
+
+            document.getElementById("output").innerHTML =
+                "Updated Username: " + localStorage.getItem("username");
+        }
+    </script>
+
+</body>
+</html>

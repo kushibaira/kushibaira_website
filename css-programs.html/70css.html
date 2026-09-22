@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drawer and Slide-Out Panel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            padding: 45px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .open-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .open-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .demo-box {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .demo-box h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .demo-box p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.55);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 5;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -380px;
+            width: 360px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .drawer:target {
+            right: 0;
+        }
+
+        .drawer:target ~ .overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer-header {
+            padding: 22px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drawer-header h2 {
+            color: #172554;
+        }
+
+        .close-button {
+            text-decoration: none;
+            font-size: 25px;
+            color: #64748b;
+        }
+
+        .close-button:hover {
+            color: #dc2626;
+        }
+
+        .drawer-body {
+            padding: 25px;
+        }
+
+        .drawer-body p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background-color: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+        }
+
+        .menu-item:hover {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .drawer {
+                width: 85%;
+                right: -85%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Drawer and Slide-Out Panel</h1>
+
+        <p class="description">
+            A drawer is a panel that slides into view from the
+            side of the webpage to display additional content.
+        </p>
+
+        <a href="#drawer" class="open-button">
+            Open Drawer
+        </a>
+
+        <div class="demo-box">
+
+            <h2>Slide-Out Panel Example</h2>
+
+            <p>
+                Click the button to open a responsive drawer
+                from the right side of the screen.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div id="drawer" class="drawer">
+
+        <div class="drawer-header">
+
+            <h2>Menu</h2>
+
+            <a href="#" class="close-button">
+                ×
+            </a>
+
+        </div>
+
+        <div class="drawer-body">
+
+            <p>
+                This slide-out panel can contain navigation
+                links, settings, or additional information.
+            </p>
+
+            <a href="#" class="menu-item">
+                Dashboard
+            </a>
+
+            <a href="#" class="menu-item">
+                Profile
+            </a>
+
+            <a href="#" class="menu-item">
+                Settings
+            </a>
+
+            <a href="#" class="menu-item">
+                Help and Support
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <a href="#" class="overlay"></a>
+
+</body>
+</html>

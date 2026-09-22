@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Transitions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 1s ease;
+        }
+
+        .color:hover {
+            background-color: orange;
+        }
+
+        .size:hover {
+            width: 250px;
+        }
+
+        .rotate:hover {
+            transform: rotate(45deg);
+        }
+
+        .opacity:hover {
+            opacity: 0.3;
+        }
+
+        .combined:hover {
+            background-color: green;
+            color: white;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Transitions</h1>
+
+    <div class="container">
+
+        <div class="box color">
+            Color Change
+        </div>
+
+        <div class="box size">
+            Size Change
+        </div>
+
+        <div class="box rotate">
+            Rotate
+        </div>
+
+        <div class="box opacity">
+            Opacity
+        </div>
+
+        <div class="box combined">
+            Combined Effect
+        </div>
+
+    </div>
+
+</body>
+</html>
